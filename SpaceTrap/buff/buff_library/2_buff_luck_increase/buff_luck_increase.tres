@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuffLuckIncrease" load_steps=2 format=3 uid="uid://dnn7o37osfif7"]
+
+[ext_resource type="Script" path="res://buff/buff_library/2_buff_luck_increase/buff_luck_increase.gd" id="1_mk10x"]
+
+[resource]
+script = ExtResource("1_mk10x")
+buff_id = 2
+buff_tags = Array[int]([])
+buff_max_stack = 2
+buff_max_duration = 300.0
+buff_permanent = false
+buff_tick_interval = 0.2
+current_stack = 1
+current_tick_count = 0
+current_tick_remain = 0.2
+current_duration_remain = 10.0

@@ -1,0 +1,407 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="-1527" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="btPv7d35-T0VnBdfR0sY-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-6" target="btPv7d35-T0VnBdfR0sY-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-6" value="游戏开始" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="80" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-7" target="btPv7d35-T0VnBdfR0sY-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-7" value="「苹果」的住所" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="160" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-8" target="btPv7d35-T0VnBdfR0sY-49" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-8" value="进入下一个随机空间" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3280" y="1000" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-21" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-9" target="btPv7d35-T0VnBdfR0sY-10" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-25" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-9" target="btPv7d35-T0VnBdfR0sY-31" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-9" value="是否放置信标" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=20;spacingRight=20;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="440" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-10" target="btPv7d35-T0VnBdfR0sY-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-10" target="btPv7d35-T0VnBdfR0sY-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-10" value="「苹果」产生特殊剧情与对话&lt;div&gt;“我会想念你的”&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="560" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-19" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-16" target="btPv7d35-T0VnBdfR0sY-17" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-24" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-16" target="btPv7d35-T0VnBdfR0sY-31" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-16" value="是否进入新手引导空间&lt;div&gt;(新玩家强制进入)&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=20;spacingRight=20;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="240" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-17" target="btPv7d35-T0VnBdfR0sY-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-17" value="完成新手引导并奖励一个「空间信标」" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="360" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-38" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-27" target="btPv7d35-T0VnBdfR0sY-31" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-39" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-27" target="btPv7d35-T0VnBdfR0sY-37" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-27" value="拥有特殊物品并向砸向「苹果」" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="640" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-33" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-31" target="btPv7d35-T0VnBdfR0sY-32" edge="1">
+          <mxGeometry x="-1" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-34" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-31" target="btPv7d35-T0VnBdfR0sY-69" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-31" value="通过「空间信标」返回旧空间" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3280" y="760" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-32" target="btPv7d35-T0VnBdfR0sY-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-32" target="btPv7d35-T0VnBdfR0sY-85" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-32" value="进入下一个定向空间" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3080" y="1000" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-36" value="抹除「苹果」的过去&lt;br&gt;世界重新拼接在一起" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="880" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-40" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-37" target="btPv7d35-T0VnBdfR0sY-36" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-42" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-37" target="btPv7d35-T0VnBdfR0sY-43" edge="1">
+          <mxGeometry x="-1" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-37" value="将「过去」砸向「苹果」(自己喝将会强制回到新手引导，现有物品保留)" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=8;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="760" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-41" target="btPv7d35-T0VnBdfR0sY-115" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-41" value="抹除「苹果」的存在，世界回到最原始的样貌，「空间实验」再没有更大进展，达成平凡结局" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2680" y="880" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-44" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-43" target="btPv7d35-T0VnBdfR0sY-41" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-43" target="btPv7d35-T0VnBdfR0sY-46" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-43" value="将「存在」砸向「苹果」(自己喝将导致本次空间旅行无效且结束)" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=8;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2680" y="760" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-46" value="额外内容" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;shadow=0;strokeWidth=1;spacing=6;spacingTop=0;rounded=0;spacingLeft=32;spacingRight=32;align=center;fillColor=#e6d0de;strokeColor=#996185;gradientColor=#d5739d;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2560" y="760" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-48" target="btPv7d35-T0VnBdfR0sY-67" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-105" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-48" target="btPv7d35-T0VnBdfR0sY-90" edge="1">
+          <mxGeometry x="-0.9167" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-48" value="进入「苹果」仿造的「起源实验室」" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="1720" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-51" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-49" target="btPv7d35-T0VnBdfR0sY-50" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-52" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-49" target="btPv7d35-T0VnBdfR0sY-85" edge="1">
+          <mxGeometry x="-0.9" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-49" value="拥有至少一块任意门碎片" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3280" y="1080" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-53" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-50" target="btPv7d35-T0VnBdfR0sY-85" edge="1">
+          <mxGeometry x="-0.8333" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-61" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-50" target="btPv7d35-T0VnBdfR0sY-57" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-50" value="进入世界意志产生的「本不存在的空间」" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="1080" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-62" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-57" target="btPv7d35-T0VnBdfR0sY-59" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-63" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-57" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-57" value="收集「本不存在的物品」" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="1080" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-59" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-59" value="获取世界意志指引的&lt;div&gt;「本不存在的物品」&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="1200" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-64" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-60" target="btPv7d35-T0VnBdfR0sY-31" edge="1">
+          <mxGeometry x="-0.9722" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-66" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-60" target="btPv7d35-T0VnBdfR0sY-65" edge="1">
+          <mxGeometry x="-1" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-60" value="空间逗留" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3880" y="880" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-65" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-65" value="完成代办事件" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="1000" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-73" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-67" target="btPv7d35-T0VnBdfR0sY-68" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-82" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-67" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-67" value="拥有全部任意门碎片" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="1720" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-83" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-68" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-96" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-68" target="btPv7d35-T0VnBdfR0sY-93" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-68" value="重启「起源实验(伪)」" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="1840" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-70" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-69" target="btPv7d35-T0VnBdfR0sY-8" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-71" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-69" target="btPv7d35-T0VnBdfR0sY-32" edge="1">
+          <mxGeometry x="-1" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-69" value="消耗「完整任意门」定向指定空间" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3280" y="880" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-97" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-74" target="btPv7d35-T0VnBdfR0sY-77" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-98" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-74" target="btPv7d35-T0VnBdfR0sY-79" edge="1">
+          <mxGeometry x="-0.9" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-74" value="世界被拼接完成" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="2360" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-75" value="空间对应关系不再随机，但是依然无法直接看见相邻的空间(空间通道是世界意志产生的自我保护机制，直到空间的隔离被解除，空间通道才会消散)，地图可以正确记录空间坐标" style="shape=note;size=14;whiteSpace=wrap;html=1;verticalAlign=bottom;fillColor=#bac8d3;strokeColor=#23445d;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2880" y="930" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-77" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4040" y="1400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-77" value="在世界被拼接完成前，两边实验室并没有直接联系，传送门重新丢失" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="2480" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-79" target="btPv7d35-T0VnBdfR0sY-119" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-79" value="空间裂隙消散，世界重新变得完整，在一块块矛盾的地理衔接中达成好结局" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="2480" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-103" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-85" target="btPv7d35-T0VnBdfR0sY-86" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-110" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-85" target="btPv7d35-T0VnBdfR0sY-109" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-85" value="进入「普通空间」&lt;div&gt;(多样的空间)&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="1280" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-112" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-86" target="btPv7d35-T0VnBdfR0sY-111" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-125" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-86" target="btPv7d35-T0VnBdfR0sY-123" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-86" value="进入「工匠空间」&lt;div&gt;(拥有特殊功能性的空间)&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="1400" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-87" value="「本不存在的空间」是现实空间的平行空间，大部分内容相同，少部分内容存在差异，这类空间不支持信标定位" style="shape=note;size=20;whiteSpace=wrap;html=1;verticalAlign=bottom;fillColor=#bac8d3;strokeColor=#23445d;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="990" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-100" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-90" target="btPv7d35-T0VnBdfR0sY-95" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-107" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-90" target="btPv7d35-T0VnBdfR0sY-106" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-90" value="分别进入「起源实验室(阴)」和「起源实验室(阳)」" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="2120" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-118" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-93" target="btPv7d35-T0VnBdfR0sY-117" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-93" value="空间通道消散，世界恢复正常，但是这个世界看上去隐约像一颗苹果，达成苹果结局" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="1960" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-99" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-95" target="btPv7d35-T0VnBdfR0sY-74" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-101" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-95" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint x="4010" y="1060" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-95" value="重启「起源实验(真)」" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="2120" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-106" value="额外内容" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;shadow=0;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=#d5739d;rounded=0;spacingLeft=32;spacingRight=32;fillColor=#e6d0de;strokeColor=#996185;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3520" y="2240" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-109" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-109" value="额外内容" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;shadow=0;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=#d5739d;rounded=0;spacingLeft=32;spacingRight=32;fillColor=#e6d0de;strokeColor=#996185;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3720" y="1280" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-111" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-111" value="额外内容" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;shadow=0;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=#d5739d;rounded=0;spacingLeft=32;spacingRight=32;fillColor=#e6d0de;strokeColor=#996185;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3720" y="1400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-115" value="平凡结局：从此「苹果」消失，「本不存在的空间」中有概率遇到「游荡的苹果」，保护「游荡的苹果」并重新泼洒「存在」的药水后「苹果」回归" style="rounded=1;whiteSpace=wrap;html=1;fontSize=7;glass=0;strokeWidth=1;shadow=0;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2680" y="960" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-117" value="苹果结局：从此「苹果」的形象多了一个王冠" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="2040" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-119" value="好结局：从此「苹果」在自己座位上呼呼大睡" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="2560" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-121" value="携带特殊物品「过去」将会直接导致空间信标无用" style="shape=note;size=14;whiteSpace=wrap;html=1;verticalAlign=bottom;fillColor=#bac8d3;strokeColor=#23445d;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2641" y="560" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-122" value="携带特殊物品「存在」将会直接导致自身被世界无视，不可交互，不可触碰" style="shape=note;size=14;whiteSpace=wrap;html=1;verticalAlign=bottom;fillColor=#bac8d3;strokeColor=#23445d;fontSize=10;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2641" y="640" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-124" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-123" target="btPv7d35-T0VnBdfR0sY-48" edge="1">
+          <mxGeometry x="-0.833" y="10" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3560" y="1620" />
+              <mxPoint x="3560" y="1620" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-127" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-123" target="btPv7d35-T0VnBdfR0sY-126" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-123" value="进入「祭台空间」" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3480" y="1520" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-129" value="Y" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-126" target="btPv7d35-T0VnBdfR0sY-128" edge="1">
+          <mxGeometry x="-0.5" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-130" value="N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-126" target="btPv7d35-T0VnBdfR0sY-60" edge="1">
+          <mxGeometry x="-1" y="10" relative="1" as="geometry">
+            <mxPoint x="4030.0000000000005" y="1450" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-126" value="献祭特殊物品以获取奖励" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=10;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=32;spacingRight=32;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="1520" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="btPv7d35-T0VnBdfR0sY-128" value="献祭「本不存在的物品」得到「本不存在的药水」，用于消除物品的直接影响" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="3680" y="1640" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4GSbH3g2OeHKa5lSQJEh-0" value="《空间陷阱》：暗示玩家掉入了「苹果」的陷阱" style="shape=note;size=0;whiteSpace=wrap;html=1;verticalAlign=bottom;fillColor=#bac8d3;strokeColor=#23445d;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="2680" y="80" width="160" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

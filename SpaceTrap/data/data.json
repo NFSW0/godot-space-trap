@@ -1,0 +1,78 @@
+{
+	"item_library": [
+		{
+			"id": 0,
+			"name": "啊哈的盒子",
+			"description": "装有未知物品的盒子(处理物品出错)"
+		},
+		{
+			"id": 1,
+			"name": "苹果",
+			"description": "普通的苹果，可以投掷"
+		}
+	],
+	"buff_library": [
+		{
+			"id": 0,
+			"name": "zero",
+			"description": "无效附益(处理附益出错)"
+		},
+		{
+			"id": 1,
+			"name": "桩化",
+			"description": "免疫击退"
+		}
+	],
+	"entity_library": [
+		{
+			"id": 0,
+			"name": "子弹",
+			"description": "普通弹幕",
+			"velocity": 1,
+			"mass": 1,
+			"collision_type": 1,
+			"buff": 0,
+			"buff_time": 0
+		},
+		{
+			"id": 1,
+			"name": "训练木桩",
+			"description": "软靶子",
+			"velocity": 0,
+			"mass": 100000,
+			"collision_type": 0,
+			"buff": 1,
+			"buff_time": -1
+		},
+		{
+			"id": 2,
+			"name": "训练铁桩",
+			"description": "硬靶子",
+			"velocity": 0,
+			"mass": 100000,
+			"collision_type": 1,
+			"buff": 1,
+			"buff_time": -1
+		},
+		{
+			"id": 3,
+			"name": "训练弹球",
+			"description": "弹性十足的小球",
+			"velocity": 0,
+			"mass": 1,
+			"collision_type": 0,
+			"buff": 0,
+			"buff_time": 0
+		},
+		{
+			"id": 4,
+			"name": "训练人偶",
+			"description": "可配置装备的模拟敌人",
+			"velocity": 0,
+			"mass": 10,
+			"collision_type": 0,
+			"buff": 0,
+			"buff_time": 0
+		}
+	]
+}

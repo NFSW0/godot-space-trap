@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuffDebug" load_steps=2 format=3 uid="uid://cq0wopxwyos2e"]
+
+[ext_resource type="Script" path="res://buff/buff_library/1_buff_debug/buff_debug.gd" id="1_j66a2"]
+
+[resource]
+script = ExtResource("1_j66a2")
+buff_id = 1
+buff_tags = Array[int]([])
+buff_max_stack = 10
+buff_max_duration = 300.0
+buff_permanent = false
+buff_tick_interval = 1.0
+current_stack = 1
+current_tick_count = 0
+current_tick_remain = 0.2
+current_duration_remain = 10.0

@@ -1,0 +1,58 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="SpaceTrap"
+config/name_localized={
+"zh_CN": "空间陷阱"
+}
+config/description="SpaceTrap"
+config/version="v0.0"
+config/use_custom_user_dir=true
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+DataManager="*res://data/data_manager.gd"
+UIManager="*res://ui/ui_manager.gd"
+EntityManager="*res://entity/entity_manager.gd"
+BuffManager="*res://buff/buff_manager.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://buff/": "purple",
+"res://data/": "purple",
+"res://entity/": "purple",
+"res://hit/": "purple",
+"res://ui/": "purple",
+"res://world/": "purple"
+}
+
+[internationalization]
+
+locale/locale_filter_mode=0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

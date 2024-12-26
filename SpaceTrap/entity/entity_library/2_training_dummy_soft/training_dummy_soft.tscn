@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj3ttf6hmskpr"]
+
+[ext_resource type="Script" path="res://entity/entity_library/2_training_dummy_soft/training_dummy_soft.gd" id="1_4mcl3"]
+[ext_resource type="Texture2D" uid="uid://b3is703eepmil" path="res://icon.svg" id="2_7oipx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mw2jo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tury1"]
+
+[node name="TrainingDummySoft" type="CharacterBody2D"]
+script = ExtResource("1_4mcl3")
+entity_id = 2
+mass = 100000
+collision_type = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mw2jo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tury1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-2.27374e-13, 13)
+scale = Vector2(0.140625, 0.0206299)
+texture = ExtResource("2_7oipx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.140625, 0.203125)
+texture = ExtResource("2_7oipx")
