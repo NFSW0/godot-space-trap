@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://brjpuclpx76uy"]
+
+[ext_resource type="TileSet" uid="uid://bfyex74frjj4i" path="res://world/tile_set_16.tres" id="1_y4qd2"]
+
+[node name="World" type="Node2D"]
+
+[node name="GroundLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_y4qd2")
+
+[node name="WallLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_y4qd2")
+
+[node name="DecorateLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_y4qd2")
+
+[node name="PreviewLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_y4qd2")
