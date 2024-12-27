@@ -51,6 +51,15 @@ folder_colors={
 
 locale/locale_filter_mode=0
 
+[layer_names]
+
+2d_physics/layer_1="Wall"
+
+[physics]
+
+2d/default_gravity=0.0
+2d/default_gravity_vector=Vector2(0, 0)
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

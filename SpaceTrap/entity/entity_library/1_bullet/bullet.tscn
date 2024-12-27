@@ -42,10 +42,10 @@ animations = [{
 "speed": 16.0
 }]
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_8a1me")
 entity_id = 1
-mass = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_owar2")
@@ -54,3 +54,5 @@ shape = SubResource("CircleShape2D_owar2")
 sprite_frames = SubResource("SpriteFrames_q7pvm")
 autoplay = "default"
 frame_progress = 0.40307
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

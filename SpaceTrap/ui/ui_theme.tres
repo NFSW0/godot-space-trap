@@ -1,3 +1,6 @@
-[gd_resource type="Theme" format=3 uid="uid://dvml7sub4jfvl"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dvml7sub4jfvl"]
+
+[ext_resource type="FontFile" uid="uid://bt1gitoe1oipv" path="res://ui/AlibabaPuHuiTi-3-55-Regular.ttf" id="1_2rfe8"]
 
 [resource]
+default_font = ExtResource("1_2rfe8")

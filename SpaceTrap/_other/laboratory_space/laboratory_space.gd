@@ -19,7 +19,7 @@ func _input(event: InputEvent) -> void:
 		if event.as_text() == "1":
 			if entity_manager:
 				var position = get_node(entity_manager.spawn_path).get_viewport().get_mouse_position()
-				entity_manager.generate_entity({"entity_id": 1, "position": position, "speed": Vector2(100,0)})
+				entity_manager.generate_entity({"entity_id": 1, "position": position, "speed": 100, "direction":Vector2(1,1)})
 		if event.as_text() == "2":
 			if entity_manager:
 				var position = get_node(entity_manager.spawn_path).get_viewport().get_mouse_position()

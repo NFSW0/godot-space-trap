@@ -58,7 +58,7 @@ func _handle_hit(node1:Node, node2:Node, normal:Vector2):
 
 
 ## 假设弹性0.9
-## 则0.9倍的动量用于传递，0.1倍的动量用于损耗(造成伤害)
+## 则0.9倍的动量用于传递，0.1倍的动量用于质量损耗(造成伤害)
 func _handle_single(node: Node, normal: Vector2):
 	var node_mass:float = node.get("mass")
 	var node_speed:float = node.get("speed")
@@ -72,32 +72,65 @@ func _handle_single(node: Node, normal: Vector2):
 
 
 ## 假设弹性0.9
-## 则0.9倍的动量用于传递，0.1倍的低质量体的动量用于损耗(造成伤害)
+## 则0.9倍的动量用于传递，0.1倍的低质量体的动量用于损耗
 func _handle_double(node1: Node, node2: Node, normal: Vector2, rebound: bool):
+	# 获取物体1的质量、速度和方向
 	var node1_mass:float = node1.get("mass")
-	var node2_mass:float = node2.get("mass")
 	var node1_speed:float = node1.get("speed")
-	var node2_speed:float = node2.get("speed")
 	var node1_direction:Vector2 = node1.get("direction")
+
+	# 获取物体2的质量、速度和方向
+	var node2_mass:float = node2.get("mass")
+	var node2_speed:float = node2.get("speed")
 	var node2_direction:Vector2 = node2.get("direction")
+	
+	# 计算物体1和物体2的动量 (动量 = 质量 * 速度)
 	var node1_mv:float = node1_mass * node1_speed
 	var node2_mv:float = node2_mass * node2_speed
+	
+	# 计算两个物体的总质量
 	var total_mass:float = node1_mass + node2_mass
+	
+	# 计算相对速度 (绝对值)
 	var relative_speed:float = abs(node1_speed - node2_speed)
+	
+	# 计算两个物体的总动量 (以相对速度为基础)
 	var total_mv:float = total_mass * relative_speed
+	
+	# 计算弹性系数：两物体相对速度和总质量的比例
 	var elasticity:float = relative_speed / (relative_speed + total_mass)
+	
+	# 计算能量损失比例：1 - 弹性系数
 	var loss_ratio:float = 1 - elasticity
+	
+	# 计算损失的质量：损失的质量 = 损失比例 * 两物体中较小的质量
 	var loss_mass:float = loss_ratio * min(node1_mass, node2_mass)
+	
+	# 更新两物体的质量，损失质量从每个物体的质量中扣除
 	node1.set("mass", node1_mass - loss_mass)
 	node2.set("mass", node2_mass - loss_mass)
-	if rebound: # 反弹(均分总动量, 速度方向相反)
+	
+	if rebound: # 弹性碰撞处理：碰撞后物体速度方向相反，动量均分
+		# 根据总动量均分计算每个物体的速度
 		node1.set("speed", total_mv / 2 / node1_mass)
 		node2.set("speed", total_mv / 2 / node2_mass)
+		
+		# 更新物体1的速度方向：通过法线反弹计算新方向
 		node1.set("direction", _get_rebound_speed(node1_direction, normal).normalized())
+		
+		# 更新物体2的速度方向：通过法线反弹计算新方向
 		node2.set("direction", _get_rebound_speed(node2_direction, normal).normalized())
-	else: # 吞进(传递动量)
+	else: # 非弹性碰撞处理：物体间速度分摊，速度方向相同
+		# 根据物体2的动量计算物体1的新速度
 		node1.set("speed", node1_speed - node2_mv / node1_mass)
+		
+		# 根据物体1的动量计算物体2的新速度
 		node2.set("speed", node2_speed - node1_mv / node2_mass)
+		
+		# 统一物体1和物体2的速度方向为大质量物体的方向
+		var dominant_direction: Vector2 = node1_direction if node1_mass >= node2_mass else node2_direction
+		node1.set("direction", dominant_direction.normalized())
+		node2.set("direction", dominant_direction.normalized())
 
 
 ## 计算完全反弹的矢量速度

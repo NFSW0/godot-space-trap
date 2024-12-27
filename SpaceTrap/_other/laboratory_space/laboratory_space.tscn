@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=4 uid="uid://c1ujbgww2tj8k"]
+[gd_scene load_steps=3 format=4 uid="uid://c1ujbgww2tj8k"]
 
-[ext_resource type="Texture2D" uid="uid://b3is703eepmil" path="res://icon.svg" id="1_c3532"]
 [ext_resource type="Script" path="res://_other/laboratory_space/laboratory_space.gd" id="1_xpwcg"]
 [ext_resource type="TileSet" uid="uid://bfyex74frjj4i" path="res://world/tile_set_16.tres" id="2_jwvl0"]
 
@@ -9,40 +8,59 @@ script = ExtResource("1_xpwcg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 17.0
+offset_top = 31.0
+offset_right = 170.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0.220947, 0.370082, 0.473955, 1)
+text = "1-子弹
+2-假人
+3-调试附益
+4-幸运附益(关闭调试附益)"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="FlowContainer" type="FlowContainer" parent="CanvasLayer/MarginContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 2
+size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/FlowContainer"]
-layout_mode = 2
-text = "子弹"
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/FlowContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-text = "墙体"
 
-[node name="Button3" type="Button" parent="CanvasLayer/MarginContainer/FlowContainer"]
+[node name="Block" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "调试附益"
+size_flags_horizontal = 3
+text = "建筑"
 
-[node name="Button4" type="Button" parent="CanvasLayer/MarginContainer/FlowContainer"]
+[node name="Entity" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "结束调试附益"
+size_flags_horizontal = 3
+text = "实体"
 
-[node name="Button5" type="Button" parent="CanvasLayer/MarginContainer/FlowContainer"]
+[node name="Buff" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "5"
+size_flags_horizontal = 3
+text = "附益"
+
+[node name="Item" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "物品"
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -51,7 +69,3 @@ tile_map_data = PackedByteArray("AAA7ACEAAQAVAAUAAAAAAAAAAQASAAAAAAAAAAEAAQASAAE
 tile_set = ExtResource("2_jwvl0")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
-
-[node name="Icon" type="Sprite2D" parent="Node2D"]
-position = Vector2(877, 276)
-texture = ExtResource("1_c3532")

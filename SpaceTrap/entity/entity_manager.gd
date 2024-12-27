@@ -22,16 +22,16 @@ var data_queue: Array = [] # 记录队列长度
 func generate_entity(data:Dictionary):
 	if multiplayer.has_multiplayer_peer():
 		rpc_id(1,"_rpc_generate_entity",data)
-	else:
-		_rpc_generate_entity(data)
+		return
+	_rpc_generate_entity(data)
 
 
 ## 生成实体(立刻)
 func generate_entity_immediately(data:Dictionary):
 	if multiplayer.has_multiplayer_peer():
 		rpc_id(1,"_rpc_generate_entity_immediately",data)
-	else:
-		_rpc_generate_entity_immediately(data)
+		return
+	_rpc_generate_entity_immediately(data)
 
 
 ## 重设承载实体的节点, 通常在场景切换后调用, 默认情况下会设置为当前场景的根节点
