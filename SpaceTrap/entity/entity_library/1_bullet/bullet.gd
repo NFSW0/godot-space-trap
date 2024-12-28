@@ -1,11 +1,18 @@
 ## 弹幕基础脚本
-extends Entity
+extends Area2D
 class_name Bullet
+
+
+@export var entity_id:int = 0
+@export var direction:Vector2 = Vector2()
+@export var speed:float = 0
+@export var mass:float = 1
 
 
 func _physics_process(delta: float) -> void:
 	var motion = speed * delta * direction.normalized()
-	move_and_collide(motion)
+	position += motion
+	pass
 
 
 func _on_body_entered(body: Node2D) -> void:

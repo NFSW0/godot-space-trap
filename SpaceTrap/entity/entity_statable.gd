@@ -1,11 +1,17 @@
 ## 状态化实体基础类
 ## 包含额外数据(如生命值、装备等)和多状态处理(静默、移动、攻击、死亡等)
 ## 玩家、敌人等复杂实体:多状态、多数据、额外死亡处理
-extends Entity
+extends CharacterBody2D
 class_name EntityStatable
 
 
-# TODO 额外数据
+@export var entity_id:int = 0
+@export var direction:Vector2 = Vector2()
+@export var speed:float = 0
+@export var mass:float = 1
+
+
+# 额外数据
 var state_library = {} # 状态库
 var current_state:State # 当前状态
 

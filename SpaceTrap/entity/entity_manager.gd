@@ -4,10 +4,6 @@
 ## 因此场景切换后设置多人同步节点为场景节点
 extends MultiplayerSpawner
 class_name _EntityManager
-# 多人生成器 用于同步生成节点
-# data应包含entity_id
-# 目标应继承自Entity，否则数据很可能不会被应用到目标
-# data应避免包含sender_id，否则sender_id的内容会被覆盖
 
 
 const ENTITY_LIBRARY_PATH = "res://entity/entity_library/"
@@ -19,6 +15,9 @@ var data_queue: Array = [] # 记录队列长度
 
 
 ## 生成实体
+## data应包含entity_id，用于确定生成的实体
+## data应避免包含sender_id，否则sender_id的内容会被覆盖
+## 数据会按照名称应用到目标实体上
 func generate_entity(data:Dictionary):
 	if multiplayer.has_multiplayer_peer():
 		rpc_id(1,"_rpc_generate_entity",data)
@@ -27,6 +26,9 @@ func generate_entity(data:Dictionary):
 
 
 ## 生成实体(立刻)
+## data应包含entity_id，用于确定生成的实体
+## data应避免包含sender_id，否则sender_id的内容会被覆盖
+## 数据会按照名称应用到目标实体上
 func generate_entity_immediately(data:Dictionary):
 	if multiplayer.has_multiplayer_peer():
 		rpc_id(1,"_rpc_generate_entity_immediately",data)
@@ -132,7 +134,8 @@ func _generate_entity(data:Dictionary) -> Node:
 	data.erase("sender_id")
 	
 	# 设置节点初始化数据
-	if node_instance.has_method("update_data"):
-		node_instance.update_data(data)
+	for key in data:
+		node_instance.set(key, data[key])
 	
+	# 完成生成
 	return node_instance
