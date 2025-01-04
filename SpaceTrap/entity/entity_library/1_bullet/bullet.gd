@@ -17,7 +17,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if shape_cast_2d.is_colliding():
-		for collision_result in shape_cast_2d.collision_result:
-			pass
 		var collision_normal:Vector2 = shape_cast_2d.get_collision_normal(0)
-		HitManager.append_hit_event({"node_path_1":self.get_path(), "node_path_2":body.get_path(), "normal":collision_normal})
+		var hitData = HitData.new(self.get_path(),body.get_path(),collision_normal)
+		HitManager.append_hit_event(hitData.serialize())

@@ -2,51 +2,39 @@ extends Node
 class_name _HitManager
 
 
-class HitInfo:
-	var node1:Node
-	var node2:Node
-	var normal:Vector2
-	
-	func _init(_node1:Node, _node2:Node, _normal:Vector2) -> void:
-		node1 = _node1
-		node2 = _node2
-		normal = _normal
-
-
-var event_list:Array[HitInfo] = []
+var request_list:Array[HitData] = [] # 待处理的碰撞请求
 var process_limit = 100 # 进程限制
 
 
+## 添加碰撞事件
 func append_hit_event(data:Dictionary):
-	# 获取两个碰撞对象
-	var node1 = get_node(data["node_path_1"])
-	var node2 = get_node(data["node_path_2"])
-	var normal = data["normal"]
-	if node1 == null || node2 == null || normal == null:
-		print("无效数据")
+	var new_request = HitData.instantiate(data)
+	if new_request == null:
 		return
-	# 检测是否已有相同事件被添加(检测最后添加的100个)
-	var index = event_list.size() - 1
-	var length = process_limit if index > process_limit else index
-	var recent_events = event_list.slice(-length)
-	for event in recent_events:
-		if _are_arrays_equal(event, []):
+	# 剔除重复数据
+	var length = min(request_list.size(), process_limit)
+	var slice_list = request_list.slice(-length)
+	for hitdata: HitData in slice_list:
+		if _are_arrays_equal(hitdata.to_array(), new_request.to_array()):
 			return
-		index -= 1
 	# 添加待处理事件
-	event_list.push_back(HitInfo.new(node1, node2, normal))
+	request_list.push_back(new_request)
 
 
 ## 清理缓存
 func clear_hit_event():
-	event_list.clear()
+	request_list.clear()
 
 
-## 结算碰撞事件
+## 结算碰撞事件（批量处理多个事件）
 func _physics_process(_delta: float) -> void:
-	if event_list.size() > 0:
-		var hitInfo:HitInfo = event_list.pop_front()
-		_handle_hit(hitInfo.node1, hitInfo.node2, hitInfo.normal)
+	var events_to_process = min(request_list.size(), process_limit)
+	for i in range(events_to_process):
+		var hitData: HitData = request_list.pop_front()
+		var node1 = get_node_or_null(hitData.nodepath1)
+		var node2 = get_node_or_null(hitData.nodepath2)
+		if node1 and node2:
+			_handle_hit(node1, node2, hitData.normal)
 
 
 ## 处理碰撞
@@ -90,50 +78,36 @@ func _handle_double(node1: Node, node2: Node, normal: Vector2, rebound: bool):
 	var node2_speed:float = node2.get("speed")
 	var node2_direction:Vector2 = node2.get("direction")
 	
-	# 计算物体1和物体2的动量 (动量 = 质量 * 速度)
+	# 计算动量和相对速度
 	var node1_mv:float = node1_mass * node1_speed
 	var node2_mv:float = node2_mass * node2_speed
-	
-	# 计算两个物体的总质量
 	var total_mass:float = node1_mass + node2_mass
-	
-	# 计算相对速度 (绝对值)
 	var relative_speed:float = abs(node1_speed - node2_speed)
 	
-	# 计算两个物体的总动量 (以相对速度为基础)
-	var total_mv:float = total_mass * relative_speed
-	
-	# 计算弹性系数：两物体相对速度和总质量的比例
+	# 弹性和损失比例计算
 	var elasticity:float = relative_speed / (relative_speed + total_mass)
-	
-	# 计算能量损失比例：1 - 弹性系数
 	var loss_ratio:float = 1 - elasticity
-	
-	# 计算损失的质量：损失的质量 = 损失比例 * 两物体中较小的质量
 	var loss_mass:float = loss_ratio * min(node1_mass, node2_mass)
 	
 	# 更新两物体的质量，损失质量从每个物体的质量中扣除
 	node1.set("mass", node1_mass - loss_mass)
 	node2.set("mass", node2_mass - loss_mass)
 	
-	if rebound: # 弹性碰撞处理：碰撞后物体速度方向相反，动量均分
-		# 根据总动量均分计算每个物体的速度
+	if rebound:
+		# 弹性碰撞：反向速度，动量均分
+		var total_mv:float = total_mass * relative_speed
 		node1.set("speed", total_mv / 2 / node1_mass)
 		node2.set("speed", total_mv / 2 / node2_mass)
 		
-		# 更新物体1的速度方向：通过法线反弹计算新方向
+		# 更新方向
 		node1.set("direction", _get_rebound_speed(node1_direction, normal).normalized())
-		
-		# 更新物体2的速度方向：通过法线反弹计算新方向
 		node2.set("direction", _get_rebound_speed(node2_direction, normal).normalized())
-	else: # 非弹性碰撞处理：物体间速度分摊，速度方向相同
-		# 根据物体2的动量计算物体1的新速度
+	else:
+		# 非弹性碰撞：速度分摊，方向相同
 		node1.set("speed", node1_speed - node2_mv / node1_mass)
-		
-		# 根据物体1的动量计算物体2的新速度
 		node2.set("speed", node2_speed - node1_mv / node2_mass)
 		
-		# 统一物体1和物体2的速度方向为大质量物体的方向
+		# 统一速度方向
 		var dominant_direction: Vector2 = node1_direction if node1_mass >= node2_mass else node2_direction
 		node1.set("direction", dominant_direction.normalized())
 		node2.set("direction", dominant_direction.normalized())
@@ -141,10 +115,9 @@ func _handle_double(node1: Node, node2: Node, normal: Vector2, rebound: bool):
 
 ## 计算完全反弹的矢量速度
 func _get_rebound_speed(velocity:Vector2, normal:Vector2) -> Vector2:
-	normal = normal.normalized() # 归一化
-	var vn = velocity * normal # 点乘得到法线方向的速度
-	var vt = velocity - vn # 减去法线速度得到切线速度
-	return vt - vn # 切线速度与反向的法线速度相加得到反弹速度
+	normal = normal.normalized().abs() # 归一化后统一符号
+	var vn = velocity * normal
+	return velocity - 2 * vn
 
 
 ## 对比两对无序数据是否相同
