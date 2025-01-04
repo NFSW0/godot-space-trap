@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3pie0q4u52v3"]
+[gd_scene load_steps=10 format=3 uid="uid://b3pie0q4u52v3"]
 
 [ext_resource type="Script" path="res://entity/entity_library/1_bullet/bullet.gd" id="1_8a1me"]
 [ext_resource type="Texture2D" uid="uid://bkblq1xqd6u2m" path="res://entity/entity_library/1_bullet/bullet.png" id="2_8uonp"]
@@ -42,6 +42,9 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycg8f"]
+radius = 8.0
+
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_8a1me")
@@ -54,5 +57,9 @@ shape = SubResource("CircleShape2D_owar2")
 sprite_frames = SubResource("SpriteFrames_q7pvm")
 autoplay = "default"
 frame_progress = 0.40307
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_ycg8f")
+target_position = Vector2(0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

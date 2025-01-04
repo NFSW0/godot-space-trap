@@ -1,6 +1,7 @@
 extends Node
 class_name _HitManager
 
+
 class HitInfo:
 	var node1:Node
 	var node2:Node
@@ -11,8 +12,9 @@ class HitInfo:
 		node2 = _node2
 		normal = _normal
 
+
 var event_list:Array[HitInfo] = []
-var process_limit = 100
+var process_limit = 100 # 进程限制
 
 
 func append_hit_event(data:Dictionary):
@@ -23,11 +25,13 @@ func append_hit_event(data:Dictionary):
 	if node1 == null || node2 == null || normal == null:
 		print("无效数据")
 		return
-	# 检测是否已有相同事件被添加
+	# 检测是否已有相同事件被添加(检测最后添加的100个)
 	var index = event_list.size() - 1
-	for t in process_limit:
-		if event_list[index].normal == normal:
-			pass
+	var length = process_limit if index > process_limit else index
+	var recent_events = event_list.slice(-length)
+	for event in recent_events:
+		if _are_arrays_equal(event, []):
+			return
 		index -= 1
 	# 添加待处理事件
 	event_list.push_back(HitInfo.new(node1, node2, normal))
@@ -40,7 +44,9 @@ func clear_hit_event():
 
 ## 结算碰撞事件
 func _physics_process(_delta: float) -> void:
-	pass
+	if event_list.size() > 0:
+		var hitInfo:HitInfo = event_list.pop_front()
+		_handle_hit(hitInfo.node1, hitInfo.node2, hitInfo.normal)
 
 
 ## 处理碰撞

@@ -7,14 +7,17 @@ class_name Bullet
 @export var direction:Vector2 = Vector2()
 @export var speed:float = 0
 @export var mass:float = 1
+@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 
 
 func _physics_process(delta: float) -> void:
 	var motion = speed * delta * direction.normalized()
 	position += motion
-	pass
 
 
 func _on_body_entered(body: Node2D) -> void:
-	var collision_normal = body.get_collision_normal()
-	pass # Replace with function body.
+	if shape_cast_2d.is_colliding():
+		for collision_result in shape_cast_2d.collision_result:
+			pass
+		var collision_normal:Vector2 = shape_cast_2d.get_collision_normal(0)
+		HitManager.append_hit_event({"node_path_1":self.get_path(), "node_path_2":body.get_path(), "normal":collision_normal})
