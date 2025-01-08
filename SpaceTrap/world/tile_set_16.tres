@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bfyex74frjj4i"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bfyex74frjj4i"]
 
 [ext_resource type="Texture2D" uid="uid://db12o6ubme8aw" path="res://world/floors.png" id="1_ysccb"]
 [ext_resource type="Texture2D" uid="uid://b101eo61rpasr" path="res://world/walls.png" id="2_qujlk"]
+[ext_resource type="PackedScene" uid="uid://1igqyd3r3k4w" path="res://world/portal/portal.tscn" id="3_pp0nj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ac1lt"]
 texture = ExtResource("1_ysccb")
@@ -2485,8 +2486,12 @@ texture = ExtResource("2_qujlk")
 23:58/0 = 0
 23:58/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_o5guu"]
+scenes/1/scene = ExtResource("3_pp0nj")
+
 [resource]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ac1lt")
 sources/1 = SubResource("TileSetAtlasSource_k3fmf")
+sources/2 = SubResource("TileSetScenesCollectionSource_o5guu")

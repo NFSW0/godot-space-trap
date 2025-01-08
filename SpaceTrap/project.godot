@@ -55,6 +55,7 @@ locale/locale_filter_mode=0
 [layer_names]
 
 2d_physics/layer_1="Wall"
+2d_physics/layer_2="Portable"
 
 [physics]
 
