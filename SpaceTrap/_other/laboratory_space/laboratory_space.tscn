@@ -73,3 +73,8 @@ tile_map_data = PackedByteArray("AAAFABwAAgAAAAAAAQA2ABwAAgAAAAAAAQA=")
 tile_set = ExtResource("2_jwvl0")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
+
+[connection signal="area_entered" from="Node2D/TileMapLayer2/Portal" to="Node2D/TileMapLayer2/Portal" method="_on_area_entered"]
+[connection signal="body_entered" from="Node2D/TileMapLayer2/Portal" to="Node2D/TileMapLayer2/Portal" method="_on_body_entered"]
+[connection signal="area_entered" from="Node2D/TileMapLayer2/@Area2D@22636" to="Node2D/TileMapLayer2/@Area2D@22636" method="_on_area_entered"]
+[connection signal="body_entered" from="Node2D/TileMapLayer2/@Area2D@22636" to="Node2D/TileMapLayer2/@Area2D@22636" method="_on_body_entered"]

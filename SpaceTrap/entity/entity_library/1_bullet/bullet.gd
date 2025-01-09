@@ -6,12 +6,18 @@ class_name Bullet
 @export var entity_id:int = 0
 @export var direction:Vector2 = Vector2()
 @export var speed:float = 0
-@export var mass:float = 1
+@export var mass:float = 1:
+	set(value):
+		mass = value
+		set("scale",Vector2(value/1, value/1))
+		print(mass)
+		if mass < 0.1:
+			call_deferred("queue_free")
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 
 
 func _physics_process(delta: float) -> void:
-	var motion = speed * delta * direction.normalized()
+	var motion = speed * delta * direction.normalized() / scale # 除以scale以维持视觉速度
 	position += motion
 
 

@@ -15,7 +15,7 @@ func append_hit_event(data:Dictionary):
 	var length = min(request_list.size(), process_limit)
 	var slice_list = request_list.slice(-length)
 	for hitdata: HitData in slice_list:
-		if _are_arrays_equal(hitdata.to_array(), new_request.to_array()):
+		if Tool.are_arrays_equal(hitdata.to_array(), new_request.to_array()):
 			return
 	# 添加待处理事件
 	request_list.push_back(new_request)
@@ -38,8 +38,6 @@ func _physics_process(_delta: float) -> void:
 
 
 ## 处理碰撞
-## 两个都是动量体:弹性碰撞m1v1=m2v2，速度方向由软硬碰撞决定
-## 一个是动量体:完全弹性碰撞
 func _handle_hit(node1:Node, node2:Node, normal:Vector2):
 	var type1 = node1.get("mass")
 	var type2 = node2.get("mass")
@@ -57,7 +55,7 @@ func _handle_single(node: Node, normal: Vector2):
 	var node_mass:float = node.get("mass")
 	var node_speed:float = node.get("speed")
 	var node_direction:Vector2 = node.get("direction")
-	var elasticity = node_speed / (node_speed + node_mass)
+	var elasticity = node_speed / (node_speed + node_mass*100)
 	var loss_ratio = 1 - elasticity
 	var target_direction = _get_rebound_speed(node_direction, normal).normalized()
 	node.set("speed", node_speed * elasticity)
@@ -118,20 +116,3 @@ func _get_rebound_speed(velocity:Vector2, normal:Vector2) -> Vector2:
 	normal = normal.normalized().abs() # 归一化后统一符号
 	var vn = velocity * normal
 	return velocity - 2 * vn
-
-
-## 对比两对无序数据是否相同
-func _are_arrays_equal(array1: Array, array2: Array) -> bool:
-	# 首先检查数组长度是否相同
-	if array1.size() != array2.size():
-		return false
-	
-	# 复制两个数组并进行排序
-	var sorted_array1 = array1.duplicate()
-	var sorted_array2 = array2.duplicate()
-	
-	sorted_array1.sort()  # 对第一个数组进行排序
-	sorted_array2.sort()  # 对第二个数组进行排序
-
-	# 比较两个排序后的数组是否相同
-	return sorted_array1 == sorted_array2
