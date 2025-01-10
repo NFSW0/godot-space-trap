@@ -50,6 +50,11 @@ folder_colors={
 "res://world/": "purple"
 }
 
+[gui]
+
+theme/custom="res://ui/ui_theme.tres"
+theme/custom_font="res://ui/AlibabaPuHuiTi-3-55-Regular.ttf"
+
 [internationalization]
 
 locale/locale_filter_mode=0

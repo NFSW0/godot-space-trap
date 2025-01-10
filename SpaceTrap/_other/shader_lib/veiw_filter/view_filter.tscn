@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkk6nxfgrckys"]
+
+[ext_resource type="Shader" path="res://_other/shader_lib/veiw_filter/view_filter_shader.gdshader" id="1_57ldl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ievi4"]
+shader = ExtResource("1_57ldl")
+
+[node name="ViewFilter" type="ColorRect"]
+material = SubResource("ShaderMaterial_ievi4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

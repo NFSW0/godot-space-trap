@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=4 uid="uid://c1ujbgww2tj8k"]
+[gd_scene load_steps=6 format=4 uid="uid://c1ujbgww2tj8k"]
 
 [ext_resource type="Script" path="res://_other/laboratory_space/laboratory_space.gd" id="1_xpwcg"]
 [ext_resource type="TileSet" uid="uid://bfyex74frjj4i" path="res://world/tile_set_16.tres" id="2_jwvl0"]
+[ext_resource type="Shader" path="res://world/portal/portal_shader.gdshader" id="3_hnseo"]
+[ext_resource type="Texture2D" uid="uid://b3is703eepmil" path="res://icon.svg" id="3_wc65i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhak2"]
+shader = ExtResource("3_hnseo")
+shader_parameter/line_start = Vector2(0, 0)
+shader_parameter/line_end = Vector2(3.79, 1)
 
 [node name="LaboratorySpace" type="Node"]
 script = ExtResource("1_xpwcg")
@@ -74,7 +81,12 @@ tile_set = ExtResource("2_jwvl0")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
 
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qhak2")
+position = Vector2(537, 220)
+texture = ExtResource("3_wc65i")
+
 [connection signal="area_entered" from="Node2D/TileMapLayer2/Portal" to="Node2D/TileMapLayer2/Portal" method="_on_area_entered"]
 [connection signal="body_entered" from="Node2D/TileMapLayer2/Portal" to="Node2D/TileMapLayer2/Portal" method="_on_body_entered"]
-[connection signal="area_entered" from="Node2D/TileMapLayer2/@Area2D@22636" to="Node2D/TileMapLayer2/@Area2D@22636" method="_on_area_entered"]
-[connection signal="body_entered" from="Node2D/TileMapLayer2/@Area2D@22636" to="Node2D/TileMapLayer2/@Area2D@22636" method="_on_body_entered"]
+[connection signal="area_entered" from="Node2D/TileMapLayer2/@Area2D@17895" to="Node2D/TileMapLayer2/@Area2D@17895" method="_on_area_entered"]
+[connection signal="body_entered" from="Node2D/TileMapLayer2/@Area2D@17895" to="Node2D/TileMapLayer2/@Area2D@17895" method="_on_body_entered"]
