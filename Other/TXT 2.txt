@@ -1,0 +1,60 @@
+shader_type canvas_item;
+
+uniform vec2 line_start;  // 直线的起点（世界坐标）
+uniform vec2 line_end;    // 直线的终点（世界坐标）
+uniform vec4 color_left_near : source_color;  // 直线左侧、近的颜色
+uniform vec4 color_left_far : source_color;   // 直线左侧、远的颜色
+uniform vec4 color_right_near : source_color; // 直线右侧、近的颜色
+uniform vec4 color_right_far : source_color;  // 直线右侧、远的颜色
+
+// 计算点到直线的最短距离
+float point_line_distance(vec2 p, vec2 _line_start, vec2 _line_end) {
+    vec2 line_dir = _line_end - _line_start;
+    vec2 point_dir = p - _line_start;
+
+    // 计算投影系数
+    float t = dot(point_dir, line_dir) / dot(line_dir, line_dir);
+
+    // 计算投影点
+    vec2 proj_point = _line_start + t * line_dir;
+
+    // 计算点到投影点的距离
+    return length(p - proj_point);
+}
+
+// 计算叉积，判断点在直线的哪一侧
+float cross_product(vec2 _line_start, vec2 _line_end, vec2 point) {
+    vec2 line_dir = _line_end - _line_start;
+    vec2 point_dir = point - _line_start;
+
+    // 计算叉积：line_dir × point_dir
+    return line_dir.x * point_dir.y - line_dir.y * point_dir.x;
+}
+
+void vertex() {
+    // 获取当前顶点的世界坐标
+    vec2 world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+
+    // 计算叉积，判断顶点在直线的左侧还是右侧
+    float cp = cross_product(line_start, line_end, world_position);
+
+    // 计算顶点到直线的距离
+    float dist = point_line_distance(world_position, line_start, line_end);
+
+    // 假设最大距离为1.0（这个值可以根据实际情况调整）
+    float max_distance = 500.0; // 最大距离，可以根据实际需要调整
+    float normalized_dist = clamp(dist / max_distance, 0.0, 1.0);  // 距离归一化到[0, 1]之间
+
+    // 根据叉积结果选择不同的颜色渐变
+    if (cp > 0.0) {
+        // 左侧的颜色渐变（根据距离）
+        COLOR = mix(color_left_far, color_left_near, normalized_dist);
+    } else {
+        // 右侧的颜色渐变（根据距离）
+        COLOR = mix(color_right_far, color_right_near, normalized_dist);
+    }
+}
+
+void fragment() {
+    COLOR = COLOR;  // 直接传递顶点着色器中的颜色
+}

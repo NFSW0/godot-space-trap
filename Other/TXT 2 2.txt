@@ -1,0 +1,35 @@
+shader_type canvas_item;
+
+uniform vec2 line_start;  // 直线的起点（世界坐标）
+uniform vec2 line_end;    // 直线的终点（世界坐标）
+uniform vec4 color_left : source_color;  // 直线左侧的颜色
+uniform vec4 color_right : source_color; // 直线右侧的颜色
+
+// 计算叉积，判断点在直线的哪一侧
+float cross_product(vec2 _line_start, vec2 _line_end, vec2 point) {
+    vec2 line_dir = _line_end - _line_start;
+    vec2 point_dir = point - _line_start;
+
+    // 计算叉积：line_dir × point_dir
+    return line_dir.x * point_dir.y - line_dir.y * point_dir.x;
+}
+
+void vertex() {
+    // 获取当前顶点的世界坐标
+    vec2 world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+
+    // 计算叉积，判断顶点在直线的左侧还是右侧
+    float cp = cross_product(line_start, line_end, world_position);
+
+    // 如果叉积为正，顶点在左侧，使用 color_left
+    // 如果叉积为负，顶点在右侧，使用 color_right
+    if (cp > 0.0) {
+        COLOR = color_left;  // 左侧为 color_left
+    } else {
+        COLOR = color_right; // 右侧为 color_right
+    }
+}
+
+void fragment() {
+    COLOR = COLOR;  // 直接传递顶点着色器中的颜色
+}
