@@ -1,41 +1,37 @@
 shader_type canvas_item;
 
-uniform vec2 line_start;  // 直线的起点（世界坐标）
-uniform vec2 line_end;    // 直线的终点（世界坐标）
-uniform vec4 color_near : source_color;  // 离直线近的颜色
-uniform vec4 color_far : source_color;   // 离直线远的颜色
+// 定义一个uniform变量，用于控制剪切功能是否启用。
+uniform bool cut_enabled;
 
-// 计算点到直线的最短距离
-float point_line_distance(vec2 p, vec2 _line_start, vec2 _line_end) {
-    // 计算直线方向
-    vec2 line_dir = _line_end - _line_start;
-    vec2 point_dir = p - _line_start;
+// 定义一个uniform变量，用于接收剪切线的坐标。
+uniform vec2 cut_line_position;
 
-    // 计算投影系数
-    float t = dot(point_dir, line_dir) / dot(line_dir, line_dir);
+// 定义一个uniform变量，用于接收剪切线的法线向量。
+uniform vec2 cut_line_normal;
 
-    // 计算投影点
-    vec2 proj_point = _line_start + t * line_dir;
+// 声明一个varying变量，用于在顶点着色器和片段着色器之间传递世界空间位置。
+varying vec4 world_space_position;
 
-    // 计算点到投影点的距离
-    return length(p - proj_point);
-}
-
+// 顶点着色器函数。
 void vertex() {
-    // 获取当前顶点的世界坐标
-    vec2 world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
-
-    // 计算顶点到直线的距离
-    float dist = point_line_distance(world_position, line_start, line_end);
-
-    // 归一化距离，假设最大距离为1.0（这个值可以根据实际情况调整）
-    float max_distance = 1000.0; // 最大距离，可以根据实际需要调整
-    float normalized_dist = clamp(dist / max_distance, 0.0, 1.0);
-
-    // 使用渐变色根据距离来插值颜色
-    COLOR = mix(color_far, color_near, normalized_dist);
+	// 将顶点坐标转换到世界空间，并存储在world_space_position变量中。
+	world_space_position = MODEL_MATRIX * vec4(VERTEX, 0, 1);
 }
 
+// 片段着色器函数。
 void fragment() {
-    COLOR = COLOR;  // 直接传递顶点着色器中的颜色
+	// 计算从剪切线位置到当前像素位置的向量。
+	vec2 line_to_pixel_vector = (cut_line_position - world_space_position.xy);
+	
+	// 初始化clip变量，默认值为1.0，表示不裁剪。
+	float clip = 1.0;
+	
+	// 如果is_cut_enabled为true，则根据法线和剪切线到像素位置的向量计算裁剪。
+	if (cut_enabled)
+		// 使用点积和步进函数step计算clip值，用于控制裁剪。
+		clip = step(dot(line_to_pixel_vector, normalize(cut_line_normal)), 0.0);
+	
+	// 设置片段的颜色，使用clip值作为alpha通道。
+	//COLOR = vec4(COLOR.xyz, clip);
+	COLOR = texture(TEXTURE, UV);
 }

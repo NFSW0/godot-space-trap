@@ -7,10 +7,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhak2"]
 shader = ExtResource("3_hnseo")
-shader_parameter/line_start = Vector2(0, 0)
-shader_parameter/line_end = Vector2(1, 2)
-shader_parameter/color_near = Color(0, 1, 0, 1)
-shader_parameter/color_far = Color(1, 0, 0, 1)
+shader_parameter/cut_enabled = false
+shader_parameter/cut_line_position = null
+shader_parameter/cut_line_normal = null
 
 [node name="LaboratorySpace" type="Node"]
 script = ExtResource("1_xpwcg")
@@ -90,5 +89,5 @@ texture = ExtResource("3_wc65i")
 
 [connection signal="area_entered" from="Node2D/TileMapLayer2/Portal" to="Node2D/TileMapLayer2/Portal" method="_on_area_entered"]
 [connection signal="body_entered" from="Node2D/TileMapLayer2/Portal" to="Node2D/TileMapLayer2/Portal" method="_on_body_entered"]
-[connection signal="area_entered" from="Node2D/TileMapLayer2/@Area2D@17895" to="Node2D/TileMapLayer2/@Area2D@17895" method="_on_area_entered"]
-[connection signal="body_entered" from="Node2D/TileMapLayer2/@Area2D@17895" to="Node2D/TileMapLayer2/@Area2D@17895" method="_on_body_entered"]
+[connection signal="area_entered" from="Node2D/TileMapLayer2/@Area2D@18518" to="Node2D/TileMapLayer2/@Area2D@18518" method="_on_area_entered"]
+[connection signal="body_entered" from="Node2D/TileMapLayer2/@Area2D@18518" to="Node2D/TileMapLayer2/@Area2D@18518" method="_on_body_entered"]
