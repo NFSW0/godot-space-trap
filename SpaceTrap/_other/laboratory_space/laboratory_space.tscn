@@ -7,9 +7,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhak2"]
 shader = ExtResource("3_hnseo")
-shader_parameter/cut_enabled = false
+shader_parameter/cut_enabled = true
 shader_parameter/cut_line_position = null
-shader_parameter/cut_line_normal = null
+shader_parameter/cut_line_normal = Vector2(0, 1)
 
 [node name="LaboratorySpace" type="Node"]
 script = ExtResource("1_xpwcg")
@@ -84,7 +84,7 @@ tile_set = ExtResource("2_jwvl0")
 
 [node name="Icon" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qhak2")
-position = Vector2(-14, 353)
+position = Vector2(7, 42)
 texture = ExtResource("3_wc65i")
 
 [connection signal="area_entered" from="Node2D/TileMapLayer2/Portal" to="Node2D/TileMapLayer2/Portal" method="_on_area_entered"]

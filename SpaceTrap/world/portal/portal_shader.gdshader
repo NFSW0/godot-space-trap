@@ -31,7 +31,7 @@ void fragment() {
 		// 使用点积和步进函数step计算clip值，用于控制裁剪。
 		clip = step(dot(line_to_pixel_vector, normalize(cut_line_normal)), 0.0);
 	
-	// 设置片段的颜色，使用clip值作为alpha通道。
-	//COLOR = vec4(COLOR.xyz, clip);
+	// 设置片段的颜色
 	COLOR = texture(TEXTURE, UV);
+	COLOR.a *= clip;
 }
