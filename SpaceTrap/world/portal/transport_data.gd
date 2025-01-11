@@ -28,7 +28,7 @@ func serialize() -> Dictionary:
 
 
 ## 实例化方法
-static func instantiate(data:Dictionary = {}) -> HitData:
+static func instantiate(data:Dictionary = {}) -> TransportData:
 	if data == null:
 		return null
 	var _portal1 = data.get("portal1", null)
@@ -36,4 +36,4 @@ static func instantiate(data:Dictionary = {}) -> HitData:
 	var _target = data.get("target", null)
 	if _portal1 == null or _portal2 == null:
 		return null
-	return HitData.new(_portal1, _portal2, _target)
+	return TransportData.new(_portal1, _portal2, _target)
