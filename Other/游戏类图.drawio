@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.3 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36" version="26.0.3">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="954" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1072" dy="653" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -1038,6 +1038,39 @@
         </mxCell>
         <mxCell id="uxOAkxn1ghREPZCqEm74-12" value="{id, effectClass}&lt;br&gt;{id, }" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=0;pointerEvents=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="1518" y="1280" width="162" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4-w_OL5QvmMDRJQkOZ6b-3" target="4-w_OL5QvmMDRJQkOZ6b-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-3" value="进入范围" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1718" y="720" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4-w_OL5QvmMDRJQkOZ6b-4" target="4-w_OL5QvmMDRJQkOZ6b-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-4" value="生成同步体" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1838" y="720" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="4-w_OL5QvmMDRJQkOZ6b-5" target="4-w_OL5QvmMDRJQkOZ6b-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-5" value="按照传送进度改变视觉" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1958" y="720" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-6" value="离开范围" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2078" y="720" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-10" value="传送体&lt;br&gt;传送门1&lt;br&gt;传送门2" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1718" y="800" width="82" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-11" value="传送体&lt;div&gt;同步体&lt;/div&gt;&lt;div&gt;传送门1&lt;/div&gt;&lt;div&gt;传送门2&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1838" y="800" width="82" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-14" value="传送体进入范围&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=light-dark(#000000, #ff0000);darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=0;pointerEvents=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2000" y="890" width="140" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="4-w_OL5QvmMDRJQkOZ6b-16" value="传送门功能&lt;div&gt;1、产生同步体&lt;/div&gt;&lt;div&gt;为了保证相同可以通过Shader捕获屏幕后投影到同步体&lt;/div&gt;&lt;div&gt;2、完成传送&lt;/div&gt;&lt;div&gt;3、删除同步体&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=light-dark(#000000, #ff0000);darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=0;pointerEvents=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2170" y="800" width="140" height="160" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -32,3 +32,7 @@ func _on_area_exited(area: Area2D) -> void:
 	pass # Replace with function body.
 func _on_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.
+
+
+## 创建同步体
+## 实时同步并返回传送进度
