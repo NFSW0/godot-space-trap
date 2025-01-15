@@ -8,12 +8,13 @@ static func are_arrays_equal(array1: Array, array2: Array) -> bool:
 	if array1.size() != array2.size():
 		return false
 	
-	# 复制两个数组并进行排序
-	var sorted_array1 = array1.duplicate()
-	var sorted_array2 = array2.duplicate()
+	# 将 NodePath 转换为字符串，确保可比较性
+	var sorted_array1 = array1.map(func(element): return element if typeof(element) != TYPE_NODE_PATH else String(element)).duplicate()
+	var sorted_array2 = array2.map(func(element): return element if typeof(element) != TYPE_NODE_PATH else String(element)).duplicate()
 	
-	sorted_array1.sort()  # 对第一个数组进行排序
-	sorted_array2.sort()  # 对第二个数组进行排序
-
+	# 对两个数组进行排序
+	sorted_array1.sort()
+	sorted_array2.sort()
+	
 	# 比较两个排序后的数组是否相同
 	return sorted_array1 == sorted_array2

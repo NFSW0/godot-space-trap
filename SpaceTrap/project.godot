@@ -27,7 +27,7 @@ UIManager="*res://ui/ui_manager.gd"
 EntityManager="*res://entity/entity_manager.gd"
 BuffManager="*res://buff/buff_manager.gd"
 HitManager="*res://hit/hit_manager.gd"
-ProtalManager="*res://world/portal/protal_manager.gd"
+PortalManager="*res://world/portal/portal_manager.gd"
 
 [display]
 
