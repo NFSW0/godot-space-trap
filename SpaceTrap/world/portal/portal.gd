@@ -33,11 +33,17 @@ func _on_body_exited(body: Node2D) -> void:
 func _generate_transport_request(node: Node) -> TransportData:
 	if not targe_portal or not is_instance_valid(node):
 		return null
+	
+	# 获取传送链最后的传送门
 	var final_portal = targe_portal
-	while final_portal and is_instance_valid(final_portal) and final_portal.targe_portal != null:
-		final_portal = final_portal.targe_portal
-	if not is_instance_valid(final_portal):
-		return null
+	#while final_portal and is_instance_valid(final_portal):
+		#if final_portal.targe_portal == self:
+			#break
+		#elif final_portal.targe_portal != null:
+			#final_portal = final_portal.targe_portal
+	#
+	#if not is_instance_valid(final_portal):
+		#return null
 	return TransportData.new(self.get_path(), final_portal.get_path(), node.get_path())
 #endregion
 

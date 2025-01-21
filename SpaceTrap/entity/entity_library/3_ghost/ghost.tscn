@@ -255,6 +255,7 @@ animations = [{
 
 [node name="Ghost" type="CharacterBody2D"]
 script = ExtResource("1_ef6u2")
+entity_id = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g22e2")

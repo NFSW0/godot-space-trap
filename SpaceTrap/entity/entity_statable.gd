@@ -16,14 +16,14 @@ var state_library = {} # 状态库
 var current_state:State # 当前状态
 
 
-## 初始化-定制多个状态
-func _init() -> void:
-	pass
-
-
-## 帧更新前-设置起始状态
-func _ready() -> void:
-	pass
+### 初始化-定制多个状态
+#func _init() -> void:
+	#pass
+#
+#
+### 帧更新前-设置起始状态
+#func _ready() -> void:
+	#pass
 
 
 #region 更新当前状态
