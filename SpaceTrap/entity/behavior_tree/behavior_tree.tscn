@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bepfj81hfdsur"]
+
+[node name="BehaviorTree" type="Node"]
