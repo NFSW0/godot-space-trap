@@ -1,0 +1,173 @@
+[gd_scene load_steps=14 format=3 uid="uid://ddi2pcia85gln"]
+
+[ext_resource type="PackedScene" uid="uid://b0mpsuta0e7fo" path="res://addons/nt_goap/nt_goap_environment_add.tscn" id="1_hv6id"]
+[ext_resource type="Script" path="res://addons/nt_goap/nt_goap_interface.gd" id="1_tuc5x"]
+[ext_resource type="PackedScene" uid="uid://cs6tff21clr1b" path="res://addons/nt_goap/nt_goap_environment_library.tscn" id="2_qbbfv"]
+[ext_resource type="PackedScene" uid="uid://cms74bkmitvhh" path="res://addons/nt_goap/nt_goap_action_add.tscn" id="3_qnexa"]
+[ext_resource type="PackedScene" uid="uid://c24he72l3baoa" path="res://addons/nt_goap/nt_goap_action_library.tscn" id="4_ssp1b"]
+[ext_resource type="PackedScene" uid="uid://decg8568rmqq2" path="res://addons/nt_goap/nt_goap_environment_global.tscn" id="5_2ml0h"]
+[ext_resource type="PackedScene" uid="uid://cce4uvu6qkvgo" path="res://addons/nt_goap/nt_goap_environment_local.tscn" id="6_3u30f"]
+[ext_resource type="PackedScene" uid="uid://ci1o8wltibpbe" path="res://addons/nt_goap/nt_goap_environment_total.tscn" id="7_aguxk"]
+[ext_resource type="PackedScene" uid="uid://00ba3r8kpe7b" path="res://addons/nt_goap/nt_goap_action_possible.tscn" id="8_67x74"]
+[ext_resource type="PackedScene" uid="uid://beqee478mnb8c" path="res://addons/nt_goap/nt_goap_environment_target.tscn" id="9_7em3n"]
+[ext_resource type="PackedScene" uid="uid://bj4gfh1j6qoks" path="res://addons/nt_goap/nt_goap_action_plan.tscn" id="10_uybip"]
+[ext_resource type="PackedScene" uid="uid://db2gr70qsorow" path="res://addons/nt_goap/nt_goap_debug_control.tscn" id="11_gbn85"]
+[ext_resource type="PackedScene" uid="uid://0fwebkgg7o5f" path="res://addons/nt_goap/nt_goap_debug_log.tscn" id="12_4pu55"]
+
+[node name="NT_GOAP_Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_tuc5x")
+
+[node name="Layout" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Library" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="ELibrary" type="HBoxContainer" parent="Layout/Library"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EAdd" type="VBoxContainer" parent="Layout/Library/ELibrary"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EAdd" parent="Layout/Library/ELibrary/EAdd" instance=ExtResource("1_hv6id")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EView" type="VBoxContainer" parent="Layout/Library/ELibrary"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ELibiary" parent="Layout/Library/ELibrary/EView" instance=ExtResource("2_qbbfv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ALibrary" type="HBoxContainer" parent="Layout/Library"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AAdd" type="VBoxContainer" parent="Layout/Library/ALibrary"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AAdd" parent="Layout/Library/ALibrary/AAdd" instance=ExtResource("3_qnexa")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AView" type="VBoxContainer" parent="Layout/Library/ALibrary"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ALibrary" parent="Layout/Library/ALibrary/AView" instance=ExtResource("4_ssp1b")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ESimulation" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="ESimulate" type="VBoxContainer" parent="Layout/ESimulation"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EEdit" type="HBoxContainer" parent="Layout/ESimulation/ESimulate"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EGlobal" type="VBoxContainer" parent="Layout/ESimulation/ESimulate/EEdit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EGlobal" parent="Layout/ESimulation/ESimulate/EEdit/EGlobal" instance=ExtResource("5_2ml0h")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ELocal" type="VBoxContainer" parent="Layout/ESimulation/ESimulate/EEdit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ELocal" parent="Layout/ESimulation/ESimulate/EEdit/ELocal" instance=ExtResource("6_3u30f")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EView" type="VBoxContainer" parent="Layout/ESimulation/ESimulate"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ECurrent" parent="Layout/ESimulation/ESimulate/EView" instance=ExtResource("7_aguxk")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AView" type="VBoxContainer" parent="Layout/ESimulation"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ACurrent" parent="Layout/ESimulation/AView" instance=ExtResource("8_67x74")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TSimulation" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="ETarget" parent="Layout/TSimulation" instance=ExtResource("9_7em3n")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TSimulate" type="VBoxContainer" parent="Layout/TSimulation"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="APlan" parent="Layout/TSimulation/TSimulate" instance=ExtResource("10_uybip")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Debug" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DebugControl" type="VBoxContainer" parent="Layout/Debug"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DebugContral" parent="Layout/Debug/DebugControl" instance=ExtResource("11_gbn85")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DebugLog" type="VBoxContainer" parent="Layout/Debug"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DebugView" parent="Layout/Debug/DebugLog" instance=ExtResource("12_4pu55")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="add_environment" from="Layout/Library/ELibrary/EAdd/EAdd" to="." method="_on_e_add_add_environment"]
+[connection signal="add_environment" from="Layout/Library/ELibrary/EView/ELibiary" to="." method="_on_e_libiary_add_environment"]
+[connection signal="remove_environment" from="Layout/Library/ELibrary/EView/ELibiary" to="." method="_on_e_libiary_remove_environment"]
+[connection signal="add_action" from="Layout/Library/ALibrary/AAdd/AAdd" to="." method="_on_a_add_add_action"]
+[connection signal="add_environment" from="Layout/ESimulation/ESimulate/EEdit/EGlobal/EGlobal" to="." method="_on_e_global_add_environment"]
+[connection signal="remove_environment" from="Layout/ESimulation/ESimulate/EEdit/EGlobal/EGlobal" to="." method="_on_e_global_remove_environment"]
+[connection signal="add_environment" from="Layout/ESimulation/ESimulate/EEdit/ELocal/ELocal" to="." method="_on_e_local_add_environment"]
+[connection signal="remove_environment" from="Layout/ESimulation/ESimulate/EEdit/ELocal/ELocal" to="." method="_on_e_local_remove_environment"]
+[connection signal="add_environment" from="Layout/TSimulation/ETarget" to="." method="_on_e_target_add_environment"]
+[connection signal="remove_environment" from="Layout/TSimulation/ETarget" to="." method="_on_e_target_remove_environment"]
+[connection signal="strat_goap" from="Layout/TSimulation/ETarget" to="." method="_on_e_target_strat_goap"]

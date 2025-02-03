@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs6tff21clr1b"]
+
+[ext_resource type="PackedScene" uid="uid://hsi178uy6rig" path="res://addons/nt_goap/nt_goap_environment_view.tscn" id="1_b1usc"]
+[ext_resource type="Script" path="res://addons/nt_goap/nt_goap_environment_library.gd" id="1_orl3g"]
+
+[node name="NT_GOAP_Environment_Library" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_orl3g")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "环境状态库"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LibraryView" parent="PanelContainer/VBoxContainer" instance=ExtResource("1_b1usc")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Load" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "导入"
+
+[node name="Export" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "导出"
+
+[connection signal="add_environment" from="PanelContainer/VBoxContainer/LibraryView" to="." method="_on_library_view_add_environment"]
+[connection signal="remove_environment" from="PanelContainer/VBoxContainer/LibraryView" to="." method="_on_library_view_remove_environment"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Export" to="." method="_on_export_pressed"]
