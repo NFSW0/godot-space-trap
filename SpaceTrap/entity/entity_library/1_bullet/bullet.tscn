@@ -45,10 +45,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ycg8f"]
 radius = 8.0
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("shape_cast_2d")]
 collision_layer = 2
 script = ExtResource("1_8a1me")
 entity_id = 1
+shape_cast_2d = NodePath("ShapeCast2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_owar2")

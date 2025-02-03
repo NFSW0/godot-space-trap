@@ -17,7 +17,7 @@ var data_queue: Array = [] # 记录队列长度
 ## 生成实体
 ## data应包含entity_id，用于确定生成的实体
 ## data应避免包含sender_id，否则sender_id的内容会被覆盖
-## 数据会按照名称应用到目标实体上
+## 数值会按照键名应用到新实体的成员变量上
 func generate_entity(data:Dictionary):
 	if multiplayer.has_multiplayer_peer():
 		rpc_id(1,"_rpc_generate_entity",data)

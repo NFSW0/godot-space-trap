@@ -10,10 +10,9 @@ class_name Bullet
 	set(value):
 		mass = value
 		set("scale",Vector2(value/1, value/1))
-		print(mass)
 		if mass < 0.1:
 			call_deferred("queue_free")
-@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+@export var shape_cast_2d: ShapeCast2D
 
 
 func _physics_process(delta: float) -> void:
@@ -21,6 +20,7 @@ func _physics_process(delta: float) -> void:
 	position += motion
 
 
+# 使用shape_cast_2d检测碰撞和法线
 func _on_body_entered(body: Node2D) -> void:
 	if shape_cast_2d.is_colliding():
 		var collision_normal:Vector2 = shape_cast_2d.get_collision_normal(0)
