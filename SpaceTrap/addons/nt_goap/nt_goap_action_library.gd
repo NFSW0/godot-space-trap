@@ -3,7 +3,7 @@ extends Control
 
 
 @onready var action_view: ItemList = %ActionView
-var nt_goap_manager = NT_GOAP_Manager
+@onready var nt_goap_manager = get_node_or_null("/root/NT_GOAP_Manager")
 
 
 func update_view(actions : Array = nt_goap_manager.action_library):

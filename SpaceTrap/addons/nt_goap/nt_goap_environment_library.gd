@@ -7,7 +7,7 @@ signal remove_environment(environment:NT_GOAP_Environment)
 
 
 @onready var library_view: ItemList = %LibraryView
-var nt_goap_manager = NT_GOAP_Manager
+@onready var nt_goap_manager = get_node_or_null("/root/NT_GOAP_Manager")
 
 
 func update_view(environments:Array = nt_goap_manager.environment_library):

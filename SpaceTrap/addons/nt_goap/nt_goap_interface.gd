@@ -16,7 +16,7 @@ extends Control
 @onready var debug_view: Control = %DebugView  ## 面板-调试结果
 
 
-var nt_goap_manager = NT_GOAP_Manager
+@onready var nt_goap_manager = get_node_or_null("/root/NT_GOAP_Manager")
 
 
 func _ready() -> void:
@@ -41,36 +41,36 @@ func _on_e_target_strat_goap() -> void:
 
 
 func _on_e_add_add_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_library.append(environment)
+	nt_goap_manager.environment_library.append(environment)
 	_reflash()
 func _on_a_add_add_action(action: NT_GOAP_Action) -> void:
-	NT_GOAP_Manager.action_library.append(action)
+	nt_goap_manager.action_library.append(action)
 	_reflash()
 
 
 func _on_e_libiary_add_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_library.append(environment)
+	nt_goap_manager.environment_library.append(environment)
 	_reflash()
 func _on_e_global_add_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_global.append(environment)
+	nt_goap_manager.environment_global.append(environment)
 	_reflash()
 func _on_e_local_add_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_local.append(environment)
+	nt_goap_manager.environment_local.append(environment)
 	_reflash()
 func _on_e_target_add_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_target.append(environment)
+	nt_goap_manager.environment_target.append(environment)
 	_reflash()
 
 
 func _on_e_libiary_remove_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_library.erase(environment)
+	nt_goap_manager.environment_library.erase(environment)
 	_reflash()
 func _on_e_global_remove_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_global.erase(environment)
+	nt_goap_manager.environment_global.erase(environment)
 	_reflash()
 func _on_e_local_remove_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_local.erase(environment)
+	nt_goap_manager.environment_local.erase(environment)
 	_reflash()
 func _on_e_target_remove_environment(environment: NT_GOAP_Environment) -> void:
-	NT_GOAP_Manager.environment_target.erase(environment)
+	nt_goap_manager.environment_target.erase(environment)
 	_reflash()
