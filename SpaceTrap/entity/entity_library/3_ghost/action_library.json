@@ -1,0 +1,1 @@
+[{"cost":0,"effects":[{"name":"move_up","value":true}],"name":"move_up","preconditions":[]},{"cost":0,"effects":[{"name":"move_down","value":true}],"name":"move_down","preconditions":[]},{"cost":0,"effects":[{"name":"move_right","value":true}],"name":"move_right","preconditions":[]},{"cost":0,"effects":[{"name":"move_left","value":true}],"name":"move_left","preconditions":[]}]

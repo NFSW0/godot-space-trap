@@ -16,7 +16,7 @@ static func get_possible_actions(current_env: Array, action_library: Array) -> A
 		if _are_preconditions_met(current_env, action.preconditions):
 			possible_actions.append(action)
 	possible_actions.sort_custom(func(a, b): return a.cost < b.cost)
-	print("可用行为：", possible_actions.map(func(element):return element.to_array()))
+	#print("可用行为：", possible_actions.map(func(element):return element.to_array()))
 	return possible_actions
 
 
@@ -50,7 +50,7 @@ static func generate_action_plan(target_env: Array, current_env: Array, action_l
 				if not _state_in_closed_list(new_state, closed_list):
 					open_list.append(new_node)
 					closed_list[new_state] = true
-	print("行动计划：", action_plan.map(func(element):return element.to_array()))
+	#print("行动计划：", action_plan.map(func(element):return element.to_array()))
 	return action_plan
 
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://d3auvj08unneg"]
+[gd_scene load_steps=38 format=3 uid="uid://d3auvj08unneg"]
 
 [ext_resource type="Texture2D" uid="uid://b5x4jhjfx5gee" path="res://entity/entity_library/3_ghost/ghost.png" id="1_c3c33"]
 [ext_resource type="Script" path="res://entity/entity_library/3_ghost/ghost.gd" id="1_ef6u2"]
+[ext_resource type="JSON" path="res://entity/entity_library/3_ghost/action_library.json" id="2_8bh80"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g22e2"]
 radius = 7.07107
@@ -253,9 +254,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ghost" type="CharacterBody2D"]
+[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
 script = ExtResource("1_ef6u2")
+animation = NodePath("Animation")
 entity_id = 3
+action_library_resource = ExtResource("2_8bh80")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g22e2")
