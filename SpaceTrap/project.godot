@@ -24,7 +24,7 @@ config/icon="res://icon.svg"
 
 DataManager="*res://data/data_manager.gd"
 UIManager="*res://ui/ui_manager.gd"
-EntityManager="*res://entity/entity_manager.gd"
+EntityManager="*res://entity/behavior_tree/entity_manager.gd"
 BuffManager="*res://buff/buff_manager.gd"
 HitManager="*res://hit/hit_manager.gd"
 PortalManager="*res://world/portal/portal_manager.gd"
