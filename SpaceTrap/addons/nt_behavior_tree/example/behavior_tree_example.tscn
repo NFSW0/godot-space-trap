@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgaouuoepcyer"]
+
+[ext_resource type="Script" path="res://addons/nt_behavior_tree/example/behavior_tree_example.gd" id="1_mmsp5"]
+[ext_resource type="Script" path="res://addons/nt_behavior_tree/nodes/behavior_base/behavior_task/behavior_move_2d.gd" id="2_ycg37"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0wdn"]
+
+[node name="BehaviorTreeExample" type="CharacterBody2D" node_paths=PackedStringArray("behavior_tree")]
+position = Vector2(588, 282)
+script = ExtResource("1_mmsp5")
+behavior_tree = NodePath("BehaviorMove2D")
+invincible_time_factor = null
+method_name = null
+max_speed = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t0wdn")
+
+[node name="BehaviorMove2D" type="Node" parent="."]
+script = ExtResource("2_ycg37")
