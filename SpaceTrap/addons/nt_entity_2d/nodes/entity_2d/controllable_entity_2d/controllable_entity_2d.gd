@@ -2,17 +2,10 @@ extends Entity2D
 class_name ControllableEntity2D
 
 
-@export var animation_tree: AnimationTree ## 动画节点
 @export var controller: ControllerBase: ## 控制器
 	set(value):
 		controller = value
 var controllable = true ## 是否可控
-
-
-## 过度到另一个动画 传入动画名称
-func travel_animation(animation_name: String):
-	if animation_tree:
-		animation_tree.get("parameters/playback").travel(animation_name)
 
 
 # 更新

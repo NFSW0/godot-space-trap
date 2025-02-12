@@ -1,4 +1,4 @@
-## 玩家控制器类 用于从输入信息中获取行动指令
+## 玩家控制器类 用于从输入信息中获取行动指令 注意与项目>项目设置>输入映射同步
 extends ControllerBase
 class_name ControllerPlayer
 
