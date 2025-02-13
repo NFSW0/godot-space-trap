@@ -1,5 +1,6 @@
+## 鬼魂动画(二维变量):移动&静默(Move)
 extends InfluenceableEntity2D
-class_name Ghost
+#class_name Ghost
 
 
 @export var animation_tree: AnimationTree ## 动画节点

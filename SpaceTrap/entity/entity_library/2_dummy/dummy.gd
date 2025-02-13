@@ -1,6 +1,6 @@
-## 假人动画:静默(Idle)、移动(Move)、受伤(Hurt)、死亡(Dead)
+## 假人动画(二维变量):静默(Idle)、移动(Move)、受伤(Hurt)、死亡(Dead)
 extends InfluenceableEntity2D
-class_name Dummy
+#class_name Dummy
 
 
 @export var animation_tree: AnimationTree ## 动画节点

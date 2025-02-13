@@ -1,6 +1,6 @@
 ## 弹幕基础脚本
 extends Entity2D
-class_name Bullet
+#class_name Bullet
 
 
 @export var shape_cast_2d: ShapeCast2D

@@ -1,6 +1,6 @@
-## 鼠动画(一维变量):静默(Idle)、移动(Move)、吃(Eat)、受伤(Hurt)、死亡(Dead)
+## 骷髅动画(二维变量):静默(Idle)、移动(Move)、受伤(Hurt)、死亡(Dead)
 extends InfluenceableEntity2D
-#class_name Mouse
+#class_name Skeleton
 
 
 @export var animation_tree: AnimationTree ## 动画节点
