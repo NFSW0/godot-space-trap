@@ -1,17 +1,8 @@
 ## 弹幕基础脚本
-extends Area2D
+extends Entity2D
 class_name Bullet
 
 
-@export var entity_id:int = 0
-@export var direction:Vector2 = Vector2()
-@export var speed:float = 0
-@export var mass:float = 1:
-	set(value):
-		mass = value
-		set("scale",Vector2(value/1, value/1))
-		if mass < 0.1:
-			call_deferred("queue_free")
 @export var shape_cast_2d: ShapeCast2D
 
 

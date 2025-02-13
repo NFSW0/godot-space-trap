@@ -282,7 +282,6 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bl2ci"]
 switch_mode = 1
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ru33l"]
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_8r63g")
@@ -302,22 +301,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"move_down"]
-}
-
-[sub_resource type="Animation" id="Animation_swv21"]
-resource_name = "move_up"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"move_up"]
 }
 
 [sub_resource type="Animation" id="Animation_1gec8"]
@@ -365,6 +348,22 @@ tracks/0/keys = {
 "values": [&"move_right"]
 }
 
+[sub_resource type="Animation" id="Animation_swv21"]
+resource_name = "move_up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move_up"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y6ucc"]
 _data = {
 "RESET": SubResource("Animation_023br"),
@@ -387,7 +386,7 @@ shape = SubResource("CircleShape2D_g22e2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_u66a6")
-animation = &"move_down"
+animation = &"move_left"
 autoplay = "move_down"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

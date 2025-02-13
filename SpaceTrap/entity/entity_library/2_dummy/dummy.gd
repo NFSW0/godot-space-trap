@@ -1,5 +1,6 @@
+## 假人动画:静默(Idle)、移动(Move)、受伤(Hurt)、死亡(Dead)
 extends InfluenceableEntity2D
-class_name Ghost
+class_name Dummy
 
 
 @export var animation_tree: AnimationTree ## 动画节点
@@ -13,6 +14,9 @@ func travel_animation(animation_name: String):
 
 ## 执行指令
 func _execute_command(command: Dictionary) -> void:
+	if command.is_empty():
+		travel_animation("Idle")
+		return
 	for command_type in command:
 		match command_type:
 			ControllerBase.COMMAND_TYPE.MOVE_TOWARD:
