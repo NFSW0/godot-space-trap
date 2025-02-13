@@ -1,0 +1,2 @@
+extends InfluenceableEntity2D
+class_name Mouse
