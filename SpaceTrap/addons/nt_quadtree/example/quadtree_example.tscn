@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dectuet5xi5i2"]
+
+[ext_resource type="Script" path="res://addons/nt_quadtree/example/quadtree_example.gd" id="1_7foqb"]
+[ext_resource type="PackedScene" uid="uid://5gtea4od486j" path="res://addons/nt_quadtree/example/rect_2d_example.tscn" id="3_88gto"]
+
+[node name="QuadtreeExample" type="Node2D" node_paths=PackedStringArray("debug_label")]
+script = ExtResource("1_7foqb")
+example_entity = ExtResource("3_88gto")
+debug_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+top_level = true
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0.686275, 0, 1)
+text = "已知问题:
+跨边界判定可能不准确"

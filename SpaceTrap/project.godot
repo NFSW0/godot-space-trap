@@ -40,7 +40,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nt_controller/plugin.cfg", "res://addons/nt_entity_2d/plugin.cfg")
+enabled=PackedStringArray("res://addons/nt_controller/plugin.cfg", "res://addons/nt_entity_2d/plugin.cfg", "res://addons/nt_perception/plugin.cfg", "res://addons/nt_quadtree/plugin.cfg")
 
 [file_customization]
 
