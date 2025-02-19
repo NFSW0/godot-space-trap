@@ -1,5 +1,7 @@
+## 事件中心
+## 注册事件监听的Callable方法应接收data参数，data可能为null
 extends Node
-class_name EventManager
+class_name _EventManager
 
 
 # 字典用于存储事件及其对应的回调函数列表
@@ -19,7 +21,7 @@ func register_event(event_name: String, callback: Callable) -> void:
 ## 触发事件
 func trigger_event(event_name: String, data: Variant = null) -> void:
 	if _event_listeners.has(event_name):
-		for callback in _event_listeners[event_name]:
+		for callback: Callable in _event_listeners[event_name]:
 			callback.call(data)
 
 

@@ -115,9 +115,14 @@ class QuadtreeNode:
 		max_depth = max(1, value)
 		reset()
 
+
 var root: QuadtreeNode
 
-func _init():
+
+func _init(init_bounds: Rect2 = Rect2(0, 0, 1024, 1024), init_capacity: int = 4, init_max_depth: int = 8):
+	bounds = init_bounds
+	capacity = init_capacity
+	max_depth = init_max_depth
 	reset()
 
 # 重置四叉树

@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://b300pimxmvuvb"]
+[gd_scene load_steps=92 format=3 uid="uid://b300pimxmvuvb"]
 
 [ext_resource type="Script" path="res://entity/entity_library/5_skeleton/skeleton.gd" id="1_7u8xp"]
 [ext_resource type="Texture2D" uid="uid://c02lfqch1a6qd" path="res://entity/shadow.png" id="2_hhkic"]
@@ -872,9 +872,13 @@ _data = {
 "move_up": SubResource("Animation_v51so")
 }
 
-[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_by5ok"]
+radius = 80.0
+
+[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "navigation_agent_2d")]
 script = ExtResource("1_7u8xp")
 animation_tree = NodePath("AnimationTree")
+navigation_agent_2d = NodePath("NavigationAgent2D")
 entity_id = 5
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -904,3 +908,12 @@ parameters/Move/blend_position = Vector2(0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_n56mt")
 }
+
+[node name="Perceptron" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Perceptron"]
+shape = SubResource("CircleShape2D_by5ok")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="body_entered" from="Perceptron" to="." method="_on_perceived_target"]

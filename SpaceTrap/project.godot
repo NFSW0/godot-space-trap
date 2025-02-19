@@ -28,6 +28,7 @@ EntityManager="*res://entity/entity_manager.gd"
 BuffManager="*res://buff/buff_manager.gd"
 HitManager="*res://hit/hit_manager.gd"
 PortalManager="*res://world/portal/portal_manager.gd"
+EventManager="*res://tool/autoload/event_manager.gd"
 
 [display]
 
@@ -40,7 +41,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nt_controller/plugin.cfg", "res://addons/nt_entity_2d/plugin.cfg", "res://addons/nt_perception/plugin.cfg", "res://addons/nt_quadtree/plugin.cfg")
+enabled=PackedStringArray("res://addons/nt_controller/plugin.cfg", "res://addons/nt_entity_2d/plugin.cfg", "res://addons/nt_quadtree/plugin.cfg")
 
 [file_customization]
 
@@ -111,7 +112,9 @@ locale/locale_filter_mode=0
 [layer_names]
 
 2d_physics/layer_1="Hitable"
+2d_navigation/layer_1="walkable"
 2d_physics/layer_2="Portable"
+2d_navigation/layer_2="flyable"
 
 [physics]
 

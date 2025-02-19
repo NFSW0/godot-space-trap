@@ -5,11 +5,13 @@
 extends EditorPlugin
 
 
+const AUTOLOAD_NAME = "PerceptionManager"
+const AUTOLOAD_FILE = "res://addons/nt_perception/autoload/perception_manager.gd"
+
+
 func _enter_tree() -> void:
-	# Initialization of the plugin goes here.
-	pass
+	add_autoload_singleton(AUTOLOAD_NAME, AUTOLOAD_FILE)
 
 
 func _exit_tree() -> void:
-	# Clean-up of the plugin goes here.
-	pass
+	remove_autoload_singleton(AUTOLOAD_NAME)
