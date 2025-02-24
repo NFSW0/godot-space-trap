@@ -2,7 +2,7 @@ extends Entity2D
 class_name ControllableEntity2D
 
 
-@export var controller: ControllerBase: ## 控制器
+@export var controller: ControllerBase = ControllerAI.new(): ## 控制器
 	set(value):
 		controller = value
 var controllable = true ## 是否可控
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	_execute_command(cmd)
 
 
-# 执行行动指令
+# 执行行动指令(需要覆写)
 func _execute_command(command: Dictionary) -> void:
 	for command_type:ControllerBase.COMMAND_TYPE in command:
 		match command_type:

@@ -1,8 +1,12 @@
-[gd_scene load_steps=92 format=3 uid="uid://b300pimxmvuvb"]
+[gd_scene load_steps=94 format=3 uid="uid://b300pimxmvuvb"]
 
 [ext_resource type="Script" path="res://entity/entity_library/5_skeleton/skeleton.gd" id="1_7u8xp"]
+[ext_resource type="Script" path="res://addons/nt_controller/scripts/controller_ai.gd" id="2_1ykkx"]
 [ext_resource type="Texture2D" uid="uid://c02lfqch1a6qd" path="res://entity/shadow.png" id="2_hhkic"]
 [ext_resource type="Texture2D" uid="uid://ck3l0x3lmif7f" path="res://entity/entity_library/5_skeleton/skeleton.png" id="3_kh0mn"]
+
+[sub_resource type="Resource" id="Resource_jqkkk"]
+script = ExtResource("2_1ykkx")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gj4ca"]
 radius = 2.0
@@ -879,6 +883,7 @@ radius = 80.0
 script = ExtResource("1_7u8xp")
 animation_tree = NodePath("AnimationTree")
 navigation_agent_2d = NodePath("NavigationAgent2D")
+controller = SubResource("Resource_jqkkk")
 entity_id = 5
 
 [node name="Shadow" type="Sprite2D" parent="."]

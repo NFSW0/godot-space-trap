@@ -2,7 +2,7 @@ extends ControllableEntity2D
 class_name InfluenceableEntity2D
 
 
-@export var invincible_time_factor: float = 1.0 ## 无敌时间系数
+@export var invincible_time_factor: float = 1.0 ## 无敌时间倍率系数
 var invincible: bool = false ## 是否无敌
 
 
