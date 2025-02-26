@@ -2,9 +2,9 @@
 class_name GOAP_AIBrain
 
 var world_update: Callable ## 世界状态更新方法 返回Dictionary
-var available_actions: Array[GOAPAction] = [] ## 可用行为库 从中决策行动计划
-var current_goals: Array[GOAPGoal] = [] ## 当前目标 根据感知到的对象设置目标
-var current_plan: Array[GOAPAction] = [] ## 当前行动计划
+var available_actions: Array = [] ## 可用行为库 从中决策行动计划
+var current_goals: Array = [] ## 当前目标 根据感知到的对象设置目标
+var current_plan: Array = [] ## 当前行动计划
 
 # 主决策方法
 func decide_next_action() -> Dictionary:
@@ -39,7 +39,7 @@ func _select_goal(world_state: Dictionary) -> GOAPGoal:
 	
 	return selected_goal
 
-func _plan_actions(target_goal: GOAPGoal, start_state: Dictionary) -> Array[GOAPAction]:
+func _plan_actions(target_goal: GOAPGoal, start_state: Dictionary) -> Array:
 	var planner = GOAPPlanner.new()
 	return planner.plan(
 		available_actions,
@@ -57,7 +57,7 @@ func _validate_plan(target_goal: GOAPGoal) -> bool:
 
 # 定义GOAP结构和辅助类
 class GOAPPlanner:
-	func plan(actions: Array[GOAPAction], start_state: Dictionary, goal_conditions: Dictionary) -> Array[GOAPAction]:
+	func plan(actions: Array, start_state: Dictionary, goal_conditions: Dictionary) -> Array:
 		var open_set = []
 		var came_from = {}
 		var g_score = {}
@@ -138,7 +138,12 @@ class GOAPGoal:
 class GOAPTool:
 	static func _state_satisfies(conditions: Dictionary, state: Dictionary) -> bool:
 		for key in conditions:
-			if not state.has(key) or state[key] != conditions[key]:
+			if state.has(key):
+				if conditions[key] is Callable:
+					return conditions[key].call(state[key])
+				else:
+					return state[key] == conditions[key]
+			else:
 				return false
 		return true
 	static func _apply_effects(state: Dictionary, effects: Dictionary) -> Dictionary:

@@ -74,6 +74,7 @@ func _execute_command(command: Dictionary) -> void:
 
 ## 定点移动
 func _move_to(data: Vector2 = Vector2()) -> void:
+	#if NavigationServer2D.map_get_iteration_id()
 	navigation_agent_2d.target_position = data
 	var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
 	velocity = (next_path_position - position).normalized() * speed
