@@ -8,12 +8,23 @@ extends InfluenceableEntity2D
 
 
 func _ready() -> void:
+	_set_brain()
+
+
+## 过渡到另一个动画 传入动画名称
+func travel_animation(animation_name: String):
+	if animation_tree:
+		animation_tree.get("parameters/playback").travel(animation_name)
+
+
+## 设置智能逻辑
+func _set_brain():
 	# 初始化AI大脑示例
 	var ai_brain = GOAP_AIBrain.new()
 	# 设置世界状态更新方法
 	ai_brain.world_update = func():
 		return {
-			"has_target": true,
+			"target": func(): return null, # 获取区域内其他节点，选择合适目标作为处理对象
 			"target_position": Vector2(100, 200),
 			"health": 80.0,
 			"ammo": 5
@@ -30,7 +41,7 @@ func _ready() -> void:
 	ai_brain.available_actions.append(
 		GOAP_AIBrain.GOAPAction.new(
 			"MoveToTarget",
-			{"target_position": func(v:Vector2): return v.distance_to(position) > navigation_agent_2d.target_desired_distance},
+			{"target_position": func(v): return v.distance_to(position) > navigation_agent_2d.target_desired_distance},
 			{"in_range": true},
 			1.0,
 			func(state): return {ControllerBase.COMMAND_TYPE.MOVE_TO: state["target_position"]}
@@ -46,12 +57,6 @@ func _ready() -> void:
 		)
 	)
 	controller.set("ai_brain", ai_brain)
-
-
-## 过渡到另一个动画 传入动画名称
-func travel_animation(animation_name: String):
-	if animation_tree:
-		animation_tree.get("parameters/playback").travel(animation_name)
 
 
 ## 感知到实体时触发(用于发现行动目标并决策行动计划)

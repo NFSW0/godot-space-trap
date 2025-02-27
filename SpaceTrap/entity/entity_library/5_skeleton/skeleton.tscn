@@ -885,6 +885,7 @@ animation_tree = NodePath("AnimationTree")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 controller = SubResource("Resource_jqkkk")
 entity_id = 5
+speed = 10.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
