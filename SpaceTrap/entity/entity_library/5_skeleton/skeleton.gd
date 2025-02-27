@@ -30,7 +30,7 @@ func _ready() -> void:
 	ai_brain.available_actions.append(
 		GOAP_AIBrain.GOAPAction.new(
 			"MoveToTarget",
-			{"has_target": true},
+			{"target_position": func(v:Vector2): return v.distance_to(position) > navigation_agent_2d.target_desired_distance},
 			{"in_range": true},
 			1.0,
 			func(state): return {ControllerBase.COMMAND_TYPE.MOVE_TO: state["target_position"]}
@@ -74,11 +74,15 @@ func _execute_command(command: Dictionary) -> void:
 
 ## 定点移动
 func _move_to(data: Vector2 = Vector2()) -> void:
-	#if NavigationServer2D.map_get_iteration_id()
-	navigation_agent_2d.target_position = data
-	var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
-	velocity = (next_path_position - position).normalized() * speed
-	move_and_slide()
+	if navigation_agent_2d:
+		var map_rid = navigation_agent_2d.get_navigation_map()
+		var agent_rid = navigation_agent_2d.get_rid()
+		navigation_agent_2d.target_position = data
+		# 已更新且未抵达最终位置
+		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
+			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
+			velocity = (next_path_position - position).normalized() * speed
+			move_and_slide()
 
 
 ## 攻击

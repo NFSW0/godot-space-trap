@@ -920,5 +920,8 @@ libraries = {
 shape = SubResource("CircleShape2D_by5ok")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 20.0
+path_postprocessing = 1
+debug_enabled = true
 
 [connection signal="body_entered" from="Perceptron" to="." method="_on_perceived_target"]
