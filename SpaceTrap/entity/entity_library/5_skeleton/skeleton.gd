@@ -5,6 +5,7 @@ extends InfluenceableEntity2D
 
 @export var animation_tree: AnimationTree ## 动画节点
 @export var navigation_agent_2d: NavigationAgent2D ## 导航节点
+@export var perceptron: Area2D ## 感知节点
 
 
 func _ready() -> void:
@@ -24,7 +25,7 @@ func _set_brain():
 	# 设置世界状态更新方法
 	ai_brain.world_update = func():
 		return {
-			"target": func(): return null, # 获取区域内其他节点，选择合适目标作为处理对象
+			"target": _perceptual(), # 获取区域内其他节点，选择合适目标作为处理对象
 			"target_position": Vector2(100, 200),
 			"health": 80.0,
 			"ammo": 5
@@ -59,11 +60,26 @@ func _set_brain():
 	controller.set("ai_brain", ai_brain)
 
 
-## 感知到实体时触发(用于发现行动目标并决策行动计划)
-func _on_perceived_target(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		# 通知AI发现目标
-		pass
+#region 感知
+# 感知(用于确定行动目标)
+func _perceptual() -> Node:
+	var nodes_in_area = perceptron.get_overlapping_areas() + perceptron.get_overlapping_bodies()
+	# 排除无关对象
+	nodes_in_area = nodes_in_area.filter(func(element): return element.is_in_group("Player"))
+	if nodes_in_area.empty():
+		return null
+	nodes_in_area.sort_custom(_compare_priority)
+	return nodes_in_area[0]
+# 排序
+func _compare_priority(a: Node, b: Node) -> int:
+	# 近距离优先
+	var dist_a = position.distance_to(a.position)
+	var dist_b = position.distance_to(b.position)
+	if dist_a < dist_b:
+		return true
+	else:
+		return false
+#endregion 感知
 
 
 #region 行动

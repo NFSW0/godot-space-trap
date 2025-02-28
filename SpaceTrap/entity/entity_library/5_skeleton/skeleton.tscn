@@ -879,10 +879,11 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_by5ok"]
 radius = 80.0
 
-[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "navigation_agent_2d")]
+[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "navigation_agent_2d", "perceptron")]
 script = ExtResource("1_7u8xp")
 animation_tree = NodePath("AnimationTree")
 navigation_agent_2d = NodePath("NavigationAgent2D")
+perceptron = NodePath("Perceptron")
 controller = SubResource("Resource_jqkkk")
 entity_id = 5
 speed = 10.0
@@ -924,5 +925,3 @@ shape = SubResource("CircleShape2D_by5ok")
 target_desired_distance = 20.0
 path_postprocessing = 1
 debug_enabled = true
-
-[connection signal="body_entered" from="Perceptron" to="." method="_on_perceived_target"]
