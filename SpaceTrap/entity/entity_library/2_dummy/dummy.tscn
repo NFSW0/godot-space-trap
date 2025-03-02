@@ -813,7 +813,9 @@ _data = {
 "move_up": SubResource("Animation_jwhf4")
 }
 
-[node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
+[node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["Player"]]
+collision_layer = 5
+collision_mask = 0
 script = ExtResource("1_l3g1x")
 animation_tree = NodePath("AnimationTree")
 controller = SubResource("Resource_k5uh3")

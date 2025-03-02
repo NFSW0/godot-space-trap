@@ -56,6 +56,10 @@ folder_colors={
 "res://world/": "purple"
 }
 
+[global_group]
+
+Player=""
+
 [gui]
 
 theme/custom="res://ui/ui_theme.tres"
@@ -115,6 +119,7 @@ locale/locale_filter_mode=0
 2d_navigation/layer_1="walkable"
 2d_physics/layer_2="Portable"
 2d_navigation/layer_2="flyable"
+2d_physics/layer_3="appreciable"
 
 [physics]
 
