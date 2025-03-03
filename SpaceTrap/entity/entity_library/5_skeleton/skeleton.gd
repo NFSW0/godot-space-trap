@@ -19,14 +19,26 @@ func travel_animation(animation_name: String):
 
 
 #region 智能
+func _update_local_state() -> Dictionary:
+	var local_state = {}
+	
+	var target = _perceptual()
+	if not target: return local_state
+	local_state["target"] = target
+	
+	var target_position = target.get("position")
+	if not target_position: return local_state
+	local_state["target_position"] = target_position
+	
+	var target_in_range = position.distance_to(target_position) < 5
+	local_state["target_in_range"] = target_in_range
+	
+	return local_state
+
 func _set_brain():
 	var ai_brain = GOAP_AIBrain.new()
 	# 设置世界状态更新方法
-	ai_brain.world_update = func():
-		return {
-			"target": _perceptual(),
-			"health": 80.0,
-		}
+	ai_brain.world_update = _update_local_state
 	# 添加目标(不同对象可以有不同目标)
 	ai_brain.current_goals.append(
 		GOAP_AIBrain.GOAPGoal.new(
@@ -39,10 +51,10 @@ func _set_brain():
 	ai_brain.available_actions.append(
 		GOAP_AIBrain.GOAPAction.new(
 			"MoveToTarget",
-			{"target": func(v): return position.distance_to(v.position) > navigation_agent_2d.target_desired_distance if v and v.get("position") else false},
+			{"target_position": func(v): return position.distance_to(v) > navigation_agent_2d.target_desired_distance if v else false},
 			{"target_in_range": true},
 			1.0,
-			func(state): return {ControllerBase.COMMAND_TYPE.MOVE_TO: state["target"].get("position")}
+			func (state): return {ControllerBase.COMMAND_TYPE.MOVE_TO: state["target"].get("position")}
 		)
 	)
 	ai_brain.available_actions.append(
@@ -93,7 +105,7 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 	if navigation_agent_2d:
 		var map_rid = navigation_agent_2d.get_navigation_map()
 		navigation_agent_2d.target_position = data
-		# 已更新且未抵达最终位置
+		# 已更新寻路且未抵达最终位置
 		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
 			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
 			velocity = (next_path_position - position).normalized() * speed

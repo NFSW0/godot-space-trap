@@ -1,4 +1,3 @@
-################### GOAP AI Brain ####################
 class_name GOAP_AIBrain
 
 var world_update: Callable ## 世界状态更新方法 返回Dictionary

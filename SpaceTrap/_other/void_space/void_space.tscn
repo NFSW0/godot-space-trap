@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=4 uid="uid://saeqyqhirbav"]
+[gd_scene load_steps=5 format=4 uid="uid://saeqyqhirbav"]
 
 [ext_resource type="TileSet" uid="uid://ccp6l7mx0wsqb" path="res://world/tiles/tile_set_2.tres" id="1_pg4ra"]
 [ext_resource type="PackedScene" uid="uid://b300pimxmvuvb" path="res://entity/entity_library/5_skeleton/skeleton.tscn" id="2_6k0ta"]
+[ext_resource type="Script" path="res://addons/nt_controller/scripts/controller_ai.gd" id="3_o5fv1"]
+
+[sub_resource type="Resource" id="Resource_nnof1"]
+resource_local_to_scene = true
+script = ExtResource("3_o5fv1")
 
 [node name="VoidSpace" type="Node2D"]
 
@@ -11,4 +16,5 @@ tile_set = ExtResource("1_pg4ra")
 
 [node name="Skeleton" parent="." instance=ExtResource("2_6k0ta")]
 position = Vector2(28, 30)
+controller = SubResource("Resource_nnof1")
 speed = 100.0
