@@ -28,5 +28,5 @@ func _move_toward(_direction: Vector2 = Vector2()) -> void:
 	direction = _direction
 	travel_animation("Move")
 	animation_tree.set("parameters/Move/blend_position", direction)
-	velocity = direction * speed
+	velocity = direction.normalized() * speed
 	move_and_slide()

@@ -1,4 +1,7 @@
 ## 骷髅动画(二维变量):静默(Idle)、移动(Move)、受伤(Hurt)、死亡(Dead)
+# TODO 无目标有路径->前往路径终点
+# TODO 无目标无路径->自由行动
+# TODO 可攻击有路径->优先攻击
 extends InfluenceableEntity2D
 #class_name Skeleton
 
@@ -108,11 +111,19 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 		# 已更新寻路且未抵达最终位置
 		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
 			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
-			velocity = (next_path_position - position).normalized() * speed
-			move_and_slide()
+			_move_toward(next_path_position - position)
+
+
+## 定向移动
+func _move_toward(_direction: Vector2 = Vector2()) -> void:
+	direction = _direction
+	travel_animation("Move")
+	animation_tree.set("parameters/Move/blend_position", direction)
+	velocity = direction.normalized() * speed
+	move_and_slide()
 
 
 ## 攻击
 func _attack(_data = null)-> void:
-	print("骷髅发动攻击")
+	print("骷髅攻击动画(包含帧事件)")
 #endregion 行动
