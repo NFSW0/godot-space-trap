@@ -151,9 +151,7 @@ func _move_toward(_direction: Vector2 = Vector2()) -> void:
 
 ## 攻击
 func _attack(_data = null)-> void:
-	print("(骷髅攻击动画)")
-	#health_current -= 20
-	#_death()
+	print("(攻击动画)")
 	do_influence(hurt)
 func hurt(_entity: InfluenceableEntity2D):
 	health_current -= 7
