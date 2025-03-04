@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db12o6ubme8aw"
-path="res://.godot/imported/floors.png-4633809c7ee1730217f29ebaa97ddbb3.ctex"
+uid="uid://xag3mthaogab"
+path="res://.godot/imported/campfire.png-42f64ca6190e758d60e1b2e980ee40f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/floors.png"
-dest_files=["res://.godot/imported/floors.png-4633809c7ee1730217f29ebaa97ddbb3.ctex"]
+source_file="res://world/tiles/campfire.png"
+dest_files=["res://.godot/imported/campfire.png-42f64ca6190e758d60e1b2e980ee40f1.ctex"]
 
 [params]
 

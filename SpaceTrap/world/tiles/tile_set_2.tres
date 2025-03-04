@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://ccp6l7mx0wsqb"]
+[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://ccp6l7mx0wsqb"]
 
 [ext_resource type="Texture2D" uid="uid://p6kpvioe7u20" path="res://world/tiles/water_1.png" id="1_n6xuc"]
 [ext_resource type="Texture2D" uid="uid://dyiw85vcg1ynr" path="res://world/tiles/grass_1.png" id="2_th03r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgnoyhu3fju7d" path="res://world/tiles/grass_road_2.png" id="4_lvyqa"]
 [ext_resource type="Texture2D" uid="uid://befpcnu5mgdm5" path="res://world/tiles/bridge_1.png" id="5_trrej"]
 [ext_resource type="Texture2D" uid="uid://4fe0im1rbwdm" path="res://world/tiles/wall_1.png" id="6_s0ukw"]
+[ext_resource type="Texture2D" uid="uid://xag3mthaogab" path="res://world/tiles/campfire.png" id="7_oymts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_18x34"]
 texture = ExtResource("1_n6xuc")
@@ -1861,6 +1862,21 @@ texture = ExtResource("6_s0ukw")
 11:3/0/terrains_peering_bit/top_left_corner = 4
 11:3/0/terrains_peering_bit/top_side = 4
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qvypb"]
+texture = ExtResource("7_oymts")
+texture_region_size = Vector2i(32, 64)
+0:0/animation_speed = 4.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 16)
+
 [resource]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
@@ -1882,3 +1898,4 @@ sources/2 = SubResource("TileSetAtlasSource_lynfe")
 sources/3 = SubResource("TileSetAtlasSource_n4edn")
 sources/4 = SubResource("TileSetAtlasSource_to2pt")
 sources/5 = SubResource("TileSetAtlasSource_f5lxf")
+sources/6 = SubResource("TileSetAtlasSource_qvypb")
