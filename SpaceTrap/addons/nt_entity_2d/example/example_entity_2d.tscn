@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cf2cdn3s57s11"]
 
-[ext_resource type="Script" path="res://addons/nt_entity_2d/nodes/entity_2d/controllable_entity_2d/influenceable_entity_2d/influenceable_entity_2d.gd" id="1_15sct"]
-[ext_resource type="Script" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_iq8ry"]
+[ext_resource type="Script" uid="uid://dt7ihiuku1wol" path="res://addons/nt_entity_2d/nodes/entity_2d/controllable_entity_2d/influenceable_entity_2d/influenceable_entity_2d.gd" id="1_15sct"]
+[ext_resource type="Script" uid="uid://1cgtw7yetdod" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_iq8ry"]
 
 [sub_resource type="Resource" id="Resource_6efhb"]
 script = ExtResource("2_iq8ry")

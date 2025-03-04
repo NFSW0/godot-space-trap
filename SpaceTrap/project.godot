@@ -17,7 +17,7 @@ config/name_localized={
 config/description="SpaceTrap"
 config/version="v0.0"
 config/use_custom_user_dir=true
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]

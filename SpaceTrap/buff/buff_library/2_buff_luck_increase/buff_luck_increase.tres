@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuffLuckIncrease" load_steps=2 format=3 uid="uid://dnn7o37osfif7"]
 
-[ext_resource type="Script" path="res://buff/buff_library/2_buff_luck_increase/buff_luck_increase.gd" id="1_mk10x"]
+[ext_resource type="Script" uid="uid://bmwfd26upqrtf" path="res://buff/buff_library/2_buff_luck_increase/buff_luck_increase.gd" id="1_mk10x"]
 
 [resource]
 script = ExtResource("1_mk10x")

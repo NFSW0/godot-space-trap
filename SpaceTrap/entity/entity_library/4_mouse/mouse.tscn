@@ -1,6 +1,6 @@
 [gd_scene load_steps=70 format=3 uid="uid://b6gkupbvv5whn"]
 
-[ext_resource type="Script" path="res://entity/entity_library/4_mouse/mouse.gd" id="1_873o7"]
+[ext_resource type="Script" uid="uid://c0yf2henwne08" path="res://entity/entity_library/4_mouse/mouse.gd" id="1_873o7"]
 [ext_resource type="Texture2D" uid="uid://c02lfqch1a6qd" path="res://entity/shadow.png" id="2_sgsbh"]
 [ext_resource type="Texture2D" uid="uid://deqjxjf5qirx3" path="res://entity/entity_library/4_mouse/MouseDie.png" id="3_4u7mr"]
 [ext_resource type="Texture2D" uid="uid://ce3lpao6cl65a" path="res://entity/entity_library/4_mouse/MouseDamage.png" id="3_a43h3"]
@@ -631,17 +631,17 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l1aew"]
 _data = {
-"RESET": SubResource("Animation_2cv3b"),
-"dead_left": SubResource("Animation_5ipel"),
-"dead_right": SubResource("Animation_k7vc7"),
-"eat_left": SubResource("Animation_88unc"),
-"eat_right": SubResource("Animation_rk0fy"),
-"hurt_left": SubResource("Animation_1i2cu"),
-"hurt_right": SubResource("Animation_crjer"),
-"idle_left": SubResource("Animation_tbv0x"),
-"idle_right": SubResource("Animation_2frlr"),
-"move_left": SubResource("Animation_hn8x6"),
-"move_right": SubResource("Animation_hgf0r")
+&"RESET": SubResource("Animation_2cv3b"),
+&"dead_left": SubResource("Animation_5ipel"),
+&"dead_right": SubResource("Animation_k7vc7"),
+&"eat_left": SubResource("Animation_88unc"),
+&"eat_right": SubResource("Animation_rk0fy"),
+&"hurt_left": SubResource("Animation_1i2cu"),
+&"hurt_right": SubResource("Animation_crjer"),
+&"idle_left": SubResource("Animation_tbv0x"),
+&"idle_right": SubResource("Animation_2frlr"),
+&"move_left": SubResource("Animation_hn8x6"),
+&"move_right": SubResource("Animation_hgf0r")
 }
 
 [node name="Mouse" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]

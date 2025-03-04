@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5gtea4od486j"]
 
-[ext_resource type="Script" path="res://addons/nt_quadtree/example/rect_2d_example.gd" id="1_yf8mk"]
+[ext_resource type="Script" uid="uid://vietawvyyyol" path="res://addons/nt_quadtree/example/rect_2d_example.gd" id="1_yf8mk"]
 
 [node name="Rect2DExample" type="Node2D"]
 script = ExtResource("1_yf8mk")

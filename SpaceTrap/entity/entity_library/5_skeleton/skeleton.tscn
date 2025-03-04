@@ -1,7 +1,7 @@
 [gd_scene load_steps=94 format=3 uid="uid://b300pimxmvuvb"]
 
-[ext_resource type="Script" path="res://entity/entity_library/5_skeleton/skeleton.gd" id="1_7u8xp"]
-[ext_resource type="Script" path="res://addons/nt_controller/scripts/controller_ai.gd" id="2_1ykkx"]
+[ext_resource type="Script" uid="uid://bcc0pr131vukr" path="res://entity/entity_library/5_skeleton/skeleton.gd" id="1_7u8xp"]
+[ext_resource type="Script" uid="uid://dhd1rudvttv4d" path="res://addons/nt_controller/scripts/controller_ai.gd" id="2_1ykkx"]
 [ext_resource type="Texture2D" uid="uid://c02lfqch1a6qd" path="res://entity/shadow.png" id="2_hhkic"]
 [ext_resource type="Texture2D" uid="uid://ck3l0x3lmif7f" path="res://entity/entity_library/5_skeleton/skeleton.png" id="3_kh0mn"]
 
@@ -858,23 +858,23 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n56mt"]
 _data = {
-"RESET": SubResource("Animation_5ofyw"),
-"dead_down": SubResource("Animation_u8sri"),
-"dead_left": SubResource("Animation_lb7q8"),
-"dead_right": SubResource("Animation_hpc8a"),
-"dead_up": SubResource("Animation_hql24"),
-"hurt_down": SubResource("Animation_f6ciq"),
-"hurt_left": SubResource("Animation_kbj3m"),
-"hurt_right": SubResource("Animation_hni7j"),
-"hurt_up": SubResource("Animation_v1rs3"),
-"idle_down": SubResource("Animation_6coyp"),
-"idle_left": SubResource("Animation_lp00u"),
-"idle_right": SubResource("Animation_w6tq7"),
-"idle_up": SubResource("Animation_hxjve"),
-"move_down": SubResource("Animation_pthjd"),
-"move_left": SubResource("Animation_3toda"),
-"move_right": SubResource("Animation_mwqd2"),
-"move_up": SubResource("Animation_v51so")
+&"RESET": SubResource("Animation_5ofyw"),
+&"dead_down": SubResource("Animation_u8sri"),
+&"dead_left": SubResource("Animation_lb7q8"),
+&"dead_right": SubResource("Animation_hpc8a"),
+&"dead_up": SubResource("Animation_hql24"),
+&"hurt_down": SubResource("Animation_f6ciq"),
+&"hurt_left": SubResource("Animation_kbj3m"),
+&"hurt_right": SubResource("Animation_hni7j"),
+&"hurt_up": SubResource("Animation_v1rs3"),
+&"idle_down": SubResource("Animation_6coyp"),
+&"idle_left": SubResource("Animation_lp00u"),
+&"idle_right": SubResource("Animation_w6tq7"),
+&"idle_up": SubResource("Animation_hxjve"),
+&"move_down": SubResource("Animation_pthjd"),
+&"move_left": SubResource("Animation_3toda"),
+&"move_right": SubResource("Animation_mwqd2"),
+&"move_up": SubResource("Animation_v51so")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_by5ok"]
@@ -914,7 +914,7 @@ parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
 libraries = {
-"": SubResource("AnimationLibrary_n56mt")
+&"": SubResource("AnimationLibrary_n56mt")
 }
 
 [node name="Perceptron" type="Area2D" parent="."]

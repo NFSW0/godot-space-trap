@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgfmnlh7rdivx"]
 
-[ext_resource type="Shader" path="res://_other/shader_lib/magnifier/zoom.gdshader" id="1_0rs02"]
+[ext_resource type="Shader" uid="uid://dmskylpwkwreg" path="res://_other/shader_lib/magnifier/zoom.gdshader" id="1_0rs02"]
 [ext_resource type="Texture2D" uid="uid://bh657vuf25keu" path="res://_other/shader_lib/magnifier/Magnifier_glass.png" id="2_mc4rs"]
 [ext_resource type="Texture2D" uid="uid://dgr1v53g7pxkw" path="res://_other/shader_lib/magnifier/Magnifier_ring.png" id="3_ofgo3"]
 

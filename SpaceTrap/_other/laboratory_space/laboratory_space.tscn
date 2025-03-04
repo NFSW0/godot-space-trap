@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://c1ujbgww2tj8k"]
 
-[ext_resource type="Script" path="res://_other/laboratory_space/laboratory_space.gd" id="1_xpwcg"]
+[ext_resource type="Script" uid="uid://mbuq43ngkccs" path="res://_other/laboratory_space/laboratory_space.gd" id="1_xpwcg"]
 [ext_resource type="PackedScene" uid="uid://bdfsrdf8inke7" path="res://ui/ui_library/item_card.tscn" id="2_72doj"]
 [ext_resource type="PackedScene" uid="uid://1igqyd3r3k4w" path="res://world/portal/portal.tscn" id="3_ct5da"]
 [ext_resource type="TileSet" uid="uid://ccp6l7mx0wsqb" path="res://world/tiles/tile_set_2.tres" id="6_2lkn7"]

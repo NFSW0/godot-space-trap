@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8cjqxua5m58w"]
 
-[ext_resource type="Script" path="res://ui/ui_script/message_bar.gd" id="1_1hv4b"]
+[ext_resource type="Script" uid="uid://c31yoflhnjg6n" path="res://ui/ui_script/message_bar.gd" id="1_1hv4b"]
 
 [node name="MessageBar" type="Control"]
 layout_mode = 3

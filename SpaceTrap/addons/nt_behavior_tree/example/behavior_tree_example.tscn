@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgaouuoepcyer"]
 
-[ext_resource type="Script" path="res://addons/nt_behavior_tree/example/behavior_tree_example.gd" id="1_mmsp5"]
-[ext_resource type="Script" path="res://addons/nt_behavior_tree/nodes/behavior_base/behavior_task/behavior_move_2d.gd" id="2_ycg37"]
+[ext_resource type="Script" uid="uid://b86nildy3r5b8" path="res://addons/nt_behavior_tree/example/behavior_tree_example.gd" id="1_mmsp5"]
+[ext_resource type="Script" uid="uid://ck1kjed4t7quy" path="res://addons/nt_behavior_tree/nodes/behavior_base/behavior_task/behavior_move_2d.gd" id="2_ycg37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t0wdn"]
 

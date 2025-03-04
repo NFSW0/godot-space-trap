@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dectuet5xi5i2"]
 
-[ext_resource type="Script" path="res://addons/nt_quadtree/example/quadtree_example.gd" id="1_7foqb"]
+[ext_resource type="Script" uid="uid://df1tihnfuo1es" path="res://addons/nt_quadtree/example/quadtree_example.gd" id="1_7foqb"]
 [ext_resource type="PackedScene" uid="uid://5gtea4od486j" path="res://addons/nt_quadtree/example/rect_2d_example.tscn" id="3_88gto"]
 
 [node name="QuadtreeExample" type="Node2D" node_paths=PackedStringArray("debug_label")]

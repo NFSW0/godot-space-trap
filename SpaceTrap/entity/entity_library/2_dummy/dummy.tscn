@@ -1,7 +1,7 @@
 [gd_scene load_steps=84 format=3 uid="uid://bj3ttf6hmskpr"]
 
-[ext_resource type="Script" path="res://entity/entity_library/2_dummy/dummy.gd" id="1_l3g1x"]
-[ext_resource type="Script" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_f8tq8"]
+[ext_resource type="Script" uid="uid://c5h3nwql70342" path="res://entity/entity_library/2_dummy/dummy.gd" id="1_l3g1x"]
+[ext_resource type="Script" uid="uid://1cgtw7yetdod" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_f8tq8"]
 [ext_resource type="Texture2D" uid="uid://c6sl6ga3miuep" path="res://entity/entity_library/2_dummy/dummy.png" id="2_jwu2f"]
 [ext_resource type="Texture2D" uid="uid://c02lfqch1a6qd" path="res://entity/shadow.png" id="2_tg1ka"]
 
@@ -794,23 +794,23 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xxkh0"]
 _data = {
-"RESET": SubResource("Animation_ng7mg"),
-"dead_down": SubResource("Animation_tymas"),
-"dead_left": SubResource("Animation_1roii"),
-"dead_right": SubResource("Animation_tmrov"),
-"dead_up": SubResource("Animation_upctb"),
-"hurt_down": SubResource("Animation_itlm1"),
-"hurt_left": SubResource("Animation_hcf3u"),
-"hurt_right": SubResource("Animation_v7tsx"),
-"hurt_up": SubResource("Animation_4ees7"),
-"idle_down": SubResource("Animation_naul2"),
-"idle_left": SubResource("Animation_tuldv"),
-"idle_right": SubResource("Animation_7n4jn"),
-"idle_up": SubResource("Animation_dvjs7"),
-"move_down": SubResource("Animation_qgf1l"),
-"move_left": SubResource("Animation_6ontq"),
-"move_right": SubResource("Animation_sb4of"),
-"move_up": SubResource("Animation_jwhf4")
+&"RESET": SubResource("Animation_ng7mg"),
+&"dead_down": SubResource("Animation_tymas"),
+&"dead_left": SubResource("Animation_1roii"),
+&"dead_right": SubResource("Animation_tmrov"),
+&"dead_up": SubResource("Animation_upctb"),
+&"hurt_down": SubResource("Animation_itlm1"),
+&"hurt_left": SubResource("Animation_hcf3u"),
+&"hurt_right": SubResource("Animation_v7tsx"),
+&"hurt_up": SubResource("Animation_4ees7"),
+&"idle_down": SubResource("Animation_naul2"),
+&"idle_left": SubResource("Animation_tuldv"),
+&"idle_right": SubResource("Animation_7n4jn"),
+&"idle_up": SubResource("Animation_dvjs7"),
+&"move_down": SubResource("Animation_qgf1l"),
+&"move_left": SubResource("Animation_6ontq"),
+&"move_right": SubResource("Animation_sb4of"),
+&"move_up": SubResource("Animation_jwhf4")
 }
 
 [node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["Player"]]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=52 format=3 uid="uid://d3auvj08unneg"]
 
 [ext_resource type="Texture2D" uid="uid://b5x4jhjfx5gee" path="res://entity/entity_library/3_ghost/ghost.png" id="1_c3c33"]
-[ext_resource type="Script" path="res://entity/entity_library/3_ghost/ghost.gd" id="1_ef6u2"]
-[ext_resource type="Script" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_vymiy"]
+[ext_resource type="Script" uid="uid://bru5x1pcxoiud" path="res://entity/entity_library/3_ghost/ghost.gd" id="1_ef6u2"]
+[ext_resource type="Script" uid="uid://1cgtw7yetdod" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_vymiy"]
 
 [sub_resource type="Resource" id="Resource_dhmus"]
 script = ExtResource("2_vymiy")
@@ -366,11 +366,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y6ucc"]
 _data = {
-"RESET": SubResource("Animation_023br"),
-"move_down": SubResource("Animation_1gec8"),
-"move_left": SubResource("Animation_dm7pu"),
-"move_right": SubResource("Animation_06gsm"),
-"move_up": SubResource("Animation_swv21")
+&"RESET": SubResource("Animation_023br"),
+&"move_down": SubResource("Animation_1gec8"),
+&"move_left": SubResource("Animation_dm7pu"),
+&"move_right": SubResource("Animation_06gsm"),
+&"move_up": SubResource("Animation_swv21")
 }
 
 [node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
