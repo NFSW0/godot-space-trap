@@ -23,11 +23,11 @@ func append_buff(buff_id:int, buff_target_node_path:NodePath, config_data:Dictio
 		print("多人游戏客户端忽略附益添加事件")
 		return
 	if not buff_library.has(buff_id):
-		print("忽略未知附益:", buff_id)
+		print("忽略附益，未知附益:", buff_id)
 		return
 	var buff_target:Node = get_node_or_null(buff_target_node_path)
 	if buff_target == null:
-		print("忽略未知附益目标:", buff_target_node_path)
+		print("忽略附益，未知附益目标:", buff_target_node_path)
 		return
 	var new_buff:Buff = (buff_library[buff_id] as Buff).new(buff_target, config_data)
 	if new_buff.stackable(active_buff_array):

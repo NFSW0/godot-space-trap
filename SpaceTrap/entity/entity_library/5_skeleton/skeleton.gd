@@ -6,22 +6,46 @@ extends InfluenceableEntity2D
 #class_name Skeleton
 
 
-@export var animation_tree: AnimationTree ## 动画节点
-@export var navigation_agent_2d: NavigationAgent2D ## 导航节点
-@export var perceptron: Area2D ## 感知节点
-
-
 func _ready() -> void:
+	_connect_health_signal()
 	_set_brain()
 
 
+#region 生命
+signal health_changed(old_value: float, new_value: float, max_health: float)
+@export var health_max: float = 20.0:
+	set(value):
+		if value != health_max:
+			value = clamp(value, 0, INF)
+			health_changed.emit(health_old, health_current, value)
+			health_max = value
+@export var health_current: float = 20.0:
+	set(value):
+		if value != health_current:
+			value = clamp(value, 0, health_max)
+			health_changed.emit(health_old, value, health_max)
+			health_old = health_current
+			health_current = value
+var health_old: float = 20.0
+func _connect_health_signal(node:Node = self):
+	node.connect("health_changed", _on_health_changed)
+func _on_health_changed(_old_value: float, new_value: float, max_health: float):
+	if new_value <= 0 or max_health <= 0:
+		_death()
+		return
+#endregion 生命
+
+
+#region 动画
+@export var animation_tree: AnimationTree ## 动画节点
 ## 过渡到另一个动画 传入动画名称
 func travel_animation(animation_name: String):
 	if animation_tree:
 		animation_tree.get("parameters/playback").travel(animation_name)
+#endregion 动画
 
 
-#region 智能
+#region 智能-决策
 func _update_local_state() -> Dictionary:
 	var local_state = {}
 	
@@ -33,7 +57,7 @@ func _update_local_state() -> Dictionary:
 	if not target_position: return local_state
 	local_state["target_position"] = target_position
 	
-	var target_in_range = position.distance_to(target_position) < 5
+	var target_in_range = position.distance_to(target_position) < navigation_agent_2d.target_desired_distance
 	local_state["target_in_range"] = target_in_range
 	
 	return local_state
@@ -70,10 +94,11 @@ func _set_brain():
 		)
 	)
 	controller.set("ai_brain", ai_brain)
-#endregion 智能
+#endregion 智能-决策
 
 
-#region 感知
+#region 智能-感知
+@export var perceptron: Area2D ## 感知节点
 # 感知(用于确定行动目标)
 func _perceptual() -> Node:
 	var nodes_in_area = perceptron.get_overlapping_areas() + perceptron.get_overlapping_bodies()
@@ -89,7 +114,7 @@ func _compare_priority(a: Node, b: Node) -> int:
 	var dist_a = position.distance_to(a.position)
 	var dist_b = position.distance_to(b.position)
 	return dist_a < dist_b
-#endregion 感知
+#endregion 智能-感知
 
 
 #region 行动
@@ -104,6 +129,7 @@ func _execute_command(command: Dictionary) -> void:
 
 
 ## 定点移动
+@export var navigation_agent_2d: NavigationAgent2D ## 导航节点
 func _move_to(data: Vector2 = Vector2()) -> void:
 	if navigation_agent_2d:
 		var map_rid = navigation_agent_2d.get_navigation_map()
@@ -117,13 +143,38 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 ## 定向移动
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
 	direction = _direction
-	travel_animation("Move")
 	animation_tree.set("parameters/Move/blend_position", direction)
+	travel_animation("Move")
 	velocity = direction.normalized() * speed
 	move_and_slide()
 
 
 ## 攻击
 func _attack(_data = null)-> void:
-	print("骷髅攻击动画(包含帧事件)")
+	print("(骷髅攻击动画)")
+	#health_current -= 20
+	#_death()
+	do_influence(hurt)
+func hurt(_entity: InfluenceableEntity2D):
+	health_current -= 7
+	if not health_current > 0:
+		return
+	
+	controllable = false
+	var timer = get_tree().create_timer(0.5)
+	timer.connect("timeout", func(): controllable = true)
+	
+	animation_tree.set("parameters/Hurt/blend_position", direction)
+	travel_animation("Hurt")
+	
+	var buff_manager = get_node_or_null("/root/BuffManager")
+	if buff_manager:
+		buff_manager.append_buff(3, get_path(), {"knockback_velocity":direction.normalized() * speed * -1})
+
+
+## 死亡
+func _death():
+	controllable = false
+	animation_tree.set("parameters/Dead/blend_position", direction)
+	travel_animation("Dead")
 #endregion 行动

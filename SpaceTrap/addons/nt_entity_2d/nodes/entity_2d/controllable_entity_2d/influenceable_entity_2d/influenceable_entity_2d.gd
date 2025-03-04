@@ -7,7 +7,7 @@ var invincible: bool = false ## 是否无敌
 
 
 ## 产生影响 influence(self)方法应接收InfluenceableEntity2D参数
-func do_influence(influence: Callable, invincible_time: float = 1.0):
+func do_influence(influence: Callable, invincible_time: float = 0.5):
 	if invincible:
 		return
 	if invincible_time > 0:

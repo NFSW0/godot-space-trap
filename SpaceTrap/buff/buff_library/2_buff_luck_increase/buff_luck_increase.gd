@@ -4,8 +4,10 @@
 extends Buff
 class_name BuffLuckIncrease
 
+
 ## 附益叠层逻辑
 func stackable(existing_buff_array:Array[Buff]) -> bool:
+	# 清除对应目标的调试附益
 	for buff in existing_buff_array:
 		if buff.buff_target == buff_target and buff.buff_id == 1:
 			buff.current_duration_remain = 0
@@ -16,15 +18,6 @@ func stackable(existing_buff_array:Array[Buff]) -> bool:
 func start():
 	print("运气+1")
 
-## 附益更新
-func _physics_process(delta: float):
-	current_duration_remain -= delta
-	if buff_tick_interval > 0:
-		if current_tick_remain > 0:
-			current_tick_remain -= delta
-		else:
-			current_tick_count += 1
-			current_tick_remain = buff_tick_interval
 
 ## 附益消除逻辑, 传入已有附益, 用于影响自身数据
 func end(_existing_buff_array:Array[Buff]):

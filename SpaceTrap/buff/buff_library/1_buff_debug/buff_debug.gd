@@ -14,7 +14,7 @@ func start():
 
 ## 附益输入监听逻辑
 func _input(event: InputEvent) -> void:
-	if event.is_released():
+	if event.is_released() and not event is InputEventMouseMotion:
 		print("调试输入:", event.as_text())
 
 

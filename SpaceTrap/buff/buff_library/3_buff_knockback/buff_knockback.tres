@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BuffKnockback" load_steps=2 format=3 uid="uid://mq0wclugvx0"]
+
+[ext_resource type="Script" uid="uid://co0nu0gqhhn1l" path="res://buff/buff_library/3_buff_knockback/buff_knockback.gd" id="1_pdt21"]
+
+[resource]
+script = ExtResource("1_pdt21")
+knockback_velocity = Vector2(0, 0)
+buff_id = 3
+buff_tags = Array[int]([])
+buff_max_stack = 1
+buff_max_duration = 300.0
+buff_permanent = false
+buff_tick_interval = 0.2
+current_stack = 1
+current_tick_count = 0
+current_tick_remain = 0.2
+current_duration_remain = 0.5
+metadata/_custom_type_script = "uid://co0nu0gqhhn1l"

@@ -20,12 +20,13 @@ var buff_target:Node = null ## 附益目标
 var buff_source:Node = null ## 附益来源
 
 
-## 附益新建逻辑, 返回自身复制体
+## 新建附益(从附益库中复制并调整数据)
 func new(_buff_target:Node, config_data:Dictionary = {}) -> Buff:
-	buff_target = _buff_target
+	var new_buff = self.duplicate(true)
+	new_buff.buff_target = _buff_target
 	for key in config_data.keys():
-		set(key,config_data[key])
-	return self.duplicate(true)
+		new_buff.set(key,config_data[key])
+	return new_buff
 
 
 ## 附益叠层逻辑, 在附益添加前调用, 传入目标对象已有的附益集
@@ -56,6 +57,15 @@ func _input(_event: InputEvent) -> void:
 ## 附益更新逻辑
 func _physics_process(_delta: float):
 	pass
+	## 持续时间更新
+	#current_duration_remain -= delta
+	## 间歇时间更新
+	#if buff_tick_interval > 0:
+		#if current_tick_remain > 0:
+			#current_tick_remain -= delta
+		#else:
+			#current_tick_count += 1
+			#current_tick_remain = buff_tick_interval
 
 
 ## 附益消除逻辑, 传入已有附益, 可用于影响自身数据
