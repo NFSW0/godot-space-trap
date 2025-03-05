@@ -137,15 +137,22 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 		# 已更新寻路且未抵达最终位置
 		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
 			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
-			_move_toward(next_path_position - position)
+			velocity = (next_path_position - position) * speed
+			animation_tree.set("parameters/Move/blend_position", velocity)
+			travel_animation("Move")
+			#_move_toward(next_path_position - position)
+			navigation_agent_2d.set_velocity(velocity)
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
+	move_and_slide()
 
 
 ## 定向移动
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
 	direction = _direction
-	animation_tree.set("parameters/Move/blend_position", direction)
-	travel_animation("Move")
 	velocity = direction.normalized() * speed
+	animation_tree.set("parameters/Move/blend_position", velocity)
+	travel_animation("Move")
 	move_and_slide()
 
 
@@ -162,7 +169,7 @@ func hurt(_entity: InfluenceableEntity2D):
 	var timer = get_tree().create_timer(0.5)
 	timer.connect("timeout", func(): controllable = true)
 	
-	animation_tree.set("parameters/Hurt/blend_position", direction)
+	animation_tree.set("parameters/Hurt/blend_position", velocity)
 	travel_animation("Hurt")
 	
 	var buff_manager = get_node_or_null("/root/BuffManager")

@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=4 uid="uid://brjpuclpx76uy"]
+[gd_scene load_steps=6 format=4 uid="uid://brjpuclpx76uy"]
 
 [ext_resource type="TileSet" uid="uid://ccp6l7mx0wsqb" path="res://world/tiles/tile_set_2.tres" id="1_6xmxd"]
+[ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="2_tcf2h"]
+[ext_resource type="PackedScene" uid="uid://b300pimxmvuvb" path="res://entity/entity_library/5_skeleton/skeleton.tscn" id="3_h5o24"]
+[ext_resource type="Script" uid="uid://dhd1rudvttv4d" path="res://addons/nt_controller/scripts/controller_ai.gd" id="4_mmdvd"]
+
+[sub_resource type="Resource" id="Resource_h5o24"]
+resource_local_to_scene = true
+script = ExtResource("4_mmdvd")
 
 [node name="World" type="Node2D"]
 
@@ -11,6 +18,7 @@ tile_map_data = PackedByteArray("AAABAAEAAQACAAAAAAABAAAAAQACAAEAAAABAP//AQAAAAE
 tile_set = ExtResource("1_6xmxd")
 
 [node name="Middle" type="TileMapLayer" parent="Room1"]
+tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAA=")
 tile_set = ExtResource("1_6xmxd")
 
 [node name="Top" type="TileMapLayer" parent="Room1"]
@@ -18,3 +26,16 @@ tile_set = ExtResource("1_6xmxd")
 
 [node name="Preview" type="TileMapLayer" parent="Room1"]
 tile_set = ExtResource("1_6xmxd")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Room1"]
+radius = 12.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Dummy" parent="." instance=ExtResource("2_tcf2h")]
+position = Vector2(48, 39)
+speed = 100.0
+
+[node name="Skeleton" parent="." instance=ExtResource("3_h5o24")]
+position = Vector2(-84, -41)
+controller = SubResource("Resource_h5o24")
