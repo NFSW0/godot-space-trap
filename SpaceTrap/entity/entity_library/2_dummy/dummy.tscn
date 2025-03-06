@@ -815,6 +815,7 @@ _data = {
 
 [node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["Player"]]
 collision_layer = 14
+collision_mask = 17
 script = ExtResource("1_l3g1x")
 animation_tree = NodePath("AnimationTree")
 controller = SubResource("Resource_k5uh3")

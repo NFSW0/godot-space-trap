@@ -118,12 +118,13 @@ locale/locale_filter_mode=0
 
 [layer_names]
 
-2d_physics/layer_1="Hitable(可被阻挡的)"
+2d_physics/layer_1="墙"
 2d_navigation/layer_1="walkable"
 2d_physics/layer_2="Portable(可被传送的)"
 2d_navigation/layer_2="flyable"
 2d_physics/layer_3="Appreciable(可被感知的)"
 2d_physics/layer_4="Hurtable(可被伤害的)"
+2d_physics/layer_5="水"
 
 [physics]
 
