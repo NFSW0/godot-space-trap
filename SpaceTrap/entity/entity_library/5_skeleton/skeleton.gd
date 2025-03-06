@@ -130,6 +130,7 @@ func _execute_command(command: Dictionary) -> void:
 
 ## 定点移动
 @export var navigation_agent_2d: NavigationAgent2D ## 导航节点
+var nav_tick = false ## 用于处理Nav避障更新的无限移动
 func _move_to(data: Vector2 = Vector2()) -> void:
 	if navigation_agent_2d:
 		var map_rid = navigation_agent_2d.get_navigation_map()
@@ -137,14 +138,17 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 		# 已更新寻路且未抵达最终位置
 		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
 			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
-			velocity = (next_path_position - position) * speed
-			animation_tree.set("parameters/Move/blend_position", velocity)
-			travel_animation("Move")
 			#_move_toward(next_path_position - position)
-			navigation_agent_2d.set_velocity(velocity)
+			var target_velocity = (next_path_position - position).normalized() * speed
+			animation_tree.set("parameters/Move/blend_position", target_velocity)
+			travel_animation("Move")
+			nav_tick = true
+			navigation_agent_2d.set_velocity(target_velocity)
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	velocity = safe_velocity
-	move_and_slide()
+	if nav_tick and controllable:
+		velocity = safe_velocity
+		move_and_slide()
+		nav_tick = false
 
 
 ## 定向移动
