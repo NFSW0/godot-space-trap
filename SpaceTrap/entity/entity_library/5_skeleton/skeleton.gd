@@ -130,7 +130,7 @@ func _execute_command(command: Dictionary) -> void:
 
 ## 定点移动
 @export var navigation_agent_2d: NavigationAgent2D ## 导航节点
-var nav_tick = false ## 用于处理Nav避障更新的无限移动
+var velocity_move_to: Vector2 = Vector2() ## 避障计算后的速度
 func _move_to(data: Vector2 = Vector2()) -> void:
 	if navigation_agent_2d:
 		var map_rid = navigation_agent_2d.get_navigation_map()
@@ -138,26 +138,18 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 		# 已更新寻路且未抵达最终位置
 		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
 			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
-			#_move_toward(next_path_position - position)
-			var target_velocity = (next_path_position - position).normalized() * speed
-			animation_tree.set("parameters/Move/blend_position", target_velocity)
-			travel_animation("Move")
-			nav_tick = true
-			navigation_agent_2d.set_velocity(target_velocity)
+			navigation_agent_2d.set_velocity((next_path_position - position).normalized() * speed)
+			# 避障计算更新独立进行，如果在信号方法直接设置速度会导致不断移动
+			if velocity_move_to:
+				_move(velocity_move_to)
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	if nav_tick and controllable:
-		velocity = safe_velocity
-		move_and_slide()
-		nav_tick = false
+	velocity_move_to = safe_velocity
 
 
 ## 定向移动
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
 	direction = _direction
-	velocity = direction.normalized() * speed
-	animation_tree.set("parameters/Move/blend_position", velocity)
-	travel_animation("Move")
-	move_and_slide()
+	_move(direction.normalized() * speed)
 
 
 ## 攻击
@@ -168,17 +160,13 @@ func hurt(_entity: InfluenceableEntity2D):
 	health_current -= 7
 	if not health_current > 0:
 		return
-	
-	controllable = false
-	var timer = get_tree().create_timer(0.5)
-	timer.connect("timeout", func(): controllable = true)
-	
+	# 动画
 	animation_tree.set("parameters/Hurt/blend_position", velocity)
 	travel_animation("Hurt")
-	
+	# 添加击退Buff(暂时取反向的速度用于击退)
 	var buff_manager = get_node_or_null("/root/BuffManager")
 	if buff_manager:
-		buff_manager.append_buff(3, get_path(), {"knockback_velocity":direction.normalized() * speed * -1})
+		buff_manager.append_buff(3, get_path(), {"knockback_velocity":velocity * -1})
 
 
 ## 死亡
@@ -187,3 +175,12 @@ func _death():
 	animation_tree.set("parameters/Dead/blend_position", direction)
 	travel_animation("Dead")
 #endregion 行动
+
+
+#region 其他
+func _move(final_velocity: Vector2 = Vector2()):
+	velocity = final_velocity
+	animation_tree.set("parameters/Move/blend_position", final_velocity)
+	travel_animation("Move")
+	move_and_slide()
+#endregion 其他
