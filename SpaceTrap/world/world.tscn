@@ -1,9 +1,18 @@
-[gd_scene load_steps=6 format=4 uid="uid://brjpuclpx76uy"]
+[gd_scene load_steps=8 format=4 uid="uid://brjpuclpx76uy"]
 
 [ext_resource type="TileSet" uid="uid://ccp6l7mx0wsqb" path="res://world/tiles/tile_set_2.tres" id="1_6xmxd"]
 [ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="2_tcf2h"]
 [ext_resource type="PackedScene" uid="uid://b300pimxmvuvb" path="res://entity/entity_library/5_skeleton/skeleton.tscn" id="3_h5o24"]
 [ext_resource type="Script" uid="uid://dhd1rudvttv4d" path="res://addons/nt_controller/scripts/controller_ai.gd" id="4_mmdvd"]
+
+[sub_resource type="Gradient" id="Gradient_h5o24"]
+colors = PackedColorArray(1, 0.411765, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mmdvd"]
+gradient = SubResource("Gradient_h5o24")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
 
 [sub_resource type="Resource" id="Resource_h5o24"]
 resource_local_to_scene = true
@@ -39,6 +48,13 @@ tile_set = ExtResource("1_6xmxd")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Room1"]
 radius = 12.0
+
+[node name="PointLight2D" type="PointLight2D" parent="Room1"]
+scale = Vector2(2.48104, 2.48104)
+texture = SubResource("GradientTexture2D_mmdvd")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.548963, 0.548963, 0.548963, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

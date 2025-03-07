@@ -1132,18 +1132,18 @@ entity_id = 5
 speed = 50.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
 texture = ExtResource("2_hhkic")
+offset = Vector2(0, -7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_gj4ca")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_cbvsg")
 animation = &"idle_down"
 autoplay = "idle_down"
+offset = Vector2(0, -7)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath(".")
@@ -1172,6 +1172,5 @@ path_postprocessing = 1
 avoidance_enabled = true
 radius = 14.0
 max_speed = 50.0
-debug_enabled = true
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
