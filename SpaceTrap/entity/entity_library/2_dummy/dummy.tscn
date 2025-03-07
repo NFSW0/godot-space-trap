@@ -814,6 +814,7 @@ _data = {
 }
 
 [node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["Player"]]
+y_sort_enabled = true
 collision_layer = 14
 collision_mask = 17
 script = ExtResource("1_l3g1x")
@@ -825,15 +826,15 @@ entity_id = 2
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_mw2jo")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_tg1ka")
+offset = Vector2(0, -7)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_tury1")
 animation = &"idle_dowm"
 autoplay = "idle_dowm"
-
-[node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
-texture = ExtResource("2_tg1ka")
+offset = Vector2(0, -7)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath(".")

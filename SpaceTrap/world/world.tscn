@@ -50,6 +50,5 @@ controller = SubResource("Resource_h5o24")
 
 [node name="Dummy" parent="." instance=ExtResource("2_tcf2h")]
 z_index = 1
-y_sort_enabled = true
-position = Vector2(-129, 66)
+position = Vector2(120, -19)
 speed = 100.0
