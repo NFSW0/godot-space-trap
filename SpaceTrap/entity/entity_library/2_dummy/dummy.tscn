@@ -814,6 +814,7 @@ _data = {
 }
 
 [node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["Player"]]
+z_index = 1
 y_sort_enabled = true
 collision_layer = 14
 collision_mask = 17
@@ -821,6 +822,7 @@ script = ExtResource("1_l3g1x")
 animation_tree = NodePath("AnimationTree")
 controller = SubResource("Resource_k5uh3")
 entity_id = 2
+speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708

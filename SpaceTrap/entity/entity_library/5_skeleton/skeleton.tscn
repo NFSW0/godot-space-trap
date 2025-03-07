@@ -1122,6 +1122,7 @@ _data = {
 radius = 80.0
 
 [node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "perceptron", "navigation_agent_2d")]
+z_index = 1
 collision_layer = 10
 script = ExtResource("1_7u8xp")
 animation_tree = NodePath("AnimationTree")
@@ -1171,6 +1172,5 @@ target_desired_distance = 20.0
 path_postprocessing = 1
 avoidance_enabled = true
 radius = 14.0
-max_speed = 50.0
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
