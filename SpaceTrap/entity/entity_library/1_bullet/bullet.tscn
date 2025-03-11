@@ -50,7 +50,7 @@ radius = 8.0
 
 [node name="Bullet" type="CharacterBody2D" node_paths=PackedStringArray("shape_cast_2d")]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 0
 script = ExtResource("1_8a1me")
 shape_cast_2d = NodePath("ShapeCast2D")
 entity_id = 1
@@ -66,8 +66,11 @@ frame_progress = 0.40307
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 shape = SubResource("CircleShape2D_ycg8f")
 target_position = Vector2(0, 0)
+collision_mask = 9
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_l4e4x")

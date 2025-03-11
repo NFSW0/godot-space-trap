@@ -1,4 +1,4 @@
-## 弹幕基础脚本
+## 基础弹幕
 extends Entity2D
 #class_name Bullet
 
@@ -7,7 +7,7 @@ extends Entity2D
 
 
 func _physics_process(delta: float) -> void:
-	var motion = speed * delta * direction.normalized() / scale # 除以scale以维持视觉速度
+	var motion = speed * delta * direction.normalized() / scale # 除以scale以维持视觉速度 TODO 0~1会导致加速
 	position += motion
 
 

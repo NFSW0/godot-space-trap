@@ -21,6 +21,7 @@ text = "1-子弹
 2-假人
 3-调试附益
 4-幸运附益(关闭调试附益)
+5-特效测试
 菜单选择后，鼠标左键生成，按住拖拽可改变速度"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]

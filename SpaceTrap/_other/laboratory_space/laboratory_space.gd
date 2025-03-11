@@ -52,6 +52,8 @@ func _input(event: InputEvent) -> void:
 		if event.as_text() == "4":
 			if buff_manager:
 				buff_manager.append_buff(2,get_path())
+		if event.as_text() == "5":
+			pass
 
 
 ## 点击建筑按钮

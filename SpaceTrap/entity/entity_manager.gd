@@ -1,7 +1,7 @@
 ## 实体管理器
 ## 用于实现多人同步创建实体
 ## 为避免场景切换实体销毁问题，统一为场内实体
-## 因此场景切换后设置多人同步节点为场景节点
+## 因此场景切换后需要设置多人同步节点为场景节点
 extends MultiplayerSpawner
 class_name _EntityManager
 
@@ -11,7 +11,7 @@ var entity_library = {} # 策划实体数据(id, packed_scene)
 var entity_normal_data = {} # 默认实体数据(id, data)
 var entity_final_data = {} # 最终实体数据(游戏中产生的长期影响实体生成的数据)(id, data)
 var unique_id: int = 0 # 用于产生唯一名称
-var data_queue: Array = [] # 记录队列长度
+var data_queue: Array = [] # 缓存生成请求
 
 
 ## 生成实体
@@ -39,6 +39,7 @@ func generate_entity_immediately(data:Dictionary):
 ## 重设承载实体的节点, 通常在场景切换后调用, 默认情况下会设置为当前场景的根节点
 func update_spawn_path(node_path:NodePath = get_tree().current_scene.get_path()):
 	set_spawn_path(node_path)
+
 
 
 @rpc("any_peer","call_local","reliable")

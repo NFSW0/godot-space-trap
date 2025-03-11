@@ -21,4 +21,4 @@ controller = SubResource("Resource_juivl")
 [node name="Dummy" parent="." instance=ExtResource("4_nb5i2")]
 position = Vector2(95, -16)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Dummy"]

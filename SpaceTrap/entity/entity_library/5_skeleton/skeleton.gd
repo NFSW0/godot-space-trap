@@ -139,7 +139,7 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
 			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
 			navigation_agent_2d.set_velocity((next_path_position - position).normalized() * speed)
-			# 避障计算更新独立进行，如果在信号方法直接设置速度会导致不断移动
+			# 避障计算独立进行，因此在信号方法直接设置速度会导致不断移动
 			if velocity_move_to:
 				_move(velocity_move_to)
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
