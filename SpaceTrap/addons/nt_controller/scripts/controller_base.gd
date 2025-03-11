@@ -6,9 +6,9 @@ class_name ControllerBase
 enum COMMAND_TYPE {
 	MOVE_TOWARD, ## 定向移动 - Vec2 | Vec3
 	MOVE_TO, ## 定点移动 - Vec2 | Vec3
-	INTERACT, ## 是否互动 - Bool
-	ATTACK, ## 是否攻击 - Bool
-	DEFENSE, ## 是否防御 - Bool
+	INTERACT, ## 互动 - Vec2 | Vec3
+	ATTACK, ## 攻击 - Vec2 | Vec3
+	DEFENSE, ## 防御 - Vec2 | Vec3
 }
 
 
