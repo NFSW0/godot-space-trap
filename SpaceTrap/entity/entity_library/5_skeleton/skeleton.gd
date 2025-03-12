@@ -39,29 +39,14 @@ func _on_health_changed(_old_value: float, new_value: float, max_health: float):
 #region 动画
 @export var animation_tree: AnimationTree ## 动画节点
 ## 过渡到另一个动画 传入动画名称
-func travel_animation(animation_name: String):
+func travel_animation(animation_name: String, reset_on_teleport: bool = true):
 	if animation_tree:
-		animation_tree.get("parameters/playback").travel(animation_name)
+		animation_tree.set("parameters/%s/blend_position" % animation_name, velocity.normalized())
+		animation_tree.get("parameters/playback").travel(animation_name, reset_on_teleport)
 #endregion 动画
 
 
 #region 智能-决策
-func _update_local_state() -> Dictionary:
-	var local_state = {}
-	
-	var target = _perceptual()
-	if not target: return local_state
-	local_state["target"] = target
-	
-	var target_position = target.get("position")
-	if not target_position: return local_state
-	local_state["target_position"] = target_position
-	
-	var target_in_range = position.distance_to(target_position) < navigation_agent_2d.target_desired_distance
-	local_state["target_in_range"] = target_in_range
-	
-	return local_state
-
 func _set_brain():
 	var ai_brain = GOAP_AIBrain.new()
 	# 设置世界状态更新方法
@@ -90,10 +75,28 @@ func _set_brain():
 			{"target_in_range": true},
 			{"target_destroyed": true},
 			2.0,
-			func(_state): return {ControllerBase.COMMAND_TYPE.ATTACK: true}
+			func(state): return {ControllerBase.COMMAND_TYPE.ATTACK: state["target"].get("position")}
 		)
 	)
 	controller.set("ai_brain", ai_brain)
+
+
+# 更新本地状态条件
+func _update_local_state() -> Dictionary:
+	var local_state = {}
+	
+	var target = _perceptual()
+	if not target: return local_state
+	local_state["target"] = target
+	
+	var target_position = target.get("position")
+	if not target_position: return local_state
+	local_state["target_position"] = target_position
+	
+	var target_in_range = position.distance_to(target_position) < navigation_agent_2d.target_desired_distance
+	local_state["target_in_range"] = target_in_range
+	
+	return local_state
 #endregion 智能-决策
 
 
@@ -153,15 +156,33 @@ func _move_toward(_direction: Vector2 = Vector2()) -> void:
 
 
 ## 攻击
-func _attack(_data = null)-> void:
-	print("(攻击动画)")
-	do_influence(hurt)
+var attack_position = position # 进攻坐标
+var attack_cooldown = 1.0  # 攻击间隔
+var can_attacking = true # 可否攻击
+func _attack(data: Vector2 = Vector2())-> void:
+	# 攻击冷却锁
+	if not can_attacking:
+		return
+	can_attacking = false
+	get_tree().create_timer(attack_cooldown).connect("timeout", func():can_attacking = true)
+	
+	attack_position = data
+	
+	travel_animation("Attack")
+	animation_tree.get("parameters/playback").start("Attack", true)
+func animation_attack():
+	# 通过弹幕与特效产生伤害(角色不能自由移动)
+	var entity_manager = get_node_or_null("/root/EntityManager")
+	if entity_manager:
+		var attack_direction = (attack_position - position).normalized()
+		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 6, "position":position, "rotation":atan2(attack_direction.y, attack_direction.x), "damage": 1})
+
+#受伤模拟
 func hurt(_entity: InfluenceableEntity2D):
 	health_current -= 7
 	if not health_current > 0:
 		return
 	# 动画
-	animation_tree.set("parameters/Hurt/blend_position", velocity)
 	travel_animation("Hurt")
 	# 添加击退Buff(暂时取反向的速度用于击退)
 	var buff_manager = get_node_or_null("/root/BuffManager")
@@ -172,7 +193,6 @@ func hurt(_entity: InfluenceableEntity2D):
 ## 死亡
 func _death():
 	controllable = false
-	animation_tree.set("parameters/Dead/blend_position", direction)
 	travel_animation("Dead")
 #endregion 行动
 
@@ -180,7 +200,6 @@ func _death():
 #region 其他
 func _move(final_velocity: Vector2 = Vector2()):
 	velocity = final_velocity
-	animation_tree.set("parameters/Move/blend_position", final_velocity)
 	travel_animation("Move")
 	move_and_slide()
 #endregion 其他
