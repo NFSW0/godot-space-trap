@@ -5,7 +5,7 @@ class_name ControllableEntity2D
 @export var controller: ControllerBase = ControllerAI.new(): ## 控制器
 	set(value):
 		controller = value
-var controllable = true ## 是否可控
+@export var controllable = true ## 是否可控 攻击和受击中存在失控时间
 
 
 # 更新

@@ -20,7 +20,14 @@ scale_min = 2.0
 scale_max = 10.0
 color_ramp = SubResource("GradientTexture1D_kfupl")
 
-[node name="EffectHit" type="GPUParticles2D"]
+[node name="EffectHit" type="Node2D" node_paths=PackedStringArray("particles")]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_e3g5u")
+entity_id = 6
+particles = NodePath("EffectHit")
+
+[node name="EffectHit" type="GPUParticles2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 emitting = false
@@ -29,7 +36,5 @@ explosiveness = 1.0
 visibility_rect = Rect2(-60, -40, 70, 80)
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_e3g5u")
-script = ExtResource("1_e3g5u")
-entity_id = 6
 
-[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="finished" from="EffectHit" to="." method="_on_finished"]

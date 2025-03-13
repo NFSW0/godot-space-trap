@@ -171,7 +171,7 @@ func _attack(data: Vector2 = Vector2())-> void:
 	travel_animation("Attack")
 	animation_tree.get("parameters/playback").start("Attack", true)
 func animation_attack():
-	# 通过弹幕与特效产生伤害(角色不能自由移动)
+	# 通过弹幕与特效产生伤害(要求角色不能自由移动)
 	var entity_manager = get_node_or_null("/root/EntityManager")
 	if entity_manager:
 		var attack_direction = (attack_position - position).normalized()
