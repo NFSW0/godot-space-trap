@@ -25,9 +25,9 @@ z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_e3g5u")
 entity_id = 6
-particles = NodePath("EffectHit")
+particles = NodePath("GPUParticles2D")
 
-[node name="EffectHit" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 emitting = false
@@ -37,4 +37,9 @@ visibility_rect = Rect2(-60, -40, 70, 80)
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_e3g5u")
 
-[connection signal="finished" from="EffectHit" to="." method="_on_finished"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -2, 15, -5, 20, 0, 15, 5, 0, 2)
+
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_finished"]
