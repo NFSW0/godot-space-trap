@@ -20,12 +20,13 @@ scale_min = 2.0
 scale_max = 10.0
 color_ramp = SubResource("GradientTexture1D_kfupl")
 
-[node name="EffectHit" type="Node2D" node_paths=PackedStringArray("particles")]
+[node name="EffectHit" type="Node2D" node_paths=PackedStringArray("particles", "area_2d")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_e3g5u")
 entity_id = 6
 particles = NodePath("GPUParticles2D")
+area_2d = NodePath("Area2D")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 1
