@@ -1,3 +1,4 @@
+## 碰撞处理器
 extends Node
 class_name _HitManager
 
@@ -6,7 +7,7 @@ var request_list:Array[HitData] = [] # 待处理的碰撞请求
 var process_limit = 100 # 最大批处理量
 
 
-## 添加碰撞事件
+## 添加待处理碰撞
 func append_hit_event(data:Dictionary):
 	var new_request = HitData.instantiate(data)
 	if new_request == null:
@@ -41,26 +42,30 @@ func _physics_process(_delta: float) -> void:
 func _handle_hit(node1:Node, node2:Node, normal:Vector2):
 	var type1 = node1.get("mass")
 	var type2 = node2.get("mass")
-	if type1 == null:
-		_handle_single(node2, normal) # 处理node2
-	elif type2 == null:
-		_handle_single(node1, normal) # 处理node1
+	if type1 == null and type2 == null:
+		return
+	if type1 == null or type2 == null:
+		_handle_single(node1 if type2 == null else node2, normal)
 	else:
-		_handle_double(node1, node2, normal, (type1 == type2)) # 处理双动量体碰撞
+		_handle_double(node1, node2, normal, (type1 == type2))
 
 
-## 假设弹性0.9
-## 则0.9倍的动量用于传递，0.1倍的动量用于质量损耗(造成伤害)
+## 处理单体碰撞
 func _handle_single(node: Node, normal: Vector2):
 	var node_mass:float = node.get("mass")
-	var node_speed:float = node.get("speed")
-	var node_direction:Vector2 = node.get("direction")
-	var elasticity = node_speed / (node_speed + node_mass * 100)
-	var loss_ratio = 1 - elasticity
+	
+	var node_velocity = node.get("velocity")
+	if not node_velocity or not node_velocity is Vector2:
+		return
+	
+	var node_speed:float = node_velocity.length()
+	var node_direction:Vector2 = node_velocity.normalized()
+	
+	var loss_mass = node_speed # 损失量与速度大小成正比
 	var target_direction = _get_rebound_speed(node_direction, normal).normalized()
-	node.set("speed", node_speed * elasticity)
-	node.set("mass", node_mass * loss_ratio)
-	node.set("direction", target_direction)
+	
+	node.set("mass", node_mass - loss_mass)
+	node.set("velocity", target_direction * node_speed)
 
 
 ## 假设弹性0.9
@@ -111,8 +116,10 @@ func _handle_double(node1: Node, node2: Node, normal: Vector2, rebound: bool):
 		node2.set("direction", dominant_direction.normalized())
 
 
+#region 辅助方法
 ## 计算完全反弹的矢量速度
 func _get_rebound_speed(velocity:Vector2, normal:Vector2) -> Vector2:
 	normal = normal.normalized().abs() # 归一化后统一符号
 	var vn = velocity * normal
 	return velocity - 2 * vn
+#endregion 辅助方法
