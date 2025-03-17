@@ -159,23 +159,34 @@ func _move_toward(_direction: Vector2 = Vector2()) -> void:
 var attack_position = position # 进攻坐标
 var attack_cooldown = 1.0  # 攻击间隔
 var can_attacking = true # 可否攻击
+var penetration:int = 0 # 穿透数 命中多个目标时 最多命中[穿透数]个目标 <=0表示无限
+var damage = 1 # 伤害
 func _attack(data: Vector2 = Vector2())-> void:
 	# 攻击冷却锁
 	if not can_attacking:
 		return
 	can_attacking = false
 	get_tree().create_timer(attack_cooldown).connect("timeout", func():can_attacking = true)
-	
 	attack_position = data
-	
-	travel_animation("Attack")
+	travel_animation("Attack") # 动画帧中设置可控状态
 	animation_tree.get("parameters/playback").start("Attack", true)
 func animation_attack():
-	# 通过弹幕与特效产生伤害(要求角色不能自由移动)
 	var entity_manager = get_node_or_null("/root/EntityManager")
 	if entity_manager:
 		var attack_direction = (attack_position - position).normalized()
-		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 6, "position":position, "rotation":atan2(attack_direction.y, attack_direction.x), "damage": 1})
+		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 6, "position":position, "rotation":atan2(attack_direction.y, attack_direction.x), "process_collisions": process_collisions})
+func process_collisions(collisions):
+	var max_hits = penetration if penetration > 0 else collisions.size()
+	var hits = 0
+	for collision in collisions:
+		if hits >= max_hits:
+			break
+		var collider = collision["collider"]
+		# 造成伤害 TODO 接入 HitManager
+		if collider is Object:
+			if collider.has_method("take_damage"):
+				collider.take_damage(damage)
+		hits += 1
 
 #受伤模拟
 func hurt(_entity: InfluenceableEntity2D):

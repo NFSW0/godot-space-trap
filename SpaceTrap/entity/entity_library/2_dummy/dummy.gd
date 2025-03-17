@@ -22,6 +22,8 @@ signal health_changed(old_value: float, new_value: float, max_health: float)
 			health_old = health_current
 			health_current = value
 var health_old: float = 20.0
+func take_damage(damage):
+	health_current -= damage
 func _connect_health_signal(node:Node = self):
 	node.connect("health_changed", _on_health_changed)
 func _on_health_changed(_old_value: float, new_value: float, max_health: float):
