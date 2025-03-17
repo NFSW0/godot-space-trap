@@ -3,7 +3,7 @@ class_name _HitManager
 
 
 var request_list:Array[HitData] = [] # 待处理的碰撞请求
-var process_limit = 100 # 进程限制
+var process_limit = 100 # 最大批处理量
 
 
 ## 添加碰撞事件
@@ -26,7 +26,7 @@ func clear_hit_event():
 	request_list.clear()
 
 
-## 结算碰撞事件（批量处理多个事件）
+## 结算碰撞事件（批处理）
 func _physics_process(_delta: float) -> void:
 	var events_to_process = min(request_list.size(), process_limit)
 	for i in range(events_to_process):
@@ -55,7 +55,7 @@ func _handle_single(node: Node, normal: Vector2):
 	var node_mass:float = node.get("mass")
 	var node_speed:float = node.get("speed")
 	var node_direction:Vector2 = node.get("direction")
-	var elasticity = node_speed / (node_speed + node_mass*100)
+	var elasticity = node_speed / (node_speed + node_mass * 100)
 	var loss_ratio = 1 - elasticity
 	var target_direction = _get_rebound_speed(node_direction, normal).normalized()
 	node.set("speed", node_speed * elasticity)

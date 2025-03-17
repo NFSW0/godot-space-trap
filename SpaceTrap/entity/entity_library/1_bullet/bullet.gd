@@ -7,7 +7,7 @@ extends Entity2D
 
 
 func _physics_process(delta: float) -> void:
-	var motion = speed * delta * direction.normalized() / scale # 除以scale以维持视觉速度 TODO 0~1会导致加速
+	var motion = speed * delta * direction.normalized() / scale # 除以scale以维持视觉速度
 	position += motion
 
 
