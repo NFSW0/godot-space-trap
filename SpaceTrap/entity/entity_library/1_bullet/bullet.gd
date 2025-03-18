@@ -10,7 +10,7 @@ var lock = false
 
 
 func _ready() -> void:
-	velocity = velocity # 刷新与应用生成时设置的速度
+	velocity = velocity # 刷新速度
 
 
 func _physics_process(delta: float) -> void:

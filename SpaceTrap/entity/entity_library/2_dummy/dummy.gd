@@ -6,6 +6,10 @@ extends InfluenceableEntity2D
 @export var animation_tree: AnimationTree ## 动画节点
 
 
+func _ready() -> void:
+	_connect_health_signal()
+
+
 #region 生命
 signal health_changed(old_value: float, new_value: float, max_health: float)
 @export var health_max: float = 20.0:
@@ -24,6 +28,12 @@ signal health_changed(old_value: float, new_value: float, max_health: float)
 var health_old: float = 20.0
 func take_damage(damage):
 	health_current -= damage
+	if not health_current > 0:
+		return
+	travel_animation("Hurt")
+	var buff_manager = get_node_or_null("/root/BuffManager")
+	if buff_manager:
+		buff_manager.append_buff(3, get_path(), {"knockback_velocity":velocity * -1})
 func _connect_health_signal(node:Node = self):
 	node.connect("health_changed", _on_health_changed)
 func _on_health_changed(_old_value: float, new_value: float, max_health: float):
