@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://saeqyqhirbav"]
+[gd_scene load_steps=7 format=3 uid="uid://saeqyqhirbav"]
 
+[ext_resource type="Script" uid="uid://s6rasspuy2q5" path="res://_other/void_space/void_space.gd" id="1_42jby"]
 [ext_resource type="PackedScene" uid="uid://brjpuclpx76uy" path="res://world/world.tscn" id="1_juivl"]
 [ext_resource type="PackedScene" uid="uid://b300pimxmvuvb" path="res://entity/entity_library/5_skeleton/skeleton.tscn" id="2_6k0ta"]
 [ext_resource type="Script" uid="uid://dhd1rudvttv4d" path="res://addons/nt_controller/scripts/controller_ai.gd" id="3_o5fv1"]
@@ -11,6 +12,7 @@ script = ExtResource("3_o5fv1")
 
 [node name="VoidSpace" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_42jby")
 
 [node name="World" parent="." instance=ExtResource("1_juivl")]
 
