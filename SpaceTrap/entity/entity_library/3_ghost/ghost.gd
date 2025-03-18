@@ -24,8 +24,9 @@ func _execute_command(command: Dictionary) -> void:
 
 
 ## 定向移动
+@export var speed:float = 100
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
-	_move(_direction.normalized() * velocity.length())
+	_move(_direction.normalized() * speed)
 #endregion 行动
 
 #region 其他

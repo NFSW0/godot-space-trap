@@ -19,6 +19,7 @@ script = ExtResource("1_42jby")
 [node name="Skeleton" parent="." instance=ExtResource("2_6k0ta")]
 position = Vector2(-43, -45)
 controller = SubResource("Resource_juivl")
+controllable = true
 
 [node name="Dummy" parent="." instance=ExtResource("4_nb5i2")]
 position = Vector2(95, -16)

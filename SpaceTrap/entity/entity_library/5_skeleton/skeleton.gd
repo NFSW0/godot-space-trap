@@ -132,6 +132,7 @@ func _execute_command(command: Dictionary) -> void:
 
 
 ## 定点移动
+@export var speed:float = 50
 @export var navigation_agent_2d: NavigationAgent2D ## 导航节点
 var velocity_move_to: Vector2 = Vector2() ## 避障计算后的速度
 func _move_to(data: Vector2 = Vector2()) -> void:
@@ -141,7 +142,7 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 		# 已更新寻路且未抵达最终位置
 		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
 			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
-			navigation_agent_2d.set_velocity((next_path_position - position).normalized() * velocity.length())
+			navigation_agent_2d.set_velocity((next_path_position - position).normalized() * speed)
 			# 避障计算独立进行，因此在信号方法直接设置速度会导致不断移动
 			if velocity_move_to:
 				_move(velocity_move_to)
@@ -151,7 +152,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 
 ## 定向移动
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
-	_move(_direction.normalized() * velocity.length())
+	_move(_direction.normalized() * speed)
 
 
 ## 攻击
@@ -204,6 +205,7 @@ func hurt(_entity: InfluenceableEntity2D):
 func _death():
 	controllable = false
 	travel_animation("Dead")
+	animation_tree.get("parameters/playback").start("Dead", true)
 #endregion 行动
 
 

@@ -7,6 +7,7 @@ extends Entity2D
 
 
 var process_collisions:Callable = Callable() # 接收撞击数组 每个元素包含 撞击对象 撞击点 撞击距离
+var lock = false
 
 
 func _ready() -> void:
@@ -16,7 +17,11 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if not shape_cast_2d.is_colliding():
+		lock = false
 		return
+	if lock:
+		return
+	lock = true
 	
 	var collisions = [] # 存储碰撞信息
 	

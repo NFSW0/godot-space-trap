@@ -40,6 +40,12 @@ func _on_health_changed(_old_value: float, new_value: float, max_health: float):
 	if new_value <= 0 or max_health <= 0:
 		_death()
 		return
+## 死亡
+func _death():
+	controllable = false
+	remove_from_group("Player")
+	travel_animation("Dead")
+	animation_tree.get("parameters/playback").start("Dead", true)
 #endregion 生命
 
 
@@ -65,14 +71,12 @@ func _execute_command(command: Dictionary) -> void:
 
 
 ## 定向移动
+@export var speed:float = 100
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
-	_move(_direction.normalized() * velocity.length())
+	_move(_direction.normalized() * speed)
 
 
-## 死亡
-func _death():
-	controllable = false
-	travel_animation("Dead")
+
 #endregion 行动
 
 
