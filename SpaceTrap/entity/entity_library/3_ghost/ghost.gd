@@ -6,12 +6,15 @@ extends InfluenceableEntity2D
 @export var animation_tree: AnimationTree ## 动画节点
 
 
+#region 动画
 ## 过度到另一个动画 传入动画名称
-func travel_animation(animation_name: String):
+func travel_animation(animation_name: String, reset_on_teleport: bool = true):
 	if animation_tree:
-		animation_tree.get("parameters/playback").travel(animation_name)
+		animation_tree.set("parameters/%s/blend_position" % animation_name, velocity.normalized())
+		animation_tree.get("parameters/playback").travel(animation_name, reset_on_teleport)
+#endregion 动画
 
-
+#region 行动
 ## 执行指令
 func _execute_command(command: Dictionary) -> void:
 	for command_type in command:
@@ -22,8 +25,12 @@ func _execute_command(command: Dictionary) -> void:
 
 ## 定向移动
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
-	direction = _direction
+	_move(_direction.normalized() * velocity.length())
+#endregion 行动
+
+#region 其他
+func _move(final_velocity: Vector2 = Vector2()):
+	velocity = final_velocity
 	travel_animation("Move")
-	animation_tree.set("parameters/Move/blend_position", direction)
-	velocity = direction * speed
 	move_and_slide()
+#endregion 其他

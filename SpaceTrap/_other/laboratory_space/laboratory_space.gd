@@ -30,7 +30,7 @@ func _input(event: InputEvent) -> void:
 		mouse_release_position = get_node(entity_manager.spawn_path).get_viewport().get_mouse_position()
 		match current_continer:
 			"entity":
-				entity_manager.generate_entity({"entity_id": target_id, "position": mouse_press_position, "speed": (mouse_release_position - mouse_press_position).length(), "direction":(mouse_release_position - mouse_press_position).normalized()})
+				entity_manager.generate_entity({"entity_id": target_id, "position": mouse_press_position, "velocity":mouse_release_position - mouse_press_position})
 				return
 			_:
 				return
@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 		if event.as_text() == "1":
 			if entity_manager:
 				var position = get_node(entity_manager.spawn_path).get_viewport().get_mouse_position()
-				entity_manager.generate_entity({"entity_id": 1, "position": position, "speed": 100, "direction":Vector2(1,1)})
+				entity_manager.generate_entity({"entity_id": 1, "position": position, "velocity":Vector2(100,100)})
 		if event.as_text() == "2":
 			if entity_manager:
 				var position = get_node(entity_manager.spawn_path).get_viewport().get_mouse_position()

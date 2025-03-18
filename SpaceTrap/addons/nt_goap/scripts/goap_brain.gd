@@ -7,6 +7,8 @@ var current_plan: Array = [] ## 当前行动计划
 
 # 主决策方法
 func decide_next_action() -> Dictionary:
+	if not world_update:
+		return {}
 	var world_state = world_update.call()
 	
 	# 1. 选择最高优先级目标

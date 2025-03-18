@@ -6,14 +6,25 @@ extends Entity2D
 @export var shape_cast_2d: ShapeCast2D
 
 
+var lock = false
+
+
 func _ready() -> void:
-	velocity = speed * direction
+	velocity = velocity # 刷新与应用生成时设置的速度
 
 
 func _physics_process(delta: float) -> void:
+	move_and_collide(velocity * delta)
 	if shape_cast_2d.is_colliding():
+		if lock:
+			return
+		lock = true
 		var collision_normal:Vector2 = shape_cast_2d.get_collision_normal(0)
 		var collider = shape_cast_2d.get_collider(0)
-		var hitData = HitData.new(self.get_path(),collider.get_path(),collision_normal)
+		if collider == null:
+			return
+		var hitData = HitData.new(self.get_path(), collider.get_path(), collision_normal)
 		HitManager.append_hit_event(hitData.serialize())
-	move_and_collide(velocity * delta)
+	else:
+		if lock:
+			lock = false

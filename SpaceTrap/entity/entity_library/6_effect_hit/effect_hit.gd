@@ -1,8 +1,7 @@
-extends Node2D
+extends Entity2D
 #class_name EffectHit
 
 
-@export var entity_id:int = 0
 @export var particles:GPUParticles2D
 @export var shape_cast_2d: ShapeCast2D
 
@@ -11,6 +10,7 @@ var process_collisions:Callable = Callable() # 接收撞击数组 每个元素�
 
 
 func _ready() -> void:
+	rotation = atan2(velocity.y, velocity.x)
 	particles.restart() # 播放粒子特效
 
 
@@ -31,7 +31,8 @@ func _physics_process(_delta: float) -> void:
 	collisions.sort_custom(func(a, b): return a["distance"] < b["distance"])
 	
 	# 交给 process_collisions 处理
-	process_collisions.call(collisions)
+	if process_collisions:
+		process_collisions.call(collisions)
 
 
 func _on_finished() -> void:

@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://da5mssqqp10db"]
+[gd_scene load_steps=7 format=3 uid="uid://da5mssqqp10db"]
 
 [ext_resource type="Script" uid="uid://0oagefv0a4ma" path="res://entity/entity_library/6_effect_hit/effect_hit.gd" id="1_e3g5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfupl"]
+radius = 5.0
 
 [sub_resource type="Gradient" id="Gradient_e3g5u"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -23,13 +26,17 @@ color_ramp = SubResource("GradientTexture1D_kfupl")
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3g5u"]
 radius = 5.0
 
-[node name="EffectHit" type="Node2D" node_paths=PackedStringArray("particles", "shape_cast_2d")]
+[node name="EffectHit" type="CharacterBody2D" node_paths=PackedStringArray("particles", "shape_cast_2d")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_e3g5u")
-entity_id = 6
 particles = NodePath("GPUParticles2D")
 shape_cast_2d = NodePath("ShapeCast2D")
+entity_id = 6
+metadata/_custom_type_script = "uid://dp4pjom6jmqag"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kfupl")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 1

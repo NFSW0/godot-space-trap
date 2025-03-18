@@ -49,6 +49,7 @@ folder_colors={
 "res://addons/": "green",
 "res://addons/nt_behavior_tree/": "gray",
 "res://addons/nt_health/": "gray",
+"res://addons/nt_locks/": "gray",
 "res://addons/nt_perception/": "gray",
 "res://buff/": "purple",
 "res://data/": "purple",

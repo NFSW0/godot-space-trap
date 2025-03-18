@@ -141,7 +141,7 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 		# 已更新寻路且未抵达最终位置
 		if NavigationServer2D.map_get_iteration_id(map_rid) and not navigation_agent_2d.is_navigation_finished():
 			var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
-			navigation_agent_2d.set_velocity((next_path_position - position).normalized() * speed)
+			navigation_agent_2d.set_velocity((next_path_position - position).normalized() * velocity.length())
 			# 避障计算独立进行，因此在信号方法直接设置速度会导致不断移动
 			if velocity_move_to:
 				_move(velocity_move_to)
@@ -151,8 +151,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 
 ## 定向移动
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
-	direction = _direction
-	_move(direction.normalized() * speed)
+	_move(_direction.normalized() * velocity.length())
 
 
 ## 攻击
@@ -173,8 +172,8 @@ func _attack(data: Vector2 = Vector2())-> void:
 func animation_attack():
 	var entity_manager = get_node_or_null("/root/EntityManager")
 	if entity_manager:
-		var attack_direction = (attack_position - position).normalized()
-		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 6, "position":position, "rotation":atan2(attack_direction.y, attack_direction.x), "process_collisions": process_collisions})
+		var attack_velocity = (attack_position - position).normalized() * damage
+		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 6, "position":position, "velocity":attack_velocity, "process_collisions": process_collisions})
 func process_collisions(collisions):
 	var max_hits = penetration if penetration > 0 else collisions.size()
 	var hits = 0

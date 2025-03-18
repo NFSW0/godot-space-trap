@@ -56,8 +56,7 @@ func _execute_command(command: Dictionary) -> void:
 
 ## 定向移动
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
-	direction = _direction
-	_move(direction.normalized() * speed)
+	_move(_direction.normalized() * velocity.length())
 
 
 ## 死亡

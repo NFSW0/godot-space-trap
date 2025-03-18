@@ -39,87 +39,79 @@ func _physics_process(_delta: float) -> void:
 
 
 ## 处理碰撞
-func _handle_hit(node1:Node, node2:Node, normal:Vector2):
-	var type1 = node1.get("mass")
-	var type2 = node2.get("mass")
-	if type1 == null and type2 == null:
+func _handle_hit(node1: Node, node2: Node, normal: Vector2):
+	var has_mass1 := node1.get("mass") != null
+	var has_mass2 := node2.get("mass") != null
+	
+	if not has_mass1 and not has_mass2:
 		return
-	if type1 == null or type2 == null:
-		_handle_single(node1 if type2 == null else node2, normal)
+	elif not has_mass2:
+		_handle_single(node1, normal)
+	elif not has_mass1:
+		_handle_single(node2, normal)
 	else:
-		_handle_double(node1, node2, normal, (type1 == type2))
+		_handle_double(node1, node2, normal)
 
 
 ## 处理单体碰撞
 func _handle_single(node: Node, normal: Vector2):
-	var node_mass:float = node.get("mass")
-	
-	var node_velocity = node.get("velocity")
-	if not node_velocity or not node_velocity is Vector2:
+	var velocity := _get_valid_velocity(node)
+	if not velocity:
 		return
 	
-	var node_speed:float = node_velocity.length()
-	var node_direction:Vector2 = node_velocity.normalized()
+	var speed := velocity.length()
+	var loss_mass := speed / 100
 	
-	var loss_mass = node_speed # 损失量与速度大小成正比
-	var target_direction = _get_rebound_speed(node_direction, normal).normalized()
+	var rebound_velocity := _get_rebound_speed(velocity, normal).normalized() * speed
 	
-	node.set("mass", node_mass - loss_mass)
-	node.set("velocity", target_direction * node_speed)
+	_subtract_mass(node, loss_mass)
+	node.set("velocity", rebound_velocity)
 
 
-## 假设弹性0.9
-## 则0.9倍的动量用于传递，0.1倍的低质量体的动量用于损耗
-func _handle_double(node1: Node, node2: Node, normal: Vector2, rebound: bool):
-	# 获取物体1的质量、速度和方向
-	var node1_mass:float = node1.get("mass")
-	var node1_speed:float = node1.get("speed")
-	var node1_direction:Vector2 = node1.get("direction")
-
-	# 获取物体2的质量、速度和方向
-	var node2_mass:float = node2.get("mass")
-	var node2_speed:float = node2.get("speed")
-	var node2_direction:Vector2 = node2.get("direction")
+## 处理双体碰撞
+func _handle_double(node1: Node, node2: Node, normal: Vector2):
+	var vel1 := _get_valid_velocity(node1)
+	var vel2 := _get_valid_velocity(node2)
+	if not vel1 or not vel2:
+		return
 	
-	# 计算动量和相对速度
-	var node1_mv:float = node1_mass * node1_speed
-	var node2_mv:float = node2_mass * node2_speed
-	var total_mass:float = node1_mass + node2_mass
-	var relative_speed:float = abs(node1_speed - node2_speed)
+	var normal_norm := normal.normalized()
+	var vel1_along := _get_velocity_component(vel1, normal_norm)
+	var vel2_along := _get_velocity_component(vel2, normal_norm)
 	
-	# 弹性和损失比例计算
-	var elasticity:float = relative_speed / (relative_speed + total_mass)
-	var loss_ratio:float = 1 - elasticity
-	var loss_mass:float = loss_ratio * min(node1_mass, node2_mass)
+	var relative_speed := vel1_along.distance_to(vel2_along)
+	var loss_mass := relative_speed / 100
 	
-	# 更新两物体的质量，损失质量从每个物体的质量中扣除
-	node1.set("mass", node1_mass - loss_mass)
-	node2.set("mass", node2_mass - loss_mass)
+	# 更新质量
+	_subtract_mass(node1, loss_mass)
+	_subtract_mass(node2, loss_mass)
 	
-	if rebound:
-		# 弹性碰撞：反向速度，动量均分
-		var total_mv:float = total_mass * relative_speed
-		node1.set("speed", total_mv / 2 / node1_mass)
-		node2.set("speed", total_mv / 2 / node2_mass)
-		
-		# 更新方向
-		node1.set("direction", _get_rebound_speed(node1_direction, normal).normalized())
-		node2.set("direction", _get_rebound_speed(node2_direction, normal).normalized())
-	else:
-		# 非弹性碰撞：速度分摊，方向相同
-		node1.set("speed", node1_speed - node2_mv / node1_mass)
-		node2.set("speed", node2_speed - node1_mv / node2_mass)
-		
-		# 统一速度方向
-		var dominant_direction: Vector2 = node1_direction if node1_mass >= node2_mass else node2_direction
-		node1.set("direction", dominant_direction.normalized())
-		node2.set("direction", dominant_direction.normalized())
+	# 计算新速度分量
+	var new_vel1 = (vel1 - vel1_along) + vel1_along.normalized() * relative_speed / 2
+	var new_vel2 = (vel2 - vel2_along) + vel2_along.normalized() * relative_speed / 2
+	
+	node1.set("velocity", new_vel1)
+	node2.set("velocity", new_vel2)
 
 
 #region 辅助方法
-## 计算完全反弹的矢量速度
-func _get_rebound_speed(velocity:Vector2, normal:Vector2) -> Vector2:
-	normal = normal.normalized().abs() # 归一化后统一符号
-	var vn = velocity * normal
-	return velocity - 2 * vn
+## 获取有效速度（类型检查）
+func _get_valid_velocity(node: Node) -> Vector2:
+	var velocity = node.get("velocity")
+	return velocity if velocity is Vector2 else Vector2()
+
+## 计算沿法线方向的速度分量
+func _get_velocity_component(velocity: Vector2, normal: Vector2) -> Vector2:
+	return velocity.dot(normal) * normal
+
+## 质量减少操作
+func _subtract_mass(node: Node, amount: float) -> void:
+	var mass = node.get("mass")
+	if mass is float:
+		node.set("mass", mass - amount)
+
+## 计算完全反弹速度
+func _get_rebound_speed(velocity: Vector2, normal: Vector2) -> Vector2:
+	var normal_norm = normal.normalized()
+	return velocity - 2 * velocity.dot(normal_norm) * normal_norm
 #endregion 辅助方法

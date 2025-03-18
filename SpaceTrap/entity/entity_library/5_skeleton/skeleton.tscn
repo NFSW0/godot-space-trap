@@ -1225,7 +1225,6 @@ perceptron = NodePath("Perceptron")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 controller = SubResource("Resource_jqkkk")
 entity_id = 5
-speed = 50.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture = ExtResource("2_hhkic")

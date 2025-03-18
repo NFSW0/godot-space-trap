@@ -6,7 +6,10 @@ extends InfluenceableEntity2D
 @export var animation_tree: AnimationTree ## 动画节点
 
 
+#region 动画
 ## 过度到另一个动画 传入动画名称
-func travel_animation(animation_name: String):
+func travel_animation(animation_name: String, reset_on_teleport: bool = true):
 	if animation_tree:
-		animation_tree.get("parameters/playback").travel(animation_name)
+		animation_tree.set("parameters/%s/blend_position" % animation_name, velocity.normalized())
+		animation_tree.get("parameters/playback").travel(animation_name, reset_on_teleport)
+#endregion 动画
