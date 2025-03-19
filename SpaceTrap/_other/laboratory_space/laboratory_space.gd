@@ -17,7 +17,7 @@ var mouse_release_position = Vector2()
 func _ready() -> void:
 	if entity_manager:
 		# 设置多人实体承载节点
-		entity_manager.update_spawn_path($Node2D.get_path())
+		entity_manager.update_spawn_path($Normal/Node2D.get_path())
 
 
 func _input(event: InputEvent) -> void:
@@ -52,8 +52,6 @@ func _input(event: InputEvent) -> void:
 		if event.as_text() == "4":
 			if buff_manager:
 				buff_manager.append_buff(2,get_path())
-		if event.as_text() == "5":
-			pass
 
 
 ## 点击建筑按钮
