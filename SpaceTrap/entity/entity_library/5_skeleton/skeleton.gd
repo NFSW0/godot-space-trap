@@ -7,33 +7,27 @@ extends InfluenceableEntity2D
 
 
 func _ready() -> void:
-	_connect_health_signal()
+	mass_changed.connect(_on_mass_changed) # 连接信号
 	_set_brain()
 
 
-#region 生命
-signal health_changed(old_value: float, new_value: float, max_health: float)
-@export var health_max: float = 20.0:
-	set(value):
-		if value != health_max:
-			value = clamp(value, 0, INF)
-			health_changed.emit(health_old, health_current, value)
-			health_max = value
-@export var health_current: float = 20.0:
-	set(value):
-		if value != health_current:
-			value = clamp(value, 0, health_max)
-			health_changed.emit(health_old, value, health_max)
-			health_old = health_current
-			health_current = value
-var health_old: float = 20.0
-func _connect_health_signal(node:Node = self):
-	node.connect("health_changed", _on_health_changed)
-func _on_health_changed(_old_value: float, new_value: float, max_health: float):
-	if new_value <= 0 or max_health <= 0:
+#region 质量(生命)
+var old_health : float = 0.0
+## 处理质量变化
+func _on_mass_changed(new_health : float) -> void:
+	if new_health < 0.01:
 		_death()
 		return
-#endregion 生命
+	if old_health > new_health:
+		travel_animation("Hurt")
+	#set("scale", Vector2(new_health / DEFAULT_MASS, new_health / DEFAULT_MASS))
+	old_health = new_health
+## 死亡
+func _death():
+	controllable = false
+	travel_animation("Dead")
+	animation_tree.get("parameters/playback").start("Dead", true)
+#endregion 质量(生命)
 
 
 #region 动画
@@ -120,21 +114,24 @@ func _compare_priority(a: Node, b: Node) -> int:
 #endregion 智能-感知
 
 
-#region 行动
+#region 行动中心
 ## 执行行动指令
+## 遍历传入的指令字典，并根据指令类型执行相应的行动
 func _execute_command(command: Dictionary) -> void:
+	if command.is_empty():
+		travel_animation("Idle")
+		return
 	for command_type:ControllerBase.COMMAND_TYPE in command:
 		match command_type:
 			ControllerBase.COMMAND_TYPE.MOVE_TO:
 				_move_to(command[command_type])
+			ControllerBase.COMMAND_TYPE.MOVE_TOWARD:
+				_move_toward(command[command_type])
 			ControllerBase.COMMAND_TYPE.ATTACK:
 				_attack(command[command_type])
 
-
 ## 定点移动
-@export var speed:float = 50
-@export var navigation_agent_2d: NavigationAgent2D ## 导航节点
-var velocity_move_to: Vector2 = Vector2() ## 避障计算后的速度
+## 通过导航代理计算路径并移动至指定位置
 func _move_to(data: Vector2 = Vector2()) -> void:
 	if navigation_agent_2d:
 		var map_rid = navigation_agent_2d.get_navigation_map()
@@ -146,72 +143,75 @@ func _move_to(data: Vector2 = Vector2()) -> void:
 			# 避障计算独立进行，因此在信号方法直接设置速度会导致不断移动
 			if velocity_move_to:
 				_move(velocity_move_to)
-func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	velocity_move_to = safe_velocity
-
 
 ## 定向移动
+## 直接朝指定方向移动，不依赖导航系统
 func _move_toward(_direction: Vector2 = Vector2()) -> void:
 	_move(_direction.normalized() * speed)
 
-
 ## 攻击
-var attack_position = position # 进攻坐标
-var attack_cooldown = 1.0  # 攻击间隔
-var can_attacking = true # 可否攻击
-var penetration:int = 0 # 穿透数 命中多个目标时 最多命中[穿透数]个目标 <=0表示无限
-var damage = 1 # 伤害
+## 若可攻击，则进入攻击状态，并设置冷却时间
 func _attack(data: Vector2 = Vector2())-> void:
-	# 攻击冷却锁
 	if not can_attacking:
 		return
 	can_attacking = false
 	get_tree().create_timer(attack_cooldown).connect("timeout", func():can_attacking = true)
 	attack_position = data
-	travel_animation("Attack") # 动画帧中设置可控状态
+	travel_animation("Attack") # 动画帧中设置可控状态 - 攻击动画中处于失控状态
 	animation_tree.get("parameters/playback").start("Attack", true)
+#endregion 行动中心
+
+
+#region 行动附属-攻击
+var attack_position = position ## 进攻坐标
+var attack_cooldown = 1.0  ## 攻击冷却时间（秒）
+var can_attacking = true ## 是否可以进行攻击
+var penetration:int = 0 ## 穿透数，可命中多个目标时，最多命中 [穿透数] 个目标，<=0 表示无限
+var damage = 10 ## 伤害值
+
+## 动画帧回调方法
+## 生成实体（如投射物）并赋予其初始速度
 func animation_attack():
 	var entity_manager = get_node_or_null("/root/EntityManager")
 	if entity_manager:
 		var attack_velocity = (attack_position - position).normalized() * damage
 		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 6, "position":position, "velocity":attack_velocity, "process_collisions": process_collisions})
-func process_collisions(collisions):
+
+## 命中回调方法（接收所有碰撞信息，按距离排序）
+func process_collisions(bullet: Node, collisions: Array):
 	var max_hits = penetration if penetration > 0 else collisions.size()
 	var hits = 0
 	for collision in collisions:
 		if hits >= max_hits:
 			break
-		var collider = collision["collider"]
-		# 造成伤害 TODO 接入 HitManager
-		if collider is Object:
-			if collider.has_method("take_damage"):
-				collider.take_damage(damage)
+		var collider = collision["collider"] # 额外参数包括: point, distance, normal
+		# 排除自己
+		if collider == self:
+			continue
+		# 处理碰撞（包括伤害）
+		var hitData = HitData.new(bullet.get_path(), collider.get_path(), collision["normal"])
+		HitManager.append_hit_event(hitData.serialize())
+		# 添加击退效果
+		var buff_manager = get_node_or_null("/root/BuffManager")
+		if buff_manager:
+			buff_manager.append_buff(3, collider.get_path(), {"knockback_velocity":(attack_position - position).normalized() * damage})
 		hits += 1
-
-#受伤模拟
-func hurt(_entity: InfluenceableEntity2D):
-	health_current -= 7
-	if not health_current > 0:
-		return
-	# 动画
-	travel_animation("Hurt")
-	# 添加击退Buff(暂时取反向的速度用于击退)
-	var buff_manager = get_node_or_null("/root/BuffManager")
-	if buff_manager:
-		buff_manager.append_buff(3, get_path(), {"knockback_velocity":velocity * -1})
+#endregion 行动附属-攻击
 
 
-## 死亡
-func _death():
-	controllable = false
-	travel_animation("Dead")
-	animation_tree.get("parameters/playback").start("Dead", true)
-#endregion 行动
+#region 行动附属-移动
+@export var speed:float = 50 ## 移动速度
+@export var navigation_agent_2d: NavigationAgent2D ## 导航代理节点
+var velocity_move_to: Vector2 = Vector2() ## 经过避障计算后的移动速度
 
-
-#region 其他
+## 统一移动逻辑，调用 move_and_slide 进行物理移动
 func _move(final_velocity: Vector2 = Vector2()):
 	velocity = final_velocity
 	travel_animation("Move")
 	move_and_slide()
-#endregion 其他
+
+## 导航避障更新回调
+## 计算安全速度，避免碰撞
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity_move_to = safe_velocity
+#endregion 行动附属-移动

@@ -4,9 +4,13 @@ class_name Entity2D
 
 
 @export var entity_id:int = 0
-@export var mass:float = 1:
+
+signal mass_changed(new_value: float)
+const DEFAULT_MASS = 20
+@export var mass:float = DEFAULT_MASS:
 	set(value):
-		mass = value
-		set("scale", Vector2(value / 1, value / 1))
-		if mass < 0.1:
-			call_deferred("queue_free")
+		if value != mass:
+			value = clamp(value, 0, INF)
+			mass_changed.emit(value)
+			mass = value
+			set("scale", Vector2(value / DEFAULT_MASS, value / DEFAULT_MASS))

@@ -29,15 +29,16 @@ func _physics_process(_delta: float) -> void:
 	for index in range(shape_cast_2d.get_collision_count()):
 		var collider = shape_cast_2d.get_collider(index)
 		var collision_point = shape_cast_2d.get_collision_point(index)
+		var collision_normal:Vector2 = shape_cast_2d.get_collision_normal(index)
 		var distance = global_position.distance_to(collision_point)
-		collisions.append({"collider": collider, "point": collision_point, "distance": distance})
+		collisions.append({"collider": collider, "point": collision_point, "distance": distance, "normal": collision_normal})
 	
 	# 按距离排序
 	collisions.sort_custom(func(a, b): return a["distance"] < b["distance"])
 	
 	# 交给 process_collisions 处理
 	if process_collisions:
-		process_collisions.call(collisions)
+		process_collisions.call(self, collisions)
 
 
 func _on_finished() -> void:

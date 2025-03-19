@@ -10,6 +10,7 @@ var lock = false
 
 
 func _ready() -> void:
+	mass_changed.connect(_on_mass_changed) # 连接信号
 	velocity = velocity # 刷新速度
 
 
@@ -28,3 +29,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		if lock:
 			lock = false
+
+
+func _on_mass_changed(new_mass : float) -> void:
+	set("scale", Vector2(new_mass / DEFAULT_MASS, new_mass / DEFAULT_MASS))
+	if new_mass < 0.1:
+		call_deferred("queue_free")
