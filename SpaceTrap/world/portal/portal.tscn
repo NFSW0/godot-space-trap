@@ -1,26 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://1igqyd3r3k4w"]
+[gd_scene load_steps=9 format=3 uid="uid://1igqyd3r3k4w"]
 
 [ext_resource type="Script" uid="uid://c512gw4flsdbg" path="res://world/portal/portal.gd" id="1_guj62"]
 [ext_resource type="Shader" uid="uid://ctwkpviahyctr" path="res://world/portal/portal_shader.gdshader" id="1_httjt"]
 
+[sub_resource type="Gradient" id="Gradient_be4p1"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ppmg"]
+gradient = SubResource("Gradient_be4p1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ckf5g"]
 shader = ExtResource("1_httjt")
-shader_parameter/gray_enabled = false
+shader_parameter/image_multiplier = SubResource("GradientTexture2D_1ppmg")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_usriv"]
 radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_r6tb4"]
-offsets = PackedFloat32Array(0.519608, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_be4p1"]
 gradient = SubResource("Gradient_r6tb4")
 width = 32
 height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
 
 [node name="Portal" type="Area2D"]
 material = SubResource("ShaderMaterial_ckf5g")
