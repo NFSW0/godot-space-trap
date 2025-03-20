@@ -3,10 +3,20 @@ class_name Portal
 
 
 @export var targe_portal: Portal
+@export var sub_viewport: SubViewport
+@export var camera_2d: Camera2D
+@export var offset: Vector2
+@export var sprite_2d: Sprite2D
 @onready var portal_manager = get_node("/root/PortalManager")  # 获取传送管理器
 
 
 var teleporting_task = []
+
+
+func _ready() -> void:
+	sub_viewport.world_2d = get_tree().root.get_world_2d()
+	if targe_portal:
+		camera_2d.position = targe_portal.position + offset
 
 
 #region 传送自动触发点

@@ -119,6 +119,8 @@ locale/locale_filter_mode=0
 
 [layer_names]
 
+2d_render/layer_1="默认"
+2d_render/layer_2="被传送门视口忽略"
 2d_physics/layer_1="墙"
 2d_navigation/layer_1="walkable"
 2d_physics/layer_2="Portable(可被传送的)"
