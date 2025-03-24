@@ -15,14 +15,17 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	move_and_collide(velocity * delta)
+	var move_delta = velocity * delta
+	shape_cast_2d.set("target_position", move_delta)
+	move_and_collide(move_delta)
 	if shape_cast_2d.is_colliding():
 		if lock:
 			return
 		lock = true
 		var collision_normal:Vector2 = shape_cast_2d.get_collision_normal(0)
 		var collider = shape_cast_2d.get_collider(0)
-		if collider == null:
+		# 忽略与自身克隆体的碰撞
+		if collider == null or collider.name == name + "_duplicate":
 			return
 		var hitData = HitData.new(self.get_path(), collider.get_path(), collision_normal)
 		HitManager.append_hit_event(hitData.serialize())

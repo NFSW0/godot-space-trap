@@ -1,3 +1,6 @@
+## 传送门脚本
+## 圆形剔除如何实现
+## 对象进入传送门 设置相机
 extends Node2D
 class_name Portal
 
@@ -7,6 +10,7 @@ class_name Portal
 @export var camera_2d: Camera2D
 @export var offset: Vector2
 @export var sprite_2d: Sprite2D
+@export var debug: bool
 @onready var portal_manager = get_node("/root/PortalManager")  # 获取传送管理器
 
 
@@ -92,6 +96,9 @@ func erase_task(node: Node, duplicate_node: Node):
 
 ## 调试绘制传送门的位置和法线
 func _draw() -> void:
+	if not debug:
+		return
+	
 	if is_instance_valid(targe_portal):
 		draw_line(Vector2(), targe_portal.global_position - position, Color(1,1,0))
 	
@@ -103,7 +110,7 @@ func _draw() -> void:
 		
 		draw_circle(Vector2(), 5, Color(1, 0, 0))
 		var normal = (node.global_position - global_position).normalized()
-		draw_line(Vector2(), Vector2() + normal * 50, Color(1, 0, 0))
+		draw_line(Vector2(), Vector2() + normal * 100, Color(1, 0, 0))
 		
 		if is_instance_valid(targe_portal):
 			var start_point = targe_portal.global_position - position

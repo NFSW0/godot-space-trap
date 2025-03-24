@@ -1,5 +1,5 @@
 ## 用于管理传送请求 分配传送任务 处理重复请求
-## TODO 统一处理添加传送的请求和结束传送的请求，结束传送的请求需要遍历全部进行中的任务，注意优化逻辑减少遍历次数
+## TODO 统一处理添加传送的请求和结束传送的请求，添加请求和结束请求都需要遍历全部进行中的任务，可能可以优化逻辑减少遍历次数
 extends Node
 class_name _PortalManager
 
@@ -139,6 +139,8 @@ func _process_transport_data(transport_data: TransportData):
 func _create_target_duplicate(node_target: Node) -> Node:
 	var node_target_duplicate = node_target.duplicate()
 	node_target_duplicate.name = node_target.name + "_duplicate"
+	node_target_duplicate.set("visible", false)
+	node_target_duplicate.set("script", null)
 	#node_target_duplicate.material = (node_target_duplicate.material as ShaderMaterial).duplicate()
 	node_target.get_parent().add_child(node_target_duplicate)
 	return node_target_duplicate
