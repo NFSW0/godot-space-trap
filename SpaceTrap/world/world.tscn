@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://brjpuclpx76uy"]
+[gd_scene load_steps=7 format=4 uid="uid://brjpuclpx76uy"]
 
 [ext_resource type="TileSet" uid="uid://ccp6l7mx0wsqb" path="res://world/tiles/tile_set_2.tres" id="1_6xmxd"]
 [ext_resource type="Script" uid="uid://c78dsvolv2vj" path="res://world/world.gd" id="1_mmdvd"]
@@ -12,13 +12,21 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.8)
 
+[sub_resource type="Gradient" id="Gradient_tcf2h"]
+colors = PackedColorArray(0.299547, 0.299547, 0.299547, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4717r"]
+gradient = SubResource("Gradient_tcf2h")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_mmdvd")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.548963, 0.548963, 0.548963, 1)
+color = Color(0.838897, 0.838897, 0.838897, 1)
 
 [node name="Bottom" type="TileMapLayer" parent="."]
 y_sort_enabled = true
@@ -48,3 +56,80 @@ radius = 12.0
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(2.48104, 2.48104)
 texture = SubResource("GradientTexture2D_mmdvd")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-168, -85)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(56, -181)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(-8, 168)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+position = Vector2(-71, 27)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+position = Vector2(38, 380)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D7" type="PointLight2D" parent="."]
+position = Vector2(296, 491)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D8" type="PointLight2D" parent="."]
+position = Vector2(423, 330)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D9" type="PointLight2D" parent="."]
+position = Vector2(471, 456)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D10" type="PointLight2D" parent="."]
+position = Vector2(651, 584)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D11" type="PointLight2D" parent="."]
+position = Vector2(730, 380)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
+
+[node name="PointLight2D12" type="PointLight2D" parent="."]
+position = Vector2(736, 236)
+scale = Vector2(2.48104, 2.48104)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.584314)
+texture = SubResource("GradientTexture2D_4717r")
