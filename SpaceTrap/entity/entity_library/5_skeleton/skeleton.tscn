@@ -1224,7 +1224,6 @@ animation_tree = NodePath("AnimationTree")
 perceptron = NodePath("Perceptron")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 controller = SubResource("Resource_jqkkk")
-controllable = false
 entity_id = 5
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -1237,7 +1236,7 @@ shape = SubResource("CapsuleShape2D_gj4ca")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cbvsg")
-animation = &"move_right"
+animation = &"idle_down"
 autoplay = "idle_down"
 offset = Vector2(0, -7)
 
@@ -1245,7 +1244,7 @@ offset = Vector2(0, -7)
 root_node = NodePath(".")
 tree_root = SubResource("AnimationNodeStateMachine_siwov")
 anim_player = NodePath("AnimationPlayer")
-parameters/Dead/blend_position = Vector2(-0.157571, 0.6)
+parameters/Dead/blend_position = Vector2(0, 0.6)
 parameters/Hurt/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Move/blend_position = Vector2(0, 0)

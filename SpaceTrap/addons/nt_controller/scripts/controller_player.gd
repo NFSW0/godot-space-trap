@@ -16,12 +16,12 @@ func get_command() -> Dictionary:
 		command[COMMAND_TYPE.MOVE_TOWARD] = move_input
 	
 	if Input.is_action_just_pressed("attack"):
-		command[COMMAND_TYPE.ATTACK] = true
+		command[COMMAND_TYPE.ATTACK] = Vector2()
 	
 	if Input.is_action_just_pressed("interact"):
-		command[COMMAND_TYPE.INTERACT] = true
+		command[COMMAND_TYPE.INTERACT] = Vector2()
 	
 	if Input.is_action_pressed("defense"):
-		command[COMMAND_TYPE.DEFENSE] = true
+		command[COMMAND_TYPE.DEFENSE] = Vector2()
 	
 	return command

@@ -22,11 +22,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	# 检查鼠标左键是否按下
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("attack"):
 		mouse_press_position = get_node(entity_manager.spawn_path).get_viewport().get_mouse_position()
 	
 	# 检查鼠标左键是否松开
-	if event.is_action_released("interact"):
+	if event.is_action_released("attack"):
 		mouse_release_position = get_node(entity_manager.spawn_path).get_viewport().get_mouse_position()
 		match current_continer:
 			"entity":
