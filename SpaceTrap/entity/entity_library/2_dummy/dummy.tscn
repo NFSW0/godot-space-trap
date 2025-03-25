@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bj3ttf6hmskpr"]
+[gd_scene load_steps=88 format=3 uid="uid://bj3ttf6hmskpr"]
 
 [ext_resource type="Script" uid="uid://c5h3nwql70342" path="res://entity/entity_library/2_dummy/dummy.gd" id="1_l3g1x"]
 [ext_resource type="Script" uid="uid://1cgtw7yetdod" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_f8tq8"]
@@ -306,6 +306,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7b8qs"]
+animation = &"attack_universal"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_71n7q"]
 animation = &"dead_down"
 
@@ -424,7 +427,12 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2npi4"]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a3u3o"]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kolna"]
+states/Attack/node = SubResource("AnimationNodeAnimation_7b8qs")
+states/Attack/position = Vector2(528, 228)
 states/Dead/node = SubResource("AnimationNodeBlendSpace2D_5y0oi")
 states/Dead/position = Vector2(528, 176)
 states/Hurt/node = SubResource("AnimationNodeBlendSpace2D_ur407")
@@ -433,7 +441,7 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace2D_7qu1w")
 states/Idle/position = Vector2(528, 45)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_a7bad")
 states/Move/position = Vector2(528, 89)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wpu7t"), "Start", "Move", SubResource("AnimationNodeStateMachineTransition_gtew4"), "Start", "Hurt", SubResource("AnimationNodeStateMachineTransition_gh7o8"), "Start", "Dead", SubResource("AnimationNodeStateMachineTransition_2npi4")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wpu7t"), "Start", "Move", SubResource("AnimationNodeStateMachineTransition_gtew4"), "Start", "Hurt", SubResource("AnimationNodeStateMachineTransition_gh7o8"), "Start", "Dead", SubResource("AnimationNodeStateMachineTransition_2npi4"), "Start", "Attack", SubResource("AnimationNodeStateMachineTransition_a3u3o")]
 
 [sub_resource type="Animation" id="Animation_ng7mg"]
 length = 0.001
