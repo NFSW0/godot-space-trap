@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://bj3ttf6hmskpr"]
+[gd_scene load_steps=86 format=3 uid="uid://bj3ttf6hmskpr"]
 
 [ext_resource type="Script" uid="uid://c5h3nwql70342" path="res://entity/entity_library/2_dummy/dummy.gd" id="1_l3g1x"]
 [ext_resource type="Script" uid="uid://1cgtw7yetdod" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_f8tq8"]
@@ -318,6 +318,9 @@ animation = &"dead_right"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jxt3m"]
 animation = &"dead_left"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a3u3o"]
+animation = &"dead_left"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5y0oi"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_71n7q")
 blend_point_0/pos = Vector2(0, 1)
@@ -327,6 +330,8 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_5rt5t")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_jxt3m")
 blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_a3u3o")
+blend_point_4/pos = Vector2(-1, 0)
 snap = Vector2(1, 1)
 blend_mode = 1
 sync = true
@@ -408,15 +413,16 @@ sync = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpu7t"]
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gtew4"]
 switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gh7o8"]
-switch_mode = 1
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2npi4"]
-switch_mode = 1
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kolna"]
 states/Dead/node = SubResource("AnimationNodeBlendSpace2D_5y0oi")
@@ -454,6 +460,40 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AnimatedSprite2D:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimatedSprite2D:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..:controllable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_tymas"]
@@ -1024,9 +1064,62 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_7b8qs"]
+resource_name = "attack_universal"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.2, -0.1, -0.150595, 0.0666667, -0.151257, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1.00041, -0.25, 0, 0.25, 0, 1.20041, -0.1, -0.150595, 0.0666667, -0.151257, 1.00041, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.8)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:controllable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_attack"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xxkh0"]
 _data = {
 &"RESET": SubResource("Animation_ng7mg"),
+&"attack_universal": SubResource("Animation_7b8qs"),
 &"dead_down": SubResource("Animation_tymas"),
 &"dead_left": SubResource("Animation_1roii"),
 &"dead_right": SubResource("Animation_tmrov"),
@@ -1065,7 +1158,7 @@ offset = Vector2(0, -7)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tury1")
-animation = &"move_up"
+animation = &"idle_dowm"
 autoplay = "idle_dowm"
 offset = Vector2(0, -7)
 
