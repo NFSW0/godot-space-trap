@@ -9,18 +9,26 @@ class_name BuffKnockback
 
 ## 附益添加
 func start():
-	buff_target.set("controllable", false)
+	if buff_target:
+		buff_target.set("controllable", false)
+	else:
+		current_duration_remain = 0
 
 
 ## 附益更新
 func _physics_process(delta: float):
 	current_duration_remain -= delta
 	
-	if buff_target is CharacterBody2D:
+	if buff_target and buff_target is CharacterBody2D:
 		buff_target.velocity = knockback_velocity * current_duration_remain if current_duration_remain < 1 else knockback_velocity
 		buff_target.move_and_slide()
+	else:
+		current_duration_remain = 0
 
 
 ## 附益结束, 传入已有附益
 func end(_existing_buff_array:Array[Buff]):
-	buff_target.set("controllable", true)
+	if buff_target:
+		buff_target.set("controllable", true)
+	else:
+		current_duration_remain = 0

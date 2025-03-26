@@ -1146,13 +1146,15 @@ _data = {
 &"move_up": SubResource("Animation_jwhf4")
 }
 
-[node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["Player"]]
+[node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "collision_shape_2d", "navigation_agent_2d") groups=["Player"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 14
 collision_mask = 17
 script = ExtResource("1_l3g1x")
 animation_tree = NodePath("AnimationTree")
+collision_shape_2d = NodePath("CollisionShape2D")
+navigation_agent_2d = NodePath("NavigationAgent2D")
 controller = SubResource("Resource_k5uh3")
 entity_id = 2
 
@@ -1183,3 +1185,5 @@ parameters/Move/blend_position = Vector2(0, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_xxkh0")
 }
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

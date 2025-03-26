@@ -4,6 +4,7 @@ extends InfluenceableEntity2D
 
 
 @export var animation_tree: AnimationTree ## 动画节点
+@export var collision_shape_2d: CollisionShape2D ## 碰撞检测节点
 
 
 func _ready() -> void:
@@ -28,6 +29,7 @@ func _on_mass_changed(new_health : float) -> void:
 ## 死亡
 func _death():
 	controllable = false
+	collision_shape_2d.disabled = true
 	remove_from_group("Player")
 	travel_animation("Dead")
 	animation_tree.get("parameters/playback").start("Dead", true)
@@ -96,7 +98,7 @@ var attack_position = position ## 进攻坐标
 var attack_cooldown = 1.0  ## 攻击冷却时间（秒）
 var can_attacking = true ## 是否可以进行攻击
 var penetration:int = 0 ## 穿透数，可命中多个目标时，最多命中 [穿透数] 个目标，<=0 表示无限
-var damage = 10 ## 伤害值
+var damage = 100 ## 伤害值
 
 ## 动画帧回调方法
 ## 生成实体（如投射物）并赋予其初始速度
@@ -104,7 +106,7 @@ func animation_attack():
 	var entity_manager = get_node_or_null("/root/EntityManager")
 	if entity_manager:
 		var attack_velocity = (attack_position - position).normalized() * damage
-		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 6, "position":position, "velocity":attack_velocity, "process_collisions": process_collisions})
+		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 1, "position":position, "velocity":attack_velocity, "process_collisions": process_collisions})
 
 ## 命中回调方法（接收所有碰撞信息，按距离排序）
 func process_collisions(bullet: Node, collisions: Array):
@@ -115,14 +117,14 @@ func process_collisions(bullet: Node, collisions: Array):
 			break
 		var collider = collision["collider"] # 额外参数包括: point, distance, normal
 		# 排除自己
-		if collider == self:
+		if collider == self or not collider:
 			continue
 		# 处理碰撞（包括伤害）
 		var hitData = HitData.new(bullet.get_path(), collider.get_path(), collision["normal"])
 		HitManager.append_hit_event(hitData.serialize())
 		# 添加击退效果
 		var buff_manager = get_node_or_null("/root/BuffManager")
-		if buff_manager:
+		if buff_manager and collider is ControllableEntity2D:
 			buff_manager.append_buff(3, collider.get_path(), {"knockback_velocity":(attack_position - position).normalized() * damage})
 		hits += 1
 #endregion 行动附属-攻击

@@ -24,6 +24,13 @@ func _physics_process(delta: float) -> void:
 
 ## 碰撞处理
 func _process_collide(move_delta):
+	if not shape_cast_2d.is_colliding():
+		lock = false
+		return
+	if lock:
+		return
+	lock = true
+	
 	shape_cast_2d.set("target_position", move_delta)
 	var collisions = [] # 存储碰撞信息
 	# 收集所有碰撞信息
