@@ -1224,7 +1224,6 @@ animation_tree = NodePath("AnimationTree")
 perceptron = NodePath("Perceptron")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 controller = SubResource("Resource_jqkkk")
-controllable = false
 entity_id = 5
 
 [node name="Shadow" type="Sprite2D" parent="."]

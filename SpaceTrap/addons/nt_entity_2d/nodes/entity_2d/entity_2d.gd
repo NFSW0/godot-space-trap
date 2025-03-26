@@ -13,4 +13,3 @@ const DEFAULT_MASS = 20
 			value = clamp(value, 0, INF)
 			mass_changed.emit(value)
 			mass = value
-			set("scale", Vector2(value / DEFAULT_MASS, value / DEFAULT_MASS))

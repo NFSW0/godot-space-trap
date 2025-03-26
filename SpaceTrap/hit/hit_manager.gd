@@ -60,7 +60,7 @@ func _handle_single(node: Node, normal: Vector2):
 		return
 	
 	var speed := velocity.length()
-	var loss_mass := speed / 100
+	var loss_mass := speed / 30
 	
 	var rebound_velocity := _get_rebound_speed(velocity, normal).normalized() * speed
 	
@@ -72,26 +72,26 @@ func _handle_single(node: Node, normal: Vector2):
 func _handle_double(node1: Node, node2: Node, normal: Vector2):
 	var vel1 := _get_valid_velocity(node1)
 	var vel2 := _get_valid_velocity(node2)
-	if not vel1 or not vel2:
-		return
 	
 	var normal_norm := normal.normalized()
 	var vel1_along := _get_velocity_component(vel1, normal_norm)
 	var vel2_along := _get_velocity_component(vel2, normal_norm)
+	var delta_vel := vel1_along - vel2_along
 	
 	var relative_speed := vel1_along.distance_to(vel2_along)
-	var loss_mass := relative_speed / 100
+	var loss_mass := relative_speed  / 30
 	
 	# 更新质量
 	_subtract_mass(node1, loss_mass)
 	_subtract_mass(node2, loss_mass)
 	
 	# 计算新速度分量
-	var new_vel1 = (vel1 - vel1_along) + vel1_along.normalized() * relative_speed / 2
-	var new_vel2 = (vel2 - vel2_along) + vel2_along.normalized() * relative_speed / 2
+	var new_vel1_along = vel1_along - delta_vel / 2
+	var new_vel2_along = vel2_along + delta_vel / 2
 	
-	node1.set("velocity", new_vel1)
-	node2.set("velocity", new_vel2)
+	# 更新速度
+	node1.set("velocity", vel1 - vel1_along + new_vel1_along)
+	node2.set("velocity", vel2 - vel2_along + new_vel2_along)
 
 
 #region 辅助方法
