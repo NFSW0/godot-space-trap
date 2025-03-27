@@ -1,3 +1,4 @@
+## 可被影响的实体 TODO 准备改成通用执行逻辑 所有影响效果由Buff实现
 extends ControllableEntity2D
 class_name InfluenceableEntity2D
 

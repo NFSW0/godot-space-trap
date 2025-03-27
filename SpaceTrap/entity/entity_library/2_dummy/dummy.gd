@@ -88,8 +88,11 @@ func _attack(data: Vector2 = Vector2())-> void:
 	can_attacking = false
 	get_tree().create_timer(attack_cooldown).connect("timeout", func():can_attacking = true)
 	attack_position = data if data else get_global_mouse_position()
+	controllable = false
 	travel_animation("Attack") # 动画帧中设置可控状态 - 攻击动画中处于失控状态
 	animation_tree.get("parameters/playback").start("Attack", true)
+	await animation_tree.animation_finished
+	controllable = true
 #endregion 行动中心
 
 
