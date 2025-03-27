@@ -1147,7 +1147,6 @@ _data = {
 }
 
 [node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "collision_shape_2d", "navigation_agent_2d") groups=["Player"]]
-z_index = 1
 y_sort_enabled = true
 collision_layer = 14
 collision_mask = 17
