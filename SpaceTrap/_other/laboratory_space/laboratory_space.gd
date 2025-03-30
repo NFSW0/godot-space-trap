@@ -20,7 +20,7 @@ func _ready() -> void:
 		entity_manager.update_spawn_path($Normal/Node2D.get_path())
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	# 检查鼠标左键是否按下
 	if event.is_action_pressed("attack"):
 		mouse_press_position = get_node(entity_manager.spawn_path).get_viewport().get_mouse_position()
