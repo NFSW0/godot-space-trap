@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdfsrdf8inke7"]
 
 [ext_resource type="PackedScene" uid="uid://b3pie0q4u52v3" path="res://entity/entity_library/1_bullet/bullet.tscn" id="1_b3gsc"]
-[ext_resource type="Script" uid="uid://47gbbujdm0hh" path="res://ui/ui_script/item_card.gd" id="1_prt7n"]
+[ext_resource type="Script" uid="uid://47gbbujdm0hh" path="res://ui/ui_components/item_card.gd" id="1_prt7n"]
 
 [node name="ItemCard" type="PanelContainer" node_paths=PackedStringArray("sub_viewport", "item_name")]
 self_modulate = Color(1, 1, 1, 0)

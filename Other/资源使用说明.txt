@@ -1,0 +1,16 @@
+Fonts Used in This Project:
+
+1. Fusion Pixel
+   - Description: A pixel art font designed for retro-style projects.
+   - Copyright: Copyright (c) 2022, TakWolf (https://takwolf.com). All rights reserved.
+   - License: SIL Open Font License, Version 1.1
+     Full text: https://openfontlicense.org
+   - Reserved Font Name: Fusion Pixel
+   - Source: Retrieved from GitHub repository at https://github.com/TakWolf/fusion-pixel-font
+
+2. 阿里巴巴普惠体 (Alibaba PuHuiTi)
+   - Description: A free and open-source font family designed by Alibaba, suitable for both screen and print use.
+   - Copyright: Copyright (c) 2019, Alibaba Group (https://www.alibabafont.com). All rights reserved.
+   - License: Licensed under the SIL Open Font License, Version 1.1
+     Full text: https://openfontlicense.org
+   - Source: Retrieved from official website at https://www.alibabafont.com

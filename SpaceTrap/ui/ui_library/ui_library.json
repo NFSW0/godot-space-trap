@@ -1,0 +1,4 @@
+{
+	"boss_status": "res://ui/ui_library/layer_bottom/boss_status/boss_status.tscn",
+	"player_status": "res://ui/ui_library/layer_bottom/player_status/player_status.tscn"
+}
