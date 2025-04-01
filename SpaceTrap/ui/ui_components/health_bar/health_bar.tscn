@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://t7b0pbo3mw7v"]
+
+[ext_resource type="Script" uid="uid://okmncbgr8lse" path="res://ui/ui_components/health_bar/health_bar.gd" id="1_0lvb5"]
+
+[node name="HealthBar" type="Label"]
+offset_right = 1.0
+offset_bottom = 23.0
+theme_type_variation = &"HealthBar"
+text = "100"
+script = ExtResource("1_0lvb5")

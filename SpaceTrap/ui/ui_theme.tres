@@ -1,11 +1,11 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://dvml7sub4jfvl"]
 
 [ext_resource type="FontFile" uid="uid://bt1gitoe1oipv" path="res://ui/AlibabaPuHuiTi-3-55-Regular.ttf" id="1_2rfe8"]
-[ext_resource type="Texture2D" uid="uid://drthe1aejin3b" path="res://ui/ui_library/layer_bottom/player_status/HealthBar.png" id="1_4mq11"]
 [ext_resource type="FontFile" uid="uid://4dr7bilc8568" path="res://ui/fusion-pixel-10px-monospaced-zh_hans.ttf" id="1_vuqvt"]
+[ext_resource type="Texture2D" uid="uid://ckur6xkip6epd" path="res://ui/ui_components/health_bar/health_bar.png" id="2_vuqvt"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4mq11"]
-texture = ExtResource("1_4mq11")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bp0j3"]
+texture = ExtResource("2_vuqvt")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -13,7 +13,7 @@ texture_margin_bottom = 8.0
 
 [resource]
 default_font = ExtResource("1_2rfe8")
-PlayerHealthBar/base_type = &"Label"
-PlayerHealthBar/font_sizes/font_size = 10
-PlayerHealthBar/fonts/font = ExtResource("1_vuqvt")
-PlayerHealthBar/styles/normal = SubResource("StyleBoxTexture_4mq11")
+HealthBar/base_type = &"Label"
+HealthBar/font_sizes/font_size = 10
+HealthBar/fonts/font = ExtResource("1_vuqvt")
+HealthBar/styles/normal = SubResource("StyleBoxTexture_bp0j3")

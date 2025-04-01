@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dqxhlrnhfbufx"]
+[gd_scene load_steps=2 format=3 uid="uid://dqxhlrnhfbufx"]
+
+[ext_resource type="Script" uid="uid://bqss7gcgju46i" path="res://ui/ui_library/layer_bottom/boss_status/boss_status.gd" id="1_i48wm"]
 
 [node name="BossStatus" type="Control"]
 layout_mode = 3
@@ -7,3 +9,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_i48wm")

@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 #region 质量(生命)
-var old_health : float = 0.0
+var old_health : float = mass
 ## 处理质量变化
 func _on_mass_changed(new_health : float) -> void:
 	if new_health < 0.01:
