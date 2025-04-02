@@ -12,7 +12,7 @@ func on_ui_loaded(requester: Node) -> void:
 	if requester.has_signal("mass_changed"):
 		requester.connect("mass_changed", Callable(self, "update_view"))
 	else:
-		printerr("尝试给无生命对象添加血量显示界面")
+		printerr("尝试给无生命对象添加血量显示界面!")
 
 func update_view(health: float):
 	var saturation_calculator: SaturationCalculator = SaturationCalculator.new(standard_health, standard_health_bar_length, max_health_bar_length)

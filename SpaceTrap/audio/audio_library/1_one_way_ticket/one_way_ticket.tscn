@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct5evmf8suwlp"]
+
+[ext_resource type="AudioStream" uid="uid://cbcqqq3tkoi0i" path="res://audio/audio_library/1_one_way_ticket/one_way_ticket.mp3" id="1_oenua"]
+
+[node name="OneWayTicket" type="AudioStreamPlayer"]
+stream = ExtResource("1_oenua")
+mix_target = 1
+bus = &"BGM"

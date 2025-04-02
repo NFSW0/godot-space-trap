@@ -60,7 +60,7 @@ func close_ui(ui_instance: Control):
 		_bottom_uis.erase(ui_instance)
 		ui_instance.queue_free()
 
-#region 加载UI资源
+#region 加载UI库
 func _load_ui_library(_directory_path: String) -> Dictionary:
 	if OS.has_feature("editor"):
 		# 编辑器环境下：遍历文件加载并更新JSON
@@ -71,7 +71,7 @@ func _load_ui_library(_directory_path: String) -> Dictionary:
 		# 导出环境下：仅通过JSON文件加载
 		var ui_library := _load_ui_library_by_json(_directory_path)
 		if ui_library.is_empty():
-			push_error("Failed to load UI library from JSON, aborting...")
+			push_error("Failed to load UI library, aborting...")
 			return {}
 		return ui_library
 
@@ -108,7 +108,7 @@ func _load_ui_library_by_json(_directory_path: String) -> Dictionary:
 	
 	# 使用ResourceLoader检查JSON文件是否存在
 	if not ResourceLoader.exists(json_path):
-		push_error("UI库JSON文件不存在: ", json_path)
+		push_error("UI记录文件缺失: ", json_path)
 		return {}
 	
 	# 加载JSON文件内容
@@ -129,7 +129,7 @@ func _load_ui_library_by_json(_directory_path: String) -> Dictionary:
 	
 	return ui_library
 
-# 保存UI库到JSON文件
+# 保存UI加载记录到JSON文件
 func _save_ui_library_json(_directory_path: String, ui_library: Dictionary) -> void:
 	var json_path := _directory_path.path_join(UI_LIBRARY_JSON_NAME)
 	var file := FileAccess.open(json_path, FileAccess.WRITE)
@@ -137,10 +137,10 @@ func _save_ui_library_json(_directory_path: String, ui_library: Dictionary) -> v
 	if file:
 		file.store_string(JSON.stringify(ui_library, "\t"))
 		file.close()
-		print("UI库已更新")
+		print("UI记录已更新")
 	else:
-		push_error("无法创建UI库文件, 请检查路径存在: ", UI_LIBRARY_PATH)
-#endregion 加载UI资源
+		push_error("无法创建UI记录文件, 请检查路径是否存在: ", UI_LIBRARY_PATH)
+#endregion 加载UI库
 
 #region 初始化层级容器
 func _init_layer(ui_layer: UILayer, layer_name: String):

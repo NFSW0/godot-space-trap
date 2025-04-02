@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqxhlrnhfbufx"]
+[gd_scene load_steps=3 format=3 uid="uid://dqxhlrnhfbufx"]
 
 [ext_resource type="Script" uid="uid://bqss7gcgju46i" path="res://ui/ui_library/layer_bottom/boss_status/boss_status.gd" id="1_i48wm"]
+[ext_resource type="PackedScene" uid="uid://t7b0pbo3mw7v" path="res://ui/ui_components/health_bar/health_bar.tscn" id="2_qwj1b"]
 
 [node name="BossStatus" type="Control"]
 layout_mode = 3
@@ -10,3 +11,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i48wm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HealthBar" parent="HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_qwj1b")]
+layout_mode = 2

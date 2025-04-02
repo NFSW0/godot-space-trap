@@ -50,6 +50,6 @@ func _process_collide(move_delta):
 
 ## 质量变化处理
 func _on_mass_changed(new_mass : float) -> void:
-	#set("scale", Vector2(new_mass / DEFAULT_MASS, new_mass / DEFAULT_MASS))
+	#set("scale", Vector2(new_mass / DEFAULT_MASS, new_mass / DEFAULT_MASS)) # 质量同步缩放的功能
 	if new_mass < 0.1:
 		call_deferred("queue_free")

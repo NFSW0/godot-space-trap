@@ -9,6 +9,7 @@ extends InfluenceableEntity2D
 
 func _ready() -> void:
 	mass_changed.connect(_on_mass_changed) # 连接信号
+	UIManager.open_ui("player_status", self)
 
 
 #region 质量(生命)
