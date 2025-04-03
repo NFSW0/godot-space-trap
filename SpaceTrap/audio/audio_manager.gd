@@ -10,6 +10,11 @@ const AUDIO_LIBRARY_JSON_NAME = "audio_library.json" # JSON文件名
 var _audio_registry := {} # 音频注册表 {audio_name: scene}
 var _current_bgm: AudioStreamPlayer = null # 当前正在播放的BGM节点
 
+
+func _ready() -> void:
+	_load_audio_library(AUDIO_LIBRARY_PATH)
+
+
 ## 注册音频场景
 func register_audio(audio_name: String, scene: PackedScene):
 	_audio_registry[audio_name] = scene
@@ -151,7 +156,6 @@ func _save_audio_library_json(_directory_path: String, audio_library: Dictionary
 	if file:
 		file.store_string(JSON.stringify(audio_library, "\t"))
 		file.close()
-		print("音频记录已更新")
 	else:
 		push_error("无法创建音频记录文件, 请检查路径是否存在: ", AUDIO_LIBRARY_PATH)
 #endregion 加载音频库

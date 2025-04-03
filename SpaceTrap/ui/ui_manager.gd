@@ -137,7 +137,6 @@ func _save_ui_library_json(_directory_path: String, ui_library: Dictionary) -> v
 	if file:
 		file.store_string(JSON.stringify(ui_library, "\t"))
 		file.close()
-		print("UI记录已更新")
 	else:
 		push_error("无法创建UI记录文件, 请检查路径是否存在: ", UI_LIBRARY_PATH)
 #endregion 加载UI库
