@@ -18,6 +18,7 @@ script = ExtResource("1_42jby")
 
 [node name="Node2D" type="Node2D" parent="."]
 z_index = 1
+y_sort_enabled = true
 
 [node name="Skeleton" parent="Node2D" instance=ExtResource("2_6k0ta")]
 position = Vector2(-43, -45)

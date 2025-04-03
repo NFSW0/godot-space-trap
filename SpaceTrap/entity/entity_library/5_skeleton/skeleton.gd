@@ -2,7 +2,7 @@
 # TODO 无目标有路径->前往路径终点
 # TODO 无目标无路径->自由行动
 # TODO 可攻击有路径->优先攻击
-extends InfluenceableEntity2D
+extends ControllableEntity2D
 #class_name Skeleton
 
 

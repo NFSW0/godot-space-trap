@@ -1,9 +1,8 @@
 ## 假人动画(二维变量):静默(Idle)、移动(Move)、受伤(Hurt)、死亡(Dead)
-extends InfluenceableEntity2D
+extends ControllableEntity2D
 #class_name Dummy
 
 
-@export var animation_tree: AnimationTree ## 动画节点
 @export var collision_shape_2d: CollisionShape2D ## 碰撞检测节点
 
 
@@ -38,6 +37,7 @@ func _death():
 
 
 #region 动画
+@export var animation_tree: AnimationTree ## 动画节点
 ## 过度到另一个动画 传入动画名称
 func travel_animation(animation_name: String, reset_on_teleport: bool = true):
 	if animation_tree:
@@ -90,7 +90,7 @@ func _attack(data: Vector2 = Vector2())-> void:
 	get_tree().create_timer(attack_cooldown).connect("timeout", func():can_attacking = true)
 	attack_position = data if data else get_global_mouse_position()
 	controllable = false
-	travel_animation("Attack") # 动画帧中设置可控状态 - 攻击动画中处于失控状态
+	travel_animation("Attack")
 	animation_tree.get("parameters/playback").start("Attack", true)
 	await animation_tree.animation_finished
 	controllable = true

@@ -1,5 +1,5 @@
 ## 鼠动画(一维变量):静默(Idle)、移动(Move)、吃(Eat)、受伤(Hurt)、死亡(Dead)
-extends InfluenceableEntity2D
+extends ControllableEntity2D
 #class_name Mouse
 
 

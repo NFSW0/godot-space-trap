@@ -1,5 +1,5 @@
 ## 鬼魂动画(二维变量):移动&静默(Move)
-extends InfluenceableEntity2D
+extends ControllableEntity2D
 #class_name Ghost
 
 

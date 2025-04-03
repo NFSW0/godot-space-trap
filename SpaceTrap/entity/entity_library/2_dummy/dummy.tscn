@@ -1122,13 +1122,13 @@ _data = {
 &"move_up": SubResource("Animation_jwhf4")
 }
 
-[node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "collision_shape_2d", "navigation_agent_2d") groups=["Player"]]
+[node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("collision_shape_2d", "animation_tree", "navigation_agent_2d") groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 14
 collision_mask = 17
 script = ExtResource("1_l3g1x")
-animation_tree = NodePath("AnimationTree")
 collision_shape_2d = NodePath("CollisionShape2D")
+animation_tree = NodePath("AnimationTree")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 controller = SubResource("Resource_k5uh3")
 entity_id = 2
