@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rgp8wxg41krq"
-path="res://.godot/imported/king_combo.png-78a08c3a685e305fcac7098915db9cd6.ctex"
+uid="uid://c41g1sjekdk1m"
+path="res://.godot/imported/boss_king.png-765f602a75c902be91cc61d7bd15f991.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/entity_library/8_boss_king/king_combo.png"
-dest_files=["res://.godot/imported/king_combo.png-78a08c3a685e305fcac7098915db9cd6.ctex"]
+source_file="res://entity/entity_library/8_boss_king/boss_king.png"
+dest_files=["res://.godot/imported/boss_king.png-765f602a75c902be91cc61d7bd15f991.ctex"]
 
 [params]
 
