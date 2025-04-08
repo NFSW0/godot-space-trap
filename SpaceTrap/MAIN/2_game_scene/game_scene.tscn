@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnc7j0ybqrqsn"]
+
+[ext_resource type="Script" uid="uid://bdbrlkebexxa7" path="res://MAIN/2_game_scene/game_scene.gd" id="1_ftu3j"]
+[ext_resource type="PackedScene" uid="uid://brjpuclpx76uy" path="res://world/world.tscn" id="2_y7ws1"]
+
+[node name="GameScene" type="Node"]
+script = ExtResource("1_ftu3j")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="World" parent="Node2D" instance=ExtResource("2_y7ws1")]
+
+[node name="Entities" type="Node2D" parent="Node2D"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]

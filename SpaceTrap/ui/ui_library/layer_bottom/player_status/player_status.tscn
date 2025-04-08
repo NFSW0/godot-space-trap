@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2htxk")
 health_bar = NodePath("HealthBar")
+ui_layer = 2
 
 [node name="HealthBar" parent="." instance=ExtResource("2_2d2jo")]
 layout_mode = 0

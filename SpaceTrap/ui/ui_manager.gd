@@ -27,16 +27,28 @@ func _ready() -> void:
 func register_ui(ui_name: String, scene: PackedScene):
 	_ui_registry[ui_name] = scene
 
-## 打开UI
-func open_ui(ui_name: String, requester: Node):
+## 接管UI: 接管已经实例化的UI 相对屏幕静止 同时与请求者绑定存在关系(一起销毁)
+func take_over_ui(ui_instance: Control, requester: Node):
+	requester.connect("tree_exited", func():close_ui(ui_instance))
+	var ui_layer = ui_instance.get("ui_layer")
+	match ui_layer:
+		UILayer.TopLayer:
+			_open_top_ui(ui_instance)
+		UILayer.MiddleLayer:
+			_open_middle_ui(ui_instance)
+		UILayer.BottomLayer:
+			_open_bottom_ui(ui_instance)
+		_:
+			_open_top_ui(ui_instance)
+
+## 打开UI: 从UI库中搜寻同名UI进行实例化并返回实例化结果
+func open_ui(ui_name: String, requester: Node) -> Control:
 	if not ui_name in _ui_registry:
 		push_error("UI not registered: " + ui_name)
-		return
+		return null
 	
 	var ui_instance = _ui_registry[ui_name].instantiate()
-	var ui_layer = UILayer.TopLayer
-	if ui_instance.has_method("get_ui_layer"):
-		ui_layer = ui_instance.get_ui_layer()
+	var ui_layer = ui_instance.get("ui_layer")
 	
 	match ui_layer:
 		UILayer.TopLayer:
@@ -45,11 +57,15 @@ func open_ui(ui_name: String, requester: Node):
 			_open_middle_ui(ui_instance)
 		UILayer.BottomLayer:
 			_open_bottom_ui(ui_instance)
+		_:
+			_open_top_ui(ui_instance)
 	
 	if ui_instance.has_method("on_ui_loaded"):
 		ui_instance.on_ui_loaded(requester)
+	
+	return ui_instance
 
-## 关闭UI
+## 关闭UI: 关闭指定UI
 func close_ui(ui_instance: Control):
 	if ui_instance in _top_stack:
 		_close_top_ui(ui_instance)
@@ -146,7 +162,8 @@ func _init_layer(ui_layer: UILayer, layer_name: String):
 	var container = get_node_or_null(layer_name)
 	if not container:
 		container = Control.new()
-		container.name = layer_name
+		container.set("name", layer_name)
+		container.set("mouse_filter", Control.MOUSE_FILTER_IGNORE)
 		container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		add_child(container)
 	_layer_containers[ui_layer] = container
@@ -169,7 +186,7 @@ func _hide_current_top_ui():
 		current_top_layer_ui.visible = false
 
 func _add_ui_to_top_stack(new_ui: Control):
-	_layer_containers[UILayer.TopLayer].add_child(new_ui)
+	_set_ui_to_layer(new_ui, _layer_containers[UILayer.TopLayer])
 	_top_stack.append(new_ui)
 
 func _remove_ui_from_top_stack(ui_instance: Control):
@@ -189,7 +206,7 @@ func _on_top_layer_changed():
 
 #region 中层UI处理
 func _open_middle_ui(new_ui: Control):
-	_layer_containers[UILayer.MiddleLayer].add_child(new_ui)
+	_set_ui_to_layer(new_ui, _layer_containers[UILayer.MiddleLayer])
 	_middle_uis.append(new_ui)
 	new_ui.gui_input.connect(_on_middle_ui_interacted.bind(new_ui))
 
@@ -201,6 +218,15 @@ func _on_middle_ui_interacted(event: InputEvent, popup: Control):
 
 #region 下层UI处理
 func _open_bottom_ui(new_ui: Control):
-	_layer_containers[UILayer.BottomLayer].add_child(new_ui)
+	_set_ui_to_layer(new_ui, _layer_containers[UILayer.BottomLayer])
 	_bottom_uis.append(new_ui)
 #endregion 下层UI处理
+
+
+#region 辅助方法
+func _set_ui_to_layer(ui_node: Control, layer_node: Control):
+	if ui_node.get_parent():
+		ui_node.reparent(layer_node)
+	else:
+		layer_node.add_child(ui_node)
+#endregion 辅助方法

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ptecciao4l3i"]
+
+[ext_resource type="Script" uid="uid://dtprdacugfep6" path="res://MAIN/0_launcher/launcher.gd" id="1_h6owc"]
+[ext_resource type="PackedScene" uid="uid://bj78ft7d8c6jy" path="res://MAIN/1_title_scene/title_scene.tscn" id="2_gl57q"]
+
+[node name="Launcher" type="Node"]
+script = ExtResource("1_h6owc")
+title_scene = ExtResource("2_gl57q")

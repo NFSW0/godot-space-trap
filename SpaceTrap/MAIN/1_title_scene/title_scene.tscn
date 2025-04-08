@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj78ft7d8c6jy"]
+
+[ext_resource type="Script" uid="uid://ciecdsknuw2sx" path="res://MAIN/1_title_scene/title_scene.gd" id="1_rltxf"]
+[ext_resource type="PackedScene" uid="uid://brjpuclpx76uy" path="res://world/world.tscn" id="2_u2nlb"]
+[ext_resource type="Script" uid="uid://5kxntr341lc8" path="res://ui/ui_library/layer_top/title_menu/title_menu.gd" id="3_vjwyd"]
+
+[sub_resource type="Gradient" id="Gradient_s4685"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_36mx2"]
+gradient = SubResource("Gradient_s4685")
+fill_from = Vector2(1, 1)
+
+[node name="TitleScene" type="Node"]
+script = ExtResource("1_rltxf")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="World" parent="Node2D" instance=ExtResource("2_u2nlb")]
+position = Vector2(65, 70)
+
+[node name="TitleMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_vjwyd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="TitleMenu/VBoxContainer"]
+clip_children = 1
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 150
+text = "空间陷阱"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TitleMenu/VBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_36mx2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="TitleMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="Start" type="Button" parent="TitleMenu/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "开始游戏"
+
+[node name="About" type="Button" parent="TitleMenu/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "关于"
+
+[node name="Quit" type="Button" parent="TitleMenu/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "退出"
+
+[node name="Control2" type="Control" parent="TitleMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[connection signal="pressed" from="TitleMenu/VBoxContainer/HBoxContainer/VBoxContainer/Start" to="TitleMenu" method="_on_start_pressed"]
+[connection signal="pressed" from="TitleMenu/VBoxContainer/HBoxContainer/VBoxContainer/About" to="TitleMenu" method="_on_about_pressed"]
+[connection signal="pressed" from="TitleMenu/VBoxContainer/HBoxContainer/VBoxContainer/Quit" to="TitleMenu" method="_on_quit_pressed"]

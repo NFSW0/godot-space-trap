@@ -1,5 +1,5 @@
 # 玩家状态栏 玩家加载后触发状态栏一同加载
-extends UIBottom
+extends UIBase
 
 
 ## UI加载后执行

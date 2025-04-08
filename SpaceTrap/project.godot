@@ -16,8 +16,10 @@ config/name_localized={
 }
 config/description="SpaceTrap"
 config/version="v0.0"
+run/main_scene="uid://ptecciao4l3i"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://qdcvrnpr34hl"
 config/icon="res://icon.svg"
 
 [autoload]
