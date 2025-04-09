@@ -3,10 +3,13 @@ extends Node
 
 const TITLE_SCENE = "res://MAIN/1_title_scene/title_scene.tscn"
 @onready var ui_manager : UIManager = get_node_or_null("/root/UIManager")
+@onready var entity_manager : _EntityManager = get_node_or_null("/root/EntityManager")
 
 
 func _ready() -> void:
-	pass
+	if entity_manager:
+		# 设置多人实体承载节点
+		entity_manager.update_spawn_path($Node2D/Entities.get_path())
 
 
 func _unhandled_input(event: InputEvent) -> void:
