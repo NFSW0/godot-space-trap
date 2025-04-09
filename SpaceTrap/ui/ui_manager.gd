@@ -12,6 +12,7 @@ const UI_LIBRARY_PATH = "res://ui/ui_library/" # UI存放路径
 const UI_LIBRARY_JSON_NAME = "ui_library.json" # JSON文件名
 
 var _ui_registry := {} # UI注册表 {ui_name: scene}
+var _ui_opened := {} # UI开启表 {ui_name: instance}
 var _top_stack := []
 var _middle_uis := []
 var _bottom_uis := []
@@ -28,9 +29,9 @@ func register_ui(ui_name: String, scene: PackedScene):
 	_ui_registry[ui_name] = scene
 
 ## 接管UI: 接管已经实例化的UI 相对屏幕静止 同时与请求者绑定存在关系(一起销毁)
-func take_over_ui(ui_instance: Control, requester: Node):
+func take_over_ui(ui_instance: Control, requester: Node, layer_index: int = 0):
 	requester.connect("tree_exited", func():close_ui(ui_instance))
-	var ui_layer = ui_instance.get("ui_layer")
+	var ui_layer = layer_index
 	match ui_layer:
 		UILayer.TopLayer:
 			_open_top_ui(ui_instance)
@@ -45,6 +46,9 @@ func take_over_ui(ui_instance: Control, requester: Node):
 func open_ui(ui_name: String, requester: Node) -> Control:
 	if not ui_name in _ui_registry:
 		push_error("UI not registered: " + ui_name)
+		return null
+	
+	if _ui_opened.keys().has(ui_name):
 		return null
 	
 	var ui_instance = _ui_registry[ui_name].instantiate()
@@ -63,6 +67,8 @@ func open_ui(ui_name: String, requester: Node) -> Control:
 	if ui_instance.has_method("on_ui_loaded"):
 		ui_instance.on_ui_loaded(requester)
 	
+	_ui_opened[ui_name] = ui_instance
+	
 	return ui_instance
 
 ## 关闭UI: 关闭指定UI
@@ -75,6 +81,8 @@ func close_ui(ui_instance: Control):
 	elif ui_instance in _bottom_uis:
 		_bottom_uis.erase(ui_instance)
 		ui_instance.queue_free()
+	var key = _ui_opened.find_key(ui_instance)
+	_ui_opened.erase(key)
 
 #region 加载UI库
 func _load_ui_library(_directory_path: String) -> Dictionary:

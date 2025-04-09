@@ -4,5 +4,5 @@
 
 [node name="OneWayTicket" type="AudioStreamPlayer"]
 stream = ExtResource("1_oenua")
+volume_db = -30.0
 mix_target = 1
-bus = &"BGM"

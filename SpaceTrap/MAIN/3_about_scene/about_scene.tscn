@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdy5en2d30htl"]
+
+[ext_resource type="Script" uid="uid://blyp6vndrgkfv" path="res://MAIN/3_about_scene/about_scene.gd" id="1_v3fgi"]
+
+[node name="AboutScene" type="Node" node_paths=PackedStringArray("control", "color_rect")]
+script = ExtResource("1_v3fgi")
+control = NodePath("CanvasLayer/Control")
+color_rect = NodePath("CanvasLayer/Control/ColorRect")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "游戏作者 
+夜临
+
+部分素材来源
+Fonts Used in This Project:
+
+1. Fusion Pixel
+   - Description: A pixel art font designed for retro-style projects.
+   - Copyright: Copyright (c) 2022, TakWolf (https://takwolf.com). All rights reserved.
+   - License: SIL Open Font License, Version 1.1
+     Full text: https://openfontlicense.org
+   - Reserved Font Name: Fusion Pixel
+   - Source: Retrieved from GitHub repository at https://github.com/TakWolf/fusion-pixel-font
+
+2. 阿里巴巴普惠体 (Alibaba PuHuiTi)
+   - Description: A free and open-source font family designed by Alibaba, suitable for both screen and print use.
+   - Copyright: Copyright (c) 2019, Alibaba Group (https://www.alibabafont.com). All rights reserved.
+   - License: Licensed under the SIL Open Font License, Version 1.1
+     Full text: https://openfontlicense.org
+   - Source: Retrieved from official website at https://www.alibabafont.com"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "返回"
+
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]

@@ -1,5 +1,6 @@
 {
 	"boss_status": "res://ui/ui_library/layer_bottom/boss_status/boss_status.tscn",
+	"game_menu": "res://ui/ui_library/layer_top/game_menu/game_menu.tscn",
 	"player_status": "res://ui/ui_library/layer_bottom/player_status/player_status.tscn",
 	"title_menu": "res://ui/ui_library/layer_top/title_menu/title_menu.tscn"
 }
