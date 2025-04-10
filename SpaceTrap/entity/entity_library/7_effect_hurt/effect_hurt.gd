@@ -6,7 +6,7 @@ extends GPUParticles2D
 
 func _ready() -> void:
 	restart()
-
+	$AudioStreamPlayer2D.play()
 
 func _on_finished() -> void:
 	call_deferred("queue_free")

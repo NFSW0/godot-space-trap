@@ -5,6 +5,9 @@
 extends ControllableEntity2D
 #class_name Skeleton
 
+@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	mass_changed.connect(_on_mass_changed) # 连接信号
@@ -22,9 +25,13 @@ func _on_mass_changed(new_health : float) -> void:
 		travel_animation("Hurt")
 	#set("scale", Vector2(new_health / DEFAULT_MASS, new_health / DEFAULT_MASS))
 	old_health = new_health
+	texture_progress_bar.value = mass / DEFAULT_MASS * 100
 ## 死亡
 func _death():
+	BuffManager.active_buff_array.clear()
+	collision_shape_2d.disabled = true
 	controllable = false
+	audio_stream_player_2d.play()
 	travel_animation("Dead")
 	animation_tree.get("parameters/playback").start("Dead", true)
 #endregion 质量(生命)

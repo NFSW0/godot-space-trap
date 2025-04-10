@@ -1,9 +1,10 @@
-[gd_scene load_steps=88 format=3 uid="uid://bj3ttf6hmskpr"]
+[gd_scene load_steps=89 format=3 uid="uid://bj3ttf6hmskpr"]
 
 [ext_resource type="Script" uid="uid://c5h3nwql70342" path="res://entity/entity_library/2_dummy/dummy.gd" id="1_l3g1x"]
 [ext_resource type="Script" uid="uid://1cgtw7yetdod" path="res://addons/nt_controller/scripts/controller_player.gd" id="2_f8tq8"]
 [ext_resource type="Texture2D" uid="uid://c6sl6ga3miuep" path="res://entity/entity_library/2_dummy/dummy.png" id="2_jwu2f"]
 [ext_resource type="Texture2D" uid="uid://c02lfqch1a6qd" path="res://entity/shadow.png" id="2_tg1ka"]
+[ext_resource type="AudioStream" uid="uid://co5ekrdrc1jsn" path="res://entity/entity_library/2_dummy/sound1.wav" id="5_a3u3o"]
 
 [sub_resource type="Resource" id="Resource_k5uh3"]
 script = ExtResource("2_f8tq8")
@@ -1162,3 +1163,7 @@ libraries = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_a3u3o")
+bus = &"SFX"

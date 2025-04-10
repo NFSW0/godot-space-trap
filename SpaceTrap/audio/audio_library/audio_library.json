@@ -1,3 +1,4 @@
 {
-	"one_way_ticket": "res://audio/audio_library/1_one_way_ticket/one_way_ticket.tscn"
+	"one_way_ticket": "res://audio/audio_library/1_one_way_ticket/one_way_ticket.tscn",
+	"shoot": "res://audio/audio_library/2_shoot/shoot.tscn"
 }

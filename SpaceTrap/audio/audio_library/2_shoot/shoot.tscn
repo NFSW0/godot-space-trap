@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwn6tp48jjvi0"]
+
+[ext_resource type="AudioStream" uid="uid://72cf53qkrp68" path="res://audio/audio_library/2_shoot/shoot.wav" id="1_p4fof"]
+
+[node name="Shoot" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_p4fof")
+bus = &"SFX"

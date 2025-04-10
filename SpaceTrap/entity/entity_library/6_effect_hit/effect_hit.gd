@@ -13,7 +13,7 @@ var lock = false
 func _ready() -> void:
 	rotation = atan2(velocity.y, velocity.x)
 	particles.restart() # 播放粒子特效
-
+	$AudioStreamPlayer2D.play()
 
 func _physics_process(_delta: float) -> void:
 	if not shape_cast_2d.is_colliding():

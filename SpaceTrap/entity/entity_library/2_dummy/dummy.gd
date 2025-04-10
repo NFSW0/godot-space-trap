@@ -28,8 +28,10 @@ func _on_mass_changed(new_health : float) -> void:
 	old_health = new_health
 ## 死亡
 func _death():
+	BuffManager.active_buff_array.clear()
 	controllable = false
 	collision_shape_2d.disabled = true
+	$AudioStreamPlayer2D.play()
 	remove_from_group("Player")
 	travel_animation("Dead")
 	animation_tree.get("parameters/playback").start("Dead", true)
@@ -109,8 +111,23 @@ var damage = 100 ## 伤害值
 func animation_attack():
 	var entity_manager = get_node_or_null("/root/EntityManager")
 	if entity_manager:
-		var attack_velocity = (attack_position - position).normalized() * damage
-		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 1, "position":position, "velocity":attack_velocity, "process_collisions": process_collisions})
+		# 计算攻击方向的基础向量
+		var base_direction = (attack_position - position).normalized()
+		# 定义生成的实体数量
+		var entity_count = 3
+		for i in range(entity_count):
+			# 在position周围随机生成一个位置
+			var random_offset = Vector2(randf_range(-10, 10), randf_range(-10, 10))  # 随机偏移范围
+			var random_position = position + random_offset
+			# 确保velocity依然指向attack_position
+			var attack_velocity = (attack_position - random_position).normalized() * damage
+			# 立即生成实体
+			(entity_manager as EntityManager).generate_entity_immediately({
+				"entity_id": 1,
+				"position": random_position,
+				"velocity": attack_velocity,
+				"process_collisions": process_collisions
+			})
 
 ## 命中回调方法（接收所有碰撞信息，按距离排序）
 func process_collisions(bullet: Node, collisions: Array):

@@ -8,16 +8,22 @@ extends Entity2D
 @export var readied = false ## 弹幕初始化动画完成后设置为true
 var lock = false ## 更新限制锁，避免多次碰撞
 var process_collisions:Callable = Callable() # 接收撞击数组 每个元素包含 撞击对象 撞击点 撞击距离
-
+@onready var sound_1: AudioStreamPlayer2D = $Sound1
+@onready var sound_2: AudioStreamPlayer2D = $Sound2
+var play_sound_2 = false
 
 func _ready() -> void:
 	mass_changed.connect(_on_mass_changed) # 连接信号
 	velocity = velocity # 刷新速度
+	sound_1.play()
 
 
 func _physics_process(delta: float) -> void:
 	if not readied:
 		return
+	if not play_sound_2:
+		play_sound_2 = true
+		#sound_2.play()
 	var move_delta = velocity * delta
 	_process_collide(move_delta)
 	move_and_collide(move_delta)
@@ -25,12 +31,7 @@ func _physics_process(delta: float) -> void:
 ## 碰撞处理
 func _process_collide(move_delta):
 	if not shape_cast_2d.is_colliding():
-		lock = false
 		return
-	if lock:
-		return
-	lock = true
-	
 	shape_cast_2d.set("target_position", move_delta)
 	var collisions = [] # 存储碰撞信息
 	# 收集所有碰撞信息
@@ -48,8 +49,13 @@ func _process_collide(move_delta):
 	if process_collisions:
 		process_collisions.call(self, collisions)
 
+
 ## 质量变化处理
 func _on_mass_changed(new_mass : float) -> void:
 	#set("scale", Vector2(new_mass / DEFAULT_MASS, new_mass / DEFAULT_MASS)) # 质量同步缩放的功能
 	if new_mass < 0.1:
 		call_deferred("queue_free")
+
+
+func _on_timer_timeout() -> void:
+	call_deferred("queue_free")

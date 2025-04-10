@@ -6,7 +6,7 @@ class_name Entity2D
 @export var entity_id:int = 0
 
 signal mass_changed(new_value: float)
-const DEFAULT_MASS = 20
+const DEFAULT_MASS = 20.0
 @export var mass:float = DEFAULT_MASS:
 	set(value):
 		if value != mass:

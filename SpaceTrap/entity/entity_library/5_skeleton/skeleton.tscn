@@ -1,9 +1,10 @@
-[gd_scene load_steps=97 format=3 uid="uid://b300pimxmvuvb"]
+[gd_scene load_steps=102 format=3 uid="uid://b300pimxmvuvb"]
 
 [ext_resource type="Script" uid="uid://bcc0pr131vukr" path="res://entity/entity_library/5_skeleton/skeleton.gd" id="1_7u8xp"]
 [ext_resource type="Script" uid="uid://dhd1rudvttv4d" path="res://addons/nt_controller/scripts/controller_ai.gd" id="2_1ykkx"]
 [ext_resource type="Texture2D" uid="uid://c02lfqch1a6qd" path="res://entity/shadow.png" id="2_hhkic"]
 [ext_resource type="Texture2D" uid="uid://ck3l0x3lmif7f" path="res://entity/entity_library/5_skeleton/skeleton.png" id="3_kh0mn"]
+[ext_resource type="AudioStream" uid="uid://btnnrd5vfmfmn" path="res://entity/entity_library/5_skeleton/sound1.mp3" id="5_lwpih"]
 
 [sub_resource type="Resource" id="Resource_jqkkk"]
 resource_local_to_scene = true
@@ -1192,6 +1193,20 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_by5ok"]
 radius = 80.0
 
+[sub_resource type="Gradient" id="Gradient_k0qdm"]
+colors = PackedColorArray(0.501961, 0.501961, 0.501961, 1, 0.501961, 0.501961, 0.501961, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lwpih"]
+gradient = SubResource("Gradient_k0qdm")
+width = 16
+
+[sub_resource type="Gradient" id="Gradient_lwpih"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_otf2j"]
+gradient = SubResource("Gradient_lwpih")
+width = 16
+
 [node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "perceptron", "navigation_agent_2d")]
 y_sort_enabled = true
 collision_layer = 10
@@ -1242,5 +1257,17 @@ target_desired_distance = 20.0
 path_postprocessing = 1
 avoidance_enabled = true
 radius = 14.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -8.0
+offset_top = -19.0
+offset_right = 8.0
+offset_bottom = -18.0
+value = 100.0
+texture_under = SubResource("GradientTexture1D_lwpih")
+texture_progress = SubResource("GradientTexture1D_otf2j")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_lwpih")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

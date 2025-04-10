@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnc7j0ybqrqsn"]
 
 [ext_resource type="Script" uid="uid://bdbrlkebexxa7" path="res://MAIN/2_game_scene/game_scene.gd" id="1_ftu3j"]
-[ext_resource type="PackedScene" uid="uid://brjpuclpx76uy" path="res://world/world.tscn" id="2_y7ws1"]
 [ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="3_85rn8"]
+[ext_resource type="PackedScene" uid="uid://6yq70hhr6q4y" path="res://world/levels/level_0/level_0.tscn" id="4_px0x3"]
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_ftu3j")
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="World" parent="Node2D" instance=ExtResource("2_y7ws1")]
+[node name="Level0" parent="Node2D" instance=ExtResource("4_px0x3")]
 
 [node name="Entities" type="Node2D" parent="Node2D"]
 z_index = 1

@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3pie0q4u52v3"]
+[gd_scene load_steps=10 format=3 uid="uid://b3pie0q4u52v3"]
 
 [ext_resource type="Script" uid="uid://broqf372aoln7" path="res://entity/entity_library/1_bullet/bullet.gd" id="1_8a1me"]
 [ext_resource type="Texture2D" uid="uid://bkblq1xqd6u2m" path="res://entity/entity_library/1_bullet/bullet.png" id="2_8uonp"]
+[ext_resource type="AudioStream" uid="uid://8wqltxv4v1v7" path="res://entity/entity_library/1_bullet/sound1.wav" id="3_263qs"]
+[ext_resource type="AudioStream" uid="uid://d3ipgl06bqode" path="res://entity/entity_library/1_bullet/sound2.wav" id="4_vy0vg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_owar2"]
 radius = 8.0
@@ -98,3 +100,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_263qs")
 }
 autoplay = "ready"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Sound1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_263qs")
+bus = &"SFX"
+
+[node name="Sound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vy0vg")
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
