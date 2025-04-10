@@ -16,7 +16,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Dummy" parent="Node2D/Entities" instance=ExtResource("3_85rn8")]
-position = Vector2(24, -26)
+position = Vector2(37, 61)
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Entities/Dummy"]
 limit_smoothed = true
