@@ -22,15 +22,15 @@ void vertex() {
 void fragment() {
 	// 计算从剪切线位置到当前像素位置的向量。
 	vec2 line_to_pixel_vector = (cut_line_position - world_space_position.xy);
-	
+
 	// 初始化clip变量，默认值为1.0，表示不裁剪。
 	float clip = 1.0;
-	
+
 	// 如果is_cut_enabled为true，则根据法线和剪切线到像素位置的向量计算裁剪。
 	if (cut_enabled)
 		// 使用点积和步进函数step计算clip值，用于控制裁剪。
 		clip = step(dot(line_to_pixel_vector, normalize(cut_line_normal)), 0.0);
-	
+
 	// 设置片段的颜色
 	COLOR = texture(TEXTURE, UV);
 	COLOR.a *= clip;

@@ -18,8 +18,6 @@ func _on_mass_changed(new_health : float) -> void:
 	if new_health < 0.01:
 		_death()
 		return
-	if old_health > new_health:
-		travel_animation("Hurt")
 	#set("scale", Vector2(new_health / DEFAULT_MASS, new_health / DEFAULT_MASS))
 	old_health = new_health
 ## 死亡
@@ -99,6 +97,8 @@ func _update_local_state() -> Dictionary:
 @export var perceptron: Area2D ## 感知节点
 # 感知(用于确定行动目标)
 func _perceptual() -> Node:
+	if has_foced:
+		return get_tree().get_nodes_in_group("Player")[0]
 	var nodes_in_area = perceptron.get_overlapping_areas() + perceptron.get_overlapping_bodies()
 	# 排除无关对象
 	nodes_in_area = nodes_in_area.filter(func(element): return element.is_in_group("Player"))
@@ -220,3 +220,68 @@ func _move(final_velocity: Vector2 = Vector2()):
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity_move_to = safe_velocity
 #endregion 行动附属-移动
+
+
+# 定义变量
+@export var focus_duration: float = 0.5  # 聚焦动画持续时间
+@export var zoom_scale: float = 1.5      # 放大倍数
+@export var time_scale: float = 0.5     # 游戏时间减速比例
+var original_position: Vector2          # 原始摄像机位置
+var original_zoom: float                # 原始摄像机缩放
+var camera: Camera2D                    # 当前摄像机
+var tween: Tween                        # Tween 节点
+var has_foced : bool = false
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	if has_foced:
+		return
+	
+	if not camera:
+		camera = get_viewport().get_camera_2d()
+		if not camera:
+			print("未找到 Camera2D，请确保场景中有一个活动的 Camera2D")
+			return
+	if not tween:
+		tween = camera.create_tween()
+	has_foced = true
+	# 保存原始摄像机状态
+	if original_position == null:
+		original_position = camera.position
+		original_zoom = camera.get("zoom")
+	# 减速游戏时间
+	Engine.time_scale = time_scale
+	AudioManager.stop_bgm()
+	$AudioStreamPlayer2D.play()
+	# 创建聚焦动画
+	tween = create_tween()
+	# 设置目标位置和缩放
+	var target_position = global_position  # BOSS 的全局位置
+	var target_zoom = Vector2.ONE * zoom_scale
+	# 添加动画：移动到目标位置
+	tween.tween_property(camera, "global_position", target_position, focus_duration)
+	# 添加动画：放大摄像机
+	tween.tween_property(camera, "zoom", target_zoom, focus_duration)
+	# 添加回调：播放 BOSS 的动画
+	tween.chain().tween_callback(_play_boss_animation)
+	# 添加停顿：暂停 1 秒
+	tween.tween_interval(2.0)
+	# 添加回调：恢复原始状态
+	tween.chain().tween_callback(_restore_camera_state)
+
+
+func _play_boss_animation() -> void:
+	travel_animation("Idle")
+	animation_tree.get("parameters/playback").start("Idle", true)
+
+
+func _restore_camera_state() -> void:
+	if not camera or not tween:
+		return
+	# 恢复游戏时间
+	Engine.time_scale = 1.0
+	# 创建恢复动画
+	tween = camera.create_tween()
+	# 添加动画：恢复原始位置
+	tween.tween_property(camera, "position", original_position, focus_duration)
+	# 添加动画：恢复原始缩放
+	tween.tween_property(camera, "zoom", Vector2.ONE, focus_duration)
+	controllable = true

@@ -34,6 +34,7 @@ func _death():
 	audio_stream_player_2d.play()
 	travel_animation("Dead")
 	animation_tree.get("parameters/playback").start("Dead", true)
+	EventManager.trigger_event("skeleton_dead", self)
 #endregion 质量(生命)
 
 
@@ -225,3 +226,7 @@ func _move(final_velocity: Vector2 = Vector2()):
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity_move_to = safe_velocity
 #endregion 行动附属-移动
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	call_deferred("queue_free")
