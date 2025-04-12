@@ -3,7 +3,7 @@
 extends ControllableEntity2D
 
 
-var attack_range : float = 100 ## 攻击距离
+var attack_range : float = 10 ## 攻击距离
 
 
 func _ready() -> void:
