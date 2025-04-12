@@ -59,8 +59,8 @@ func _physics_process(delta: float):
 		if buff.current_duration_remain > 0:
 			buff._physics_process(delta)
 		else:
-			buff.end(active_buff_array)
 			active_buff_array.remove_at(index)
+			buff.end(active_buff_array)
 		index -= 1
 
 

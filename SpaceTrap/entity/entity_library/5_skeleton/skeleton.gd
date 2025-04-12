@@ -8,6 +8,7 @@ extends ControllableEntity2D
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+var attacker = null
 
 func _ready() -> void:
 	mass_changed.connect(_on_mass_changed) # 连接信号
@@ -106,6 +107,8 @@ func _update_local_state() -> Dictionary:
 @export var perceptron: Area2D ## 感知节点
 # 感知(用于确定行动目标)
 func _perceptual() -> Node:
+	if attacker:
+		return attacker
 	var nodes_in_area = perceptron.get_overlapping_areas() + perceptron.get_overlapping_bodies()
 	# 排除无关对象
 	nodes_in_area = nodes_in_area.filter(func(element): return element.is_in_group("Player"))
@@ -229,4 +232,6 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	call_deferred("queue_free")
+	await get_tree().create_timer(1).timeout
+	if not _perceptual() and not $VisibleOnScreenNotifier2D.is_on_screen():
+		call_deferred("queue_free")

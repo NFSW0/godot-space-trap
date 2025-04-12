@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BuffUnKnockBack" load_steps=2 format=3 uid="uid://dq5stok3hurbl"]
+
+[ext_resource type="Script" uid="uid://b37adkfabifia" path="res://buff/buff_library/4_buff_unknockback/buff_unknockback.gd" id="1_d8hck"]
+
+[resource]
+script = ExtResource("1_d8hck")
+buff_id = 4
+buff_tags = Array[int]([])
+buff_max_stack = 1
+buff_max_duration = 300.0
+buff_permanent = false
+buff_tick_interval = 0.2
+current_stack = 1
+current_tick_count = 0
+current_tick_remain = 0.2
+current_duration_remain = 10.0
+metadata/_custom_type_script = "uid://b37adkfabifia"

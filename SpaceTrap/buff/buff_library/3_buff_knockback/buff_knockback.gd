@@ -7,6 +7,14 @@ class_name BuffKnockback
 @export var knockback_velocity: Vector2 = Vector2()
 
 
+## 附益叠层逻辑
+func stackable(existing_buff_array:Array[Buff]) -> bool:
+	# 清除对应目标的调试附益
+	for buff in existing_buff_array:
+		if buff.buff_target == buff_target and buff.buff_id == 4:
+			return true
+	return super.stackable(existing_buff_array)
+
 ## 附益添加
 func start():
 	if buff_target:

@@ -143,6 +143,7 @@ func process_collisions(bullet: Node, collisions: Array):
 		# 处理碰撞（包括伤害）
 		var hitData = HitData.new(bullet.get_path(), collider.get_path(), collision["normal"])
 		HitManager.append_hit_event(hitData.serialize())
+		collider.set("attacker", self)
 		# 添加击退效果
 		var buff_manager = get_node_or_null("/root/BuffManager")
 		if buff_manager and collider is ControllableEntity2D:
