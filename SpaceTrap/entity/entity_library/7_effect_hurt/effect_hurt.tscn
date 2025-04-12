@@ -33,6 +33,5 @@ entity_id = 7
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ul6hx")
-bus = &"SFX"
 
 [connection signal="finished" from="." to="." method="_on_finished"]

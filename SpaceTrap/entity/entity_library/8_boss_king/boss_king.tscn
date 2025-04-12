@@ -550,7 +550,6 @@ parameters/Move/blend_position = 0.0
 stream = ExtResource("5_fidlw")
 volume_db = -15.0
 max_distance = 800.0
-bus = &"EAX"
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
