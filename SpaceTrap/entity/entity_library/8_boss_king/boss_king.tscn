@@ -82,6 +82,29 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 2, 3.4, 4.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_attack1"
+}, {
+"args": [],
+"method": &"animation_attack2"
+}, {
+"args": [],
+"method": &"animation_attack3"
+}, {
+"args": [],
+"method": &"animation_attack1"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ebokf"]
 resource_name = "attack1-1_right"
@@ -110,6 +133,29 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 2, 3.4, 4.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_attack1"
+}, {
+"args": [],
+"method": &"animation_attack2"
+}, {
+"args": [],
+"method": &"animation_attack3"
+}, {
+"args": [],
+"method": &"animation_attack1"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_a2e7c"]
@@ -140,6 +186,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_attack4"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_6wle5"]
 resource_name = "attack2-1_right"
@@ -168,6 +228,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_attack4"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_taiaj"]
@@ -482,6 +556,8 @@ scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_8madf")
 
 [node name="HitArea1" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea1"]
 position = Vector2(-29, 0)
@@ -490,6 +566,8 @@ shape = SubResource("CircleShape2D_rsnk6")
 debug_color = Color(0.998668, 0, 0.135886, 0.42)
 
 [node name="HitArea2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2"]
 scale = Vector2(1, 0.5)
@@ -497,6 +575,8 @@ shape = SubResource("CircleShape2D_uvtuj")
 debug_color = Color(1, 0, 0.137255, 0.419608)
 
 [node name="HitArea3" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea3"]
 position = Vector2(29, 0)
@@ -505,6 +585,8 @@ shape = SubResource("CircleShape2D_qcx3h")
 debug_color = Color(1, 0, 0.137255, 0.419608)
 
 [node name="HitArea4" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea4"]
 scale = Vector2(1, 0.5)

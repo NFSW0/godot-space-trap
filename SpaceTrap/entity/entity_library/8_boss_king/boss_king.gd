@@ -3,7 +3,7 @@
 extends ControllableEntity2D
 
 
-var attack_range : float = 10 ## 攻击距离
+var attack_range : float = 50 ## 攻击距离
 
 
 func _ready() -> void:
@@ -75,6 +75,15 @@ func _set_brain():
 			func(state): return {ControllerBase.COMMAND_TYPE.ATTACK: state["target"].get("position")}
 		)
 	)
+	ai_brain.available_actions.append(
+		GOAP_AIBrain.GOAPAction.new(
+			"AttackTarget2",
+			{"can_attack2": true},
+			{"target_destroyed": true},
+			2.0,
+			func(state): return {"Attack2": state["target"].get("position")}
+		)
+	)
 	controller.set("ai_brain", ai_brain)
 
 
@@ -92,6 +101,10 @@ func _update_local_state() -> Dictionary:
 	
 	var target_in_range = position.distance_to(target_position) < attack_range
 	local_state["target_in_range"] = target_in_range
+	
+	local_state["can_attack1"] = can_attacking
+	
+	local_state["can_attack2"] = can_attacking2
 	
 	return local_state
 #endregion 智能-决策
@@ -127,7 +140,7 @@ func _execute_command(command: Dictionary) -> void:
 	if command.is_empty():
 		travel_animation("Idle")
 		return
-	for command_type:ControllerBase.COMMAND_TYPE in command:
+	for command_type in command:
 		match command_type:
 			ControllerBase.COMMAND_TYPE.MOVE_TO:
 				_move_to(command[command_type])
@@ -135,6 +148,8 @@ func _execute_command(command: Dictionary) -> void:
 				_move_toward(command[command_type])
 			ControllerBase.COMMAND_TYPE.ATTACK:
 				_attack(command[command_type])
+			"Attack2":
+				_attack2(command[command_type])
 
 ## 定点移动
 ## 通过导航代理计算路径并移动至指定位置
@@ -168,6 +183,18 @@ func _attack(data: Vector2 = Vector2())-> void:
 	animation_tree.get("parameters/playback").start("Attack1", true)
 	await animation_tree.animation_finished
 	controllable = true
+
+func _attack2(data: Vector2= Vector2()):
+	if not can_attacking2:
+		return
+	can_attacking2 = false
+	get_tree().create_timer(attack_cooldown).connect("timeout", func():can_attacking2 = true)
+	attack_position = data if data else get_global_mouse_position()
+	controllable = false
+	travel_animation("Attack2") # 动画帧中设置可控状态 - 攻击动画中处于失控状态
+	animation_tree.get("parameters/playback").start("Attack2", true)
+	await animation_tree.animation_finished
+	controllable = true
 #endregion 行动中心
 
 
@@ -175,17 +202,36 @@ func _attack(data: Vector2 = Vector2())-> void:
 var attack_position = position ## 进攻坐标
 var attack_cooldown = 1.0  ## 攻击冷却时间（秒）
 var can_attacking = true ## 是否可以进行攻击
+var can_attacking2 = true ## 是否可以进行攻击
 var penetration:int = 0 ## 穿透数，可命中多个目标时，最多命中 [穿透数] 个目标，<=0 表示无限
 var damage = 10 ## 伤害值
 
 ## 动画帧回调方法
 ## 生成实体（如投射物）并赋予其初始速度
-func animation_attack():
-	var entity_manager = get_node_or_null("/root/EntityManager")
-	if entity_manager:
-		var attack_velocity = (attack_position - position).normalized() * damage
-		(entity_manager as EntityManager).generate_entity_immediately({"entity_id": 6, "position":position, "velocity":attack_velocity, "process_collisions": process_collisions})
+func animation_attack1():
+	var bodies = $HitArea1.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("Player"):
+			body.mass -= 5
 
+func animation_attack2():
+	var bodies = $HitArea2.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("Player"):
+			body.mass -= 10
+
+func animation_attack3():
+	var bodies = $HitArea3.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("Player"):
+			body.mass -= 15
+
+func animation_attack4():
+	var bodies = $HitArea4.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("Player"):
+			body.mass -= 10
+	EntityManager.generate_entity_immediately({"entity_id": 9, "position": get_tree().get_nodes_in_group("Player")[0].position})
 ## 命中回调方法（接收所有碰撞信息，按距离排序）
 func process_collisions(bullet: Node, collisions: Array):
 	var max_hits = penetration if penetration > 0 else collisions.size()

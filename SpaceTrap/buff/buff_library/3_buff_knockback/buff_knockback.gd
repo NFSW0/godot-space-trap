@@ -27,7 +27,7 @@ func start():
 func _physics_process(delta: float):
 	current_duration_remain -= delta
 	
-	if buff_target and buff_target is CharacterBody2D:
+	if buff_target and buff_target is CharacterBody2D and buff_target.name != "BossKing":
 		buff_target.velocity = knockback_velocity * current_duration_remain if current_duration_remain < 1 else knockback_velocity
 		buff_target.move_and_slide()
 	else:
