@@ -188,7 +188,7 @@ func _attack2(data: Vector2= Vector2()):
 	if not can_attacking2:
 		return
 	can_attacking2 = false
-	get_tree().create_timer(attack_cooldown).connect("timeout", func():can_attacking2 = true)
+	get_tree().create_timer(attack_cooldown * 10).connect("timeout", func():can_attacking2 = true)
 	attack_position = data if data else get_global_mouse_position()
 	controllable = false
 	travel_animation("Attack2") # 动画帧中设置可控状态 - 攻击动画中处于失控状态
