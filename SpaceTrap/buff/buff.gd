@@ -5,6 +5,7 @@ class_name Buff
 
 
 @export var buff_id:int = 0 ## 附益编号
+@export var buff_name:String = "⌜⌟" ## 附益名称
 @export var buff_tags:Array[int] = [] ## 附益标签代号 代号含义由策划数据定
 @export var buff_max_stack:int = 1 ## 附益最大叠层
 @export var buff_max_duration:float = 300 ## 附益最大持续时间

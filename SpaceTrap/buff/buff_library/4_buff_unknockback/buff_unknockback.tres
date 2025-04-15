@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_d8hck")
 buff_id = 4
+buff_name = "免击退"
 buff_tags = Array[int]([])
 buff_max_stack = 1
 buff_max_duration = 300.0

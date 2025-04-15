@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_j66a2")
 buff_id = 1
+buff_name = "幸运"
 buff_tags = Array[int]([])
 buff_max_stack = 10
 buff_max_duration = 300.0

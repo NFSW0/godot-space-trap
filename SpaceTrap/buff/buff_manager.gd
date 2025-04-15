@@ -9,6 +9,7 @@ extends Node
 class_name _BuffManager
 
 
+signal buff_changed(active_buff_array:Array[Buff])
 const BUFF_LIBRARY_PATH = "res://buff/buff_library/"
 var buff_library = {} ## 附益库{id, buff}
 var active_buff_array:Array[Buff] = [] ## 生效的附益, 用于附益结算(间歇)
@@ -30,9 +31,12 @@ func append_buff(buff_id:int, buff_target_node_path:NodePath, config_data:Dictio
 		return
 	var new_buff:Buff = (buff_library[buff_id] as Buff).new(buff_target, config_data)
 	if new_buff.stackable(active_buff_array):
+		buff_changed.emit(active_buff_array)
 		return
 	new_buff.start()
 	active_buff_array.append(new_buff)
+	buff_changed.emit(active_buff_array)
+
 
 
 ## 初始化附益管理器
@@ -55,6 +59,8 @@ func _physics_process(delta: float):
 			return
 	var index:int = active_buff_array.size() - 1
 	while index >= 0:
+		if active_buff_array.size() < 1:
+			return
 		var buff:Buff = active_buff_array[index]
 		if buff.current_duration_remain > 0:
 			buff._physics_process(delta)

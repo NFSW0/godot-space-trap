@@ -6,6 +6,7 @@
 script = ExtResource("1_pdt21")
 knockback_velocity = Vector2(0, 0)
 buff_id = 3
+buff_name = "击退"
 buff_tags = Array[int]([])
 buff_max_stack = 1
 buff_max_duration = 1.0

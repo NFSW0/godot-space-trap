@@ -209,6 +209,7 @@ func process_collisions(bullet: Node, collisions: Array):
 		var buff_manager = get_node_or_null("/root/BuffManager")
 		if buff_manager:
 			buff_manager.append_buff(3, collider.get_path(), {"knockback_velocity":(attack_position - position).normalized() * damage})
+			buff_manager.append_buff(5, collider.get_path())
 		hits += 1
 #endregion 行动附属-攻击
 

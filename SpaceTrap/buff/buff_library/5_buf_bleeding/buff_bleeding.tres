@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BuffBleeding" load_steps=2 format=3 uid="uid://ckqrjkg0m2rqq"]
+
+[ext_resource type="Script" uid="uid://crcu3elf2kbct" path="res://buff/buff_library/5_buf_bleeding/buff_bleeding.gd" id="1_jvtct"]
+
+[resource]
+script = ExtResource("1_jvtct")
+buff_id = 5
+buff_name = "流血"
+buff_tags = Array[int]([])
+buff_max_stack = 5
+buff_max_duration = 300.0
+buff_permanent = false
+buff_tick_interval = 0.2
+current_stack = 1
+current_tick_count = 0
+current_tick_remain = 0.2
+current_duration_remain = 10.0
+metadata/_custom_type_script = "uid://crcu3elf2kbct"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bm77tme7wjrcf" path="res://ui/ui_library/layer_bottom/player_status/player_status.gd" id="1_2htxk"]
 [ext_resource type="PackedScene" uid="uid://t7b0pbo3mw7v" path="res://ui/ui_components/health_bar/health_bar.tscn" id="2_2d2jo"]
 
-[node name="PlayerStatus" type="Control" node_paths=PackedStringArray("health_bar")]
+[node name="PlayerStatus" type="Control" node_paths=PackedStringArray("health_bar", "buff_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2htxk")
 health_bar = NodePath("HealthBar")
+buff_container = NodePath("BuffContainer")
 ui_layer = 2
 
 [node name="HealthBar" parent="." instance=ExtResource("2_2d2jo")]
 layout_mode = 0
+
+[node name="BuffContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 160.0
+offset_bottom = 169.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

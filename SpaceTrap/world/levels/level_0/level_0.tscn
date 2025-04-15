@@ -34,8 +34,7 @@ offset_top = -90.0
 offset_right = -32.0
 offset_bottom = -41.0
 text = "WSAD移动
-Mouse1攻击
-E收割尸体"
+Mouse1攻击"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="TileMapLayer"]
 position = Vector2(56, 72)
