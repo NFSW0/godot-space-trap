@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqxhlrnhfbufx"]
+[gd_scene load_steps=4 format=3 uid="uid://dqxhlrnhfbufx"]
 
 [ext_resource type="Script" uid="uid://bqss7gcgju46i" path="res://ui/ui_library/layer_bottom/boss_status/boss_status.gd" id="1_i48wm"]
+[ext_resource type="FontFile" uid="uid://4dr7bilc8568" path="res://ui/fusion-pixel-10px-monospaced-zh_hans.ttf" id="2_ng7p6"]
 [ext_resource type="PackedScene" uid="uid://t7b0pbo3mw7v" path="res://ui/ui_components/health_bar/health_bar.tscn" id="2_qwj1b"]
 
-[node name="BossStatus" type="Control"]
+[node name="BossStatus" type="Control" node_paths=PackedStringArray("health_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i48wm")
+health_bar = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/HealthBar")
 ui_layer = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -25,6 +27,12 @@ alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 alignment = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ng7p6")
+theme_override_font_sizes/font_size = 20
+text = "君王"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2

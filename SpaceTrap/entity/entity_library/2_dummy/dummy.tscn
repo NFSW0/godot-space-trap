@@ -1133,6 +1133,7 @@ animation_tree = NodePath("AnimationTree")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 controller = SubResource("Resource_k5uh3")
 entity_id = 2
+mass = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708

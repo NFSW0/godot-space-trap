@@ -9,6 +9,8 @@ extends ControllableEntity2D
 func _ready() -> void:
 	mass_changed.connect(_on_mass_changed) # 连接信号
 	UIManager.open_ui("player_status", self)
+	mass_changed.emit(mass)
+
 
 
 #region 质量(生命)

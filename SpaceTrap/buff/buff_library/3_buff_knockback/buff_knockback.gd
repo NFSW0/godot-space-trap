@@ -17,7 +17,7 @@ func stackable(existing_buff_array:Array[Buff]) -> bool:
 
 ## 附益添加
 func start():
-	if buff_target:
+	if buff_target and buff_target.name != "BossKing":
 		buff_target.set("controllable", false)
 	else:
 		current_duration_remain = 0
@@ -36,7 +36,7 @@ func _physics_process(delta: float):
 
 ## 附益结束, 传入已有附益
 func end(_existing_buff_array:Array[Buff]):
-	if buff_target:
+	if buff_target and buff_target.name != "BossKing":
 		buff_target.set("controllable", true)
 	else:
 		current_duration_remain = 0

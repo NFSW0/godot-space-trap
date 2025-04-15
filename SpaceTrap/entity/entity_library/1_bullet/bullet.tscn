@@ -73,7 +73,7 @@ _data = {
 }
 
 [node name="Bullet" type="CharacterBody2D" node_paths=PackedStringArray("shape_cast_2d", "animation_player")]
-collision_layer = 10
+collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_8a1me")
 shape_cast_2d = NodePath("ShapeCast2D")

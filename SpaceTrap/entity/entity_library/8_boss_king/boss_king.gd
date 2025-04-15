@@ -232,6 +232,19 @@ func animation_attack4():
 		if body.is_in_group("Player"):
 			body.mass -= 10
 	EntityManager.generate_entity_immediately({"entity_id": 9, "position": get_tree().get_nodes_in_group("Player")[0].position})
+	# 在周围生成3只骷髅
+	var num_skeletons = 3  # 骷髅数量
+	var radius = 50.0  # 骷髅生成的半径范围
+	for i in range(num_skeletons):
+		# 计算一个随机角度，用于分布骷髅
+		var angle = randf_range(0, 2 * PI)
+		# 根据角度和半径计算偏移位置
+		var offset = Vector2(radius * cos(angle), radius * sin(angle))
+		# 计算骷髅的生成位置
+		var skeleton_position = position + offset
+		# 生成骷髅实体
+		EntityManager.generate_entity_immediately({"entity_id": 5, "position": skeleton_position, "attacker": get_tree().get_nodes_in_group("Player")[0]})
+
 ## 命中回调方法（接收所有碰撞信息，按距离排序）
 func process_collisions(bullet: Node, collisions: Array):
 	var max_hits = penetration if penetration > 0 else collisions.size()
@@ -293,6 +306,8 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	if not tween:
 		tween = camera.create_tween()
 	has_foced = true
+	UIManager.open_ui("boss_status", self)
+	mass_changed.emit(mass)
 	# 保存原始摄像机状态
 	if original_position == null:
 		original_position = camera.position

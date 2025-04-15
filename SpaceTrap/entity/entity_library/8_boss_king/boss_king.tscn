@@ -538,6 +538,7 @@ graph_offset = Vector2(0, 26.2764)
 [node name="BossKing" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "perceptron", "navigation_agent_2d")]
 y_sort_enabled = true
 collision_layer = 10
+collision_mask = 17
 script = ExtResource("1_sbewx")
 animation_tree = NodePath("AnimationTree")
 perceptron = NodePath("Perceptron")
@@ -549,7 +550,6 @@ mass = 1000.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
-avoidance_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 0.5)
