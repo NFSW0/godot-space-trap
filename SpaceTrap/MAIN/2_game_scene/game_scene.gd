@@ -24,6 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			game_menu.connect("on_quit_to_title_pressed", func():get_tree().change_scene_to_file(TITLE_SCENE))
 
 
+# 教程结束
 func _on_level_0_end_teach() -> void:
 	$Node2D/Level0.queue_free()
 	$Node2D.add_child((load(WORLD_SCENE) as PackedScene).instantiate())
