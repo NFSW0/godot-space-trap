@@ -233,6 +233,4 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	await get_tree().create_timer(1).timeout
-	if not _perceptual() and not $VisibleOnScreenNotifier2D.is_on_screen():
-		call_deferred("queue_free")
+	call_deferred("queue_free")

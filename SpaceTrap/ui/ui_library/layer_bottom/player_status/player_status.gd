@@ -6,6 +6,7 @@ extends UIBase
 @export var buff_container: VBoxContainer # Buff栏
 var ui_requester = null
 
+
 ## UI加载后执行
 func on_ui_loaded(requester: Node) -> void:
 	if not requester:

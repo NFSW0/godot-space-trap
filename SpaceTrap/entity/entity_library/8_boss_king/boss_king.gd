@@ -11,10 +11,6 @@ func _ready() -> void:
 	_set_brain()
 
 
-func _enter_tree() -> void:
-	BuffManager.append_buff(4, get_path(), {"buff_permanent":true})
-
-
 #region 质量(生命)
 var old_health : float = 0.0
 ## 处理质量变化

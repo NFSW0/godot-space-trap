@@ -43,11 +43,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	$TileMapLayer3/Area2D/CollisionShape2D.disabled = false
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.owner.is_in_group("Player"):
-		end_teach.emit()
-
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.owner.is_in_group("Player"):
+	if body.is_in_group("Player"):
 		end_teach.emit()

@@ -21,3 +21,5 @@ position = Vector2(37, 61)
 [node name="Camera2D" type="Camera2D" parent="Node2D/Entities/Dummy"]
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[connection signal="end_teach" from="Node2D/Level0" to="." method="_on_level_0_end_teach"]
