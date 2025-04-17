@@ -1,0 +1,11 @@
+join Zero center
+前奏1
+前奏2
+前奏3
+- 选择1
+	1
+	[signal arg="1"]
+- 选择2
+	2
+	[signal arg="2"]
+......

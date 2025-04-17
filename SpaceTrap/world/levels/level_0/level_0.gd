@@ -13,7 +13,7 @@ func _ready() -> void:
 	EventManager.register_event("skeleton_dead", on_skeleton_dead)
 
 
-func on_skeleton_dead(node):
+func on_skeleton_dead(_node):
 	skeleton_dead_count += 1
 	if skeleton_dead_count >= 5:
 		$TileMapLayer.set_cell(Vector2i(15,-1))

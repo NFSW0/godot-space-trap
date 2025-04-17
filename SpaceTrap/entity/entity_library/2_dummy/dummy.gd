@@ -114,7 +114,7 @@ func animation_attack():
 	var entity_manager = get_node_or_null("/root/EntityManager")
 	if entity_manager:
 		# 计算攻击方向的基础向量
-		var base_direction = (attack_position - position).normalized()
+		#var base_direction = (attack_position - position).normalized()
 		# 定义生成的实体数量
 		var entity_count = 3
 		for i in range(entity_count):

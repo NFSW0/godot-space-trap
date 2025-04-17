@@ -28,3 +28,4 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_level_0_end_teach() -> void:
 	$Node2D/Level0.queue_free()
 	$Node2D.add_child((load(WORLD_SCENE) as PackedScene).instantiate())
+	entity_manager.generate_entity({"entity_id": 10, "position": Vector2(44, -36)})
