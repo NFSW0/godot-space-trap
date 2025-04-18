@@ -13,5 +13,3 @@ func _ready() -> void:
 ## 跳转到主菜单
 func _to_title():
 	get_tree().change_scene_to_packed(title_scene)
-	#Dialogic.Styles.load_style("BubbleText")
-	#Dialogic.start("DialogAtfterGuide")

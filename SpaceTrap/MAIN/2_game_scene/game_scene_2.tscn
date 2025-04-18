@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d17b6fbb1yyq1"]
+
+[ext_resource type="Script" uid="uid://dmnoy8sqy52r6" path="res://MAIN/2_game_scene/game_scene_2.gd" id="1_fu4kh"]
+[ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="2_e5ndo"]
+
+[node name="GameScene2" type="Node"]
+script = ExtResource("1_fu4kh")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="Node2D"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Dummy" parent="Node2D/Entities" instance=ExtResource("2_e5ndo")]
+position = Vector2(37, 61)
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/Entities/Dummy"]
+limit_smoothed = true
+position_smoothing_enabled = true

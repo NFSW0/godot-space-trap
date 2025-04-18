@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpdkc6t3da7wq"]
+
+[ext_resource type="Script" uid="uid://cn7krl6xwensj" path="res://ui/ui_library/layer_top/player_dead/player_dead.gd" id="1_4xw8w"]
+
+[node name="PlayerDead" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4xw8w")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Reborn" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "重生"
+
+[node name="ToTitle" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "退出到主菜单"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Reborn" to="." method="_on_reborn_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ToTitle" to="." method="_on_to_title_pressed"]
