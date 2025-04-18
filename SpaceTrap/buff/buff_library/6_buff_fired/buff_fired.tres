@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BuffFire" load_steps=2 format=3 uid="uid://q7giwc33q81y"]
+
+[ext_resource type="Script" uid="uid://d21ryw2oxvrst" path="res://buff/buff_library/6_buff_fired/buff_fired.gd" id="1_lnhfg"]
+
+[resource]
+script = ExtResource("1_lnhfg")
+buff_id = 6
+buff_name = "着火"
+buff_tags = Array[int]([])
+buff_max_stack = 1
+buff_max_duration = 300.0
+buff_permanent = false
+buff_tick_interval = 0.2
+current_stack = 1
+current_tick_count = 0
+current_tick_remain = 0.2
+current_duration_remain = 10.0
+metadata/_custom_type_script = "uid://d21ryw2oxvrst"

@@ -8,9 +8,11 @@ extends ControllableEntity2D
 
 func _ready() -> void:
 	mass_changed.connect(_on_mass_changed) # 连接信号
-	UIManager.open_ui("player_status", self)
 	mass_changed.emit(mass)
 
+
+func _enter_tree() -> void:
+	UIManager.open_ui("player_status", self)
 
 
 #region 质量(生命)
@@ -30,6 +32,7 @@ func _on_mass_changed(new_health : float) -> void:
 	old_health = new_health
 ## 死亡
 func _death():
+	UIManager.open_ui("player_dead", self)
 	BuffManager.active_buff_array.clear()
 	controllable = false
 	collision_shape_2d.disabled = true

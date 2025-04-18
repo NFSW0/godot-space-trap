@@ -3,6 +3,7 @@ extends Node
 
 const TITLE_SCENE = "res://MAIN/1_title_scene/title_scene.tscn"
 const WORLD_SCENE = "res://world/world.tscn"
+const GameScene = "res://MAIN/2_game_scene/game_scene_2.tscn"
 @onready var ui_manager : UIManager = get_node_or_null("/root/UIManager")
 @onready var entity_manager : _EntityManager = get_node_or_null("/root/EntityManager")
 
@@ -26,6 +27,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # 教程结束
 func _on_level_0_end_teach() -> void:
-	$Node2D/Level0.queue_free()
-	$Node2D.add_child((load(WORLD_SCENE) as PackedScene).instantiate())
-	entity_manager.generate_entity({"entity_id": 10, "position": Vector2(44, -36)})
+	get_tree().change_scene_to_file(GameScene)

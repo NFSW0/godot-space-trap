@@ -8,9 +8,15 @@ const WORLD_SCENE = "res://world/world.tscn"
 
 
 func _ready() -> void:
+	#$Node2D/Entities/Dummy/Camera2D/SubViewportContainer/SubViewport.world_2d = get_tree().root.world_2d
+	get_tree().root.set_canvas_cull_mask_bit(5, false)
 	if entity_manager:
 		# 设置多人实体承载节点
 		entity_manager.update_spawn_path($Node2D/Entities.get_path())
+
+
+func _process(_delta: float) -> void:
+	$Node2D/Entities/Dummy/Camera2D/SubViewportContainer/SubViewport/Camera2D.position = $Node2D/Entities/Dummy.position
 
 
 func _unhandled_input(event: InputEvent) -> void:

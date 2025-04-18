@@ -68,6 +68,7 @@ func open_ui(ui_name: String, requester: Node) -> Control:
 		ui_instance.on_ui_loaded(requester)
 	
 	_ui_opened[ui_name] = ui_instance
+	requester.connect("tree_exited", func():close_ui(ui_instance))
 	
 	return ui_instance
 

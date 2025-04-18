@@ -9,7 +9,6 @@ func _ready() -> void:
 
 
 func _dialog_to_end():
-	pass
 	var layout = Dialogic.start("DialogAtfterGuide") # 开启对话
 	if layout.has_method("register_character"):
 		layout.register_character(load("res://dialogic/characters/Developer.dch"), $".")

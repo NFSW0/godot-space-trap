@@ -1,20 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://d17b6fbb1yyq1"]
+[gd_scene load_steps=10 format=3 uid="uid://d17b6fbb1yyq1"]
 
 [ext_resource type="Script" uid="uid://dmnoy8sqy52r6" path="res://MAIN/2_game_scene/game_scene_2.gd" id="1_fu4kh"]
 [ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="2_e5ndo"]
+[ext_resource type="Shader" uid="uid://ctwkpviahyctr" path="res://world/portal/portal_shader.gdshader" id="2_lv650"]
+[ext_resource type="PackedScene" uid="uid://brjpuclpx76uy" path="res://world/world.tscn" id="2_m4hg5"]
+[ext_resource type="TileSet" uid="uid://ccp6l7mx0wsqb" path="res://world/tiles/tile_set_2.tres" id="4_m4hg5"]
+[ext_resource type="PackedScene" uid="uid://dtra334fvx84p" path="res://entity/entity_library/10_developer/developer.tscn" id="4_omyuc"]
+
+[sub_resource type="Gradient" id="Gradient_lv650"]
+offsets = PackedFloat32Array(0, 0.97541, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5dlhi"]
+gradient = SubResource("Gradient_lv650")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_83iys"]
+shader = ExtResource("2_lv650")
+shader_parameter/image_multiplier = SubResource("GradientTexture2D_5dlhi")
 
 [node name="GameScene2" type="Node"]
 script = ExtResource("1_fu4kh")
 
 [node name="Node2D" type="Node2D" parent="."]
 
+[node name="TileMapLayer" type="TileMapLayer" parent="Node2D"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 255, 255, 1, 0, 1, 0, 1, 0, 0, 0, 255, 255, 255, 255, 1, 0, 3, 0, 1, 0, 0, 0, 255, 255, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+tile_set = ExtResource("4_m4hg5")
+
 [node name="Entities" type="Node2D" parent="Node2D"]
 z_index = 1
 y_sort_enabled = true
 
 [node name="Dummy" parent="Node2D/Entities" instance=ExtResource("2_e5ndo")]
-position = Vector2(37, 61)
+z_index = 1
+position = Vector2(36, 25)
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Entities/Dummy"]
+y_sort_enabled = true
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Node2D/Entities/Dummy/Camera2D"]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_83iys")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 300)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Node2D/Entities/Dummy/Camera2D/SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+size = Vector2i(1000, 600)
+render_target_update_mode = 4
+
+[node name="World" parent="Node2D/Entities/Dummy/Camera2D/SubViewportContainer/SubViewport" instance=ExtResource("2_m4hg5")]
+
+[node name="Developer" parent="Node2D/Entities/Dummy/Camera2D/SubViewportContainer/SubViewport/World" instance=ExtResource("4_omyuc")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(51, -34)
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/Entities/Dummy/Camera2D/SubViewportContainer/SubViewport"]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(36, 25)
