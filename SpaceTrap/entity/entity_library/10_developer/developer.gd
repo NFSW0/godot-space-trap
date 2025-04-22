@@ -9,9 +9,12 @@ func _ready() -> void:
 
 
 func _dialog_to_end():
+	if DataManager.prefer_data.has("news_guide_end") and DataManager.prefer_data["news_guide_end"]:
+		return
 	var layout = Dialogic.start("DialogAtfterGuide") # 开启对话
 	if layout.has_method("register_character"):
 		layout.register_character(load("res://dialogic/characters/Developer.dch"), $".")
+	DataManager.set_prefer_data("news_guide_end", true)
 
 
 func dialog_event1(arg: String):
