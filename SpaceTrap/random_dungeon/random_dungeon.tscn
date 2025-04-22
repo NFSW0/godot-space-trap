@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5a3qkc4rk8jp"]
+
+[ext_resource type="Script" uid="uid://cepftnmkkpitj" path="res://random_dungeon/random_dungeon6.gd" id="1_brklk"]
+[ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="2_brklk"]
+
+[node name="RandomDungeon" type="Node2D"]
+script = ExtResource("1_brklk")
+
+[node name="rooms" type="Node2D" parent="."]
+
+[node name="Dummy" parent="." instance=ExtResource("2_brklk")]
+
+[node name="Camera2D" type="Camera2D" parent="Dummy"]
+position = Vector2(-4, 4)
