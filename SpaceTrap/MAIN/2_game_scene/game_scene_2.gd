@@ -15,10 +15,23 @@ func _ready() -> void:
 	var tween = create_tween()
 	tween.tween_property(image_multiplier, "width", 64.0, 2.0 )
 	tween.parallel().tween_property(image_multiplier, "height", 64.0, 2.0 )
+	tween.tween_callback(func():
+		if not DataManager.prefer_data.has("news_guide_end") or not DataManager.prefer_data["news_guide_end"]:
+			return
+		var material1 = $Node2D/Entities/Dummy/Camera2D/SubViewportContainer.get("material")
+		var image_multiplier1 = material.get("shader_parameter/image_multiplier")
+		var tween1 = create_tween()
+		tween1.tween_property(image_multiplier, "width", 1.0, 2.0 )
+		tween1.parallel().tween_property(image_multiplier, "height", 1.0, 2.0 )
+		tween1.tween_callback(func():$Node2D/Entities/Dummy/Camera2D/SubViewportContainer.queue_free())
+		)
 	Dialogic.signal_event.connect(on_chat_end)
 	if entity_manager:
 		# 设置多人实体承载节点
 		entity_manager.update_spawn_path($Node2D/Entities.get_path())
+
+
+
 
 
 func on_chat_end(arg: String):
@@ -28,7 +41,11 @@ func on_chat_end(arg: String):
 		var tween = create_tween()
 		tween.tween_property(image_multiplier, "width", 1.0, 2.0 )
 		tween.parallel().tween_property(image_multiplier, "height", 1.0, 2.0 )
-		tween.tween_callback(func():$Node2D/Entities/Dummy/Camera2D/SubViewportContainer.queue_free())
+		var sub_viewport_container = $Node2D/Entities/Dummy/Camera2D/SubViewportContainer
+		tween.tween_callback(func():
+			if sub_viewport_container:
+				sub_viewport_container.queue_free()
+		)
 
 
 func _process(_delta: float) -> void:

@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://d17b6fbb1yyq1"]
 
 [ext_resource type="Script" uid="uid://dmnoy8sqy52r6" path="res://MAIN/2_game_scene/game_scene_2.gd" id="1_fu4kh"]
+[ext_resource type="PackedScene" uid="uid://c5a3qkc4rk8jp" path="res://random_dungeon/random_dungeon.tscn" id="2_5dlhi"]
 [ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="2_e5ndo"]
 [ext_resource type="Shader" uid="uid://ctwkpviahyctr" path="res://world/portal/portal_shader.gdshader" id="2_lv650"]
 [ext_resource type="PackedScene" uid="uid://brjpuclpx76uy" path="res://world/world.tscn" id="2_m4hg5"]
-[ext_resource type="TileSet" uid="uid://ccp6l7mx0wsqb" path="res://world/tiles/tile_set_2.tres" id="4_m4hg5"]
 [ext_resource type="PackedScene" uid="uid://dtra334fvx84p" path="res://entity/entity_library/10_developer/developer.tscn" id="4_omyuc"]
 
 [sub_resource type="Gradient" id="Gradient_lv650"]
@@ -28,9 +28,7 @@ script = ExtResource("1_fu4kh")
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Node2D"]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 255, 255, 1, 0, 1, 0, 1, 0, 0, 0, 255, 255, 255, 255, 1, 0, 3, 0, 1, 0, 0, 0, 255, 255, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
-tile_set = ExtResource("4_m4hg5")
+[node name="RandomDungeon" parent="Node2D" instance=ExtResource("2_5dlhi")]
 
 [node name="Entities" type="Node2D" parent="Node2D"]
 z_index = 1
