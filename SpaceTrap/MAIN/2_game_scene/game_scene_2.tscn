@@ -13,6 +13,8 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5dlhi"]
 gradient = SubResource("Gradient_lv650")
+width = 1
+height = 1
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -32,18 +34,23 @@ tile_set = ExtResource("4_m4hg5")
 
 [node name="Entities" type="Node2D" parent="Node2D"]
 z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 
 [node name="Dummy" parent="Node2D/Entities" instance=ExtResource("2_e5ndo")]
 z_index = 1
+z_as_relative = false
 position = Vector2(36, 25)
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Entities/Dummy"]
+z_index = -1
+z_as_relative = false
 y_sort_enabled = true
 limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Node2D/Entities/Dummy/Camera2D"]
+z_index = 2
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_83iys")
 anchors_preset = 15
@@ -66,9 +73,12 @@ size = Vector2i(1000, 600)
 render_target_update_mode = 4
 
 [node name="World" parent="Node2D/Entities/Dummy/Camera2D/SubViewportContainer/SubViewport" instance=ExtResource("2_m4hg5")]
+z_index = 0
+z_as_relative = false
 
 [node name="Developer" parent="Node2D/Entities/Dummy/Camera2D/SubViewportContainer/SubViewport/World" instance=ExtResource("4_omyuc")]
 z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 position = Vector2(51, -34)
 
