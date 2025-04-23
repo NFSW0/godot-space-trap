@@ -37,6 +37,7 @@ func on_chat_end(arg: String):
 			if sub_viewport_container:
 				sub_viewport_container.queue_free()
 			DataManager.set_prefer_data("had_played", true)
+			$Node2D.add_child(preload("res://random_dungeon/random_dungeon.tscn").instantiate())
 		)
 
 

@@ -19,4 +19,6 @@ shape = SubResource("CircleShape2D_r3pkt")
 
 [node name="Dummy" parent="." instance=ExtResource("3_81pkg")]
 modulate = Color(0, 0, 0, 1)
+collision_layer = 0
+collision_mask = 0
 controllable = false

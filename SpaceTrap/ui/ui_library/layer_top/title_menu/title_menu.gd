@@ -11,4 +11,5 @@ func _on_about_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
+	DataManager.save_prefer_data()
 	get_tree().quit()
