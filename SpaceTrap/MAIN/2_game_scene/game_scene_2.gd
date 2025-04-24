@@ -10,6 +10,8 @@ const WORLD_SCENE = "res://world/world.tscn"
 func _ready() -> void:
 	$Node2D/Entities/Dummy/Camera2D/SubViewportContainer/SubViewport.world_2d = get_tree().root.world_2d
 	get_tree().root.set_canvas_cull_mask_bit(5, false)
+	$Node2D/Entities/Dummy/PointLight2D.scale = Vector2(0,0)
+	$Node2D/Entities/Dummy/CanvasModulate.visible = false
 	var material = $Node2D/Entities/Dummy/Camera2D/SubViewportContainer.get("material")
 	var image_multiplier = material.get("shader_parameter/image_multiplier")
 	var tween = create_tween()
@@ -38,6 +40,9 @@ func on_chat_end(arg: String):
 				sub_viewport_container.queue_free()
 			DataManager.set_prefer_data("had_played", true)
 			$Node2D.add_child(preload("res://random_dungeon/random_dungeon.tscn").instantiate())
+			$Node2D/Entities/Dummy/CanvasModulate.visible = true
+			var light_tween = $Node2D/Entities/Dummy/PointLight2D.create_tween()
+			light_tween.tween_property($Node2D/Entities/Dummy/PointLight2D, "scale", Vector2(10,10), 2.0 )
 		)
 
 

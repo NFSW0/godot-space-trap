@@ -111,7 +111,11 @@ func _update_local_state() -> Dictionary:
 # 感知(用于确定行动目标)
 func _perceptual() -> Node:
 	if has_foced:
-		return get_tree().get_nodes_in_group("Player")[0]
+		# 获取属于 "Player" 组的所有节点
+		var player_nodes = get_tree().get_nodes_in_group("Player")
+		# 检查数组是否非空
+		if player_nodes.size() > 0:
+			return player_nodes[0]
 	var nodes_in_area = perceptron.get_overlapping_areas() + perceptron.get_overlapping_bodies()
 	# 排除无关对象
 	nodes_in_area = nodes_in_area.filter(func(element): return element.is_in_group("Player"))

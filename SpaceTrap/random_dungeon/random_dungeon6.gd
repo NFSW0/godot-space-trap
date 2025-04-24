@@ -19,19 +19,21 @@ func _generate_initial_rooms() -> void:
 
 func _create_room() -> bool:
 	var new_room = RANDOM_ROOM.instantiate()
-	new_room.owner = get_tree().current_scene
+	#new_room.owner = get_tree().current_scene
 	new_room.has_been_in_viewport = false
 
 	new_room.connect("enter_screen", Callable(self, "_on_room_enter_screen"))
 	new_room.connect("out_of_screen", Callable(self, "_on_room_out_of_screen"))
-
+	new_room.visible = false
 	rooms.add_child(new_room)
 	room_references.append(new_room)
-
+	
+	
 	# 第一个房间无需连接
 	if room_references.size() == 1:
+		new_room.visible = true
 		return true
-
+	
 	var possible_rooms = rooms.get_children().filter(func(r): return r != new_room)
 	var tries = 10
 	var connected = false
@@ -43,6 +45,8 @@ func _create_room() -> bool:
 	if not connected:
 		room_references.erase(new_room)
 		new_room.queue_free()
+	
+	new_room.visible = true
 	return connected
 
 func _on_room_enter_screen(room: Node2D) -> void:
@@ -82,7 +86,7 @@ func _rebuild_room_chain(start_rooms: Array) -> void:
 
 		to_rebuild.append(current)
 
-		# 搜索它连接的房间（你应在房间实现里提供 get_connected_rooms 方法）
+		# 搜索它连接的房间
 		if current.has_method("get_connected_rooms"):
 			for neighbor in current.get_connected_rooms():
 				queue.append(neighbor)

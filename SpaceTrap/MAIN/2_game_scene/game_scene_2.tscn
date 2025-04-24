@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d17b6fbb1yyq1"]
+[gd_scene load_steps=10 format=3 uid="uid://d17b6fbb1yyq1"]
 
 [ext_resource type="Script" uid="uid://dmnoy8sqy52r6" path="res://MAIN/2_game_scene/game_scene_2.gd" id="1_fu4kh"]
 [ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="2_e5ndo"]
 [ext_resource type="Shader" uid="uid://ctwkpviahyctr" path="res://world/portal/portal_shader.gdshader" id="2_lv650"]
 [ext_resource type="PackedScene" uid="uid://brjpuclpx76uy" path="res://world/world.tscn" id="2_m4hg5"]
 [ext_resource type="PackedScene" uid="uid://dtra334fvx84p" path="res://entity/entity_library/10_developer/developer.tscn" id="4_omyuc"]
+[ext_resource type="Texture2D" uid="uid://wdh4hy0t4ds8" path="res://entity/2DPointLight.png" id="6_lv650"]
 
 [sub_resource type="Gradient" id="Gradient_lv650"]
 offsets = PackedFloat32Array(0, 0.97541, 1)
@@ -81,3 +82,11 @@ position = Vector2(51, -34)
 z_as_relative = false
 y_sort_enabled = true
 position = Vector2(36, 25)
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/Entities/Dummy"]
+scale = Vector2(10, 10)
+shadow_enabled = true
+texture = ExtResource("6_lv650")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Node2D/Entities/Dummy"]
+color = Color(0, 0, 0, 1)

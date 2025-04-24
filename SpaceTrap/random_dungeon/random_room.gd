@@ -61,7 +61,7 @@ func _create_room():
 	var floorCount = randi_range(1, maxOverlapFloors)
 	var floors = []
 	
-	for floor in floorCount:
+	for _floor in floorCount:
 		floors.append(_create_floor_rect())
 		
 	_draw_floor(floors)
@@ -80,10 +80,10 @@ func _create_floor_rect():
 	return Rect2(starPoint, Vector2(width, height))
 
 func _draw_floor(floors):
-	for floor:Rect2 in floors:
-		for x in floor.size.x:
-			for y in floor.size.y:
-				floor_layer.set_cell(Vector2(floor.position.x + x , floor.position.y + y), 1, floorTiles["default"])
+	for _floor:Rect2 in floors:
+		for x in _floor.size.x:
+			for y in _floor.size.y:
+				floor_layer.set_cell(Vector2(_floor.position.x + x , _floor.position.y + y), 1, floorTiles["default"])
 
 func _fill_gaps():
 	var changeList = []
@@ -92,18 +92,18 @@ func _fill_gaps():
 
 	for x in rect.size.x:
 		for y in rect.size.y:
-			var position = Vector2(x + rect.position.x,y + rect.position.y)
+			var _position = Vector2(x + rect.position.x,y + rect.position.y)
 			
-			if floor_layer.get_cell_source_id(position) >= 0: continue
+			if floor_layer.get_cell_source_id(_position) >= 0: continue
 			
-			changeList += _get_fill_points(position)
+			changeList += _get_fill_points(_position)
 	
 	for point in changeList:
 		floor_layer.set_cell(point, 1, floorTiles["default"])
 
-func _get_fill_points(position):
+func _get_fill_points(_position):
 	var list = []
-	var surrounding = floor_layer.get_surrounding_cells(position)
+	var surrounding = floor_layer.get_surrounding_cells(_position)
 	
 	for i in surrounding.size():
 		var counterSide = wrap(i + 2, 0, 4)
@@ -112,9 +112,9 @@ func _get_fill_points(position):
 		if _has_floor(surrounding[i]): 
 
 			if _has_floor(surrounding[counterSide]):
-				list.append(position)
+				list.append(_position)
 			else:
-				var bufferList = [position]
+				var bufferList = [_position]
 				
 				for ii in fillGapSize:
 					bufferList.append(buffersurrounding[counterSide])
@@ -126,8 +126,8 @@ func _get_fill_points(position):
 
 	return list
 
-func _has_floor(position):
-	return floor_layer.get_cell_source_id(position) > -1
+func _has_floor(_position):
+	return floor_layer.get_cell_source_id(_position) > -1
 	
 func _create_walls():
 	var allFloorTiles = floor_layer.get_used_cells()
@@ -148,97 +148,97 @@ func _create_walls():
 		elif bottomEnd: _create_bottom_wall(floorPosition)
 		elif rightEnd: _create_right_wall(floorPosition)
 
-func _create_top_left_corner(position):
-	_create_top_wall(position)
+func _create_top_left_corner(_position):
+	_create_top_wall(_position)
 	
-	if _has_floor(position + directions["left"] + directions["bottom"]):
-		wall_layer.set_cell(position + directions["top"] * 4 + directions["left"], 5, wallTiles["topLeftCorner"])
-		wall_layer.set_cell(position + directions["top"] * 3 + directions["left"], 5, wallTiles["topLeftCornerReverse"])	
-	elif _has_floor(position + directions["left"] + directions["bottom"] * 2):
-		wall_layer.set_cell(position + directions["top"] * 4 + directions["left"], 5, wallTiles["topLeftCorner"])
-		wall_layer.set_cell(position + directions["top"] * 3 + directions["left"], 5, wallTiles["left"])
-		wall_layer.set_cell(position + directions["top"] * 2 + directions["left"], 5, wallTiles["topLeftCornerReverse"])
-	elif _has_floor(position + directions["left"] + directions["bottom"] * 3):
-		wall_layer.set_cell(position + directions["top"] * 4 + directions["left"], 5, wallTiles["topLeftCorner"])
-		wall_layer.set_cell(position + directions["top"] * 3 + directions["left"], 5, wallTiles["left"])	
-		wall_layer.set_cell(position + directions["top"] * 2 + directions["left"], 5, wallTiles["left"])
+	if _has_floor(_position + directions["left"] + directions["bottom"]):
+		wall_layer.set_cell(_position + directions["top"] * 4 + directions["left"], 5, wallTiles["topLeftCorner"])
+		wall_layer.set_cell(_position + directions["top"] * 3 + directions["left"], 5, wallTiles["topLeftCornerReverse"])	
+	elif _has_floor(_position + directions["left"] + directions["bottom"] * 2):
+		wall_layer.set_cell(_position + directions["top"] * 4 + directions["left"], 5, wallTiles["topLeftCorner"])
+		wall_layer.set_cell(_position + directions["top"] * 3 + directions["left"], 5, wallTiles["left"])
+		wall_layer.set_cell(_position + directions["top"] * 2 + directions["left"], 5, wallTiles["topLeftCornerReverse"])
+	elif _has_floor(_position + directions["left"] + directions["bottom"] * 3):
+		wall_layer.set_cell(_position + directions["top"] * 4 + directions["left"], 5, wallTiles["topLeftCorner"])
+		wall_layer.set_cell(_position + directions["top"] * 3 + directions["left"], 5, wallTiles["left"])	
+		wall_layer.set_cell(_position + directions["top"] * 2 + directions["left"], 5, wallTiles["left"])
 	else:
-		wall_layer.set_cell(position + directions["top"] * 4 + directions["left"], 5, wallTiles["topLeftCorner"])
-		wall_layer.set_cell(position + directions["top"] * 3 + directions["left"], 5, wallTiles["left"])	
-		wall_layer.set_cell(position + directions["top"] * 2 + directions["left"], 5, wallTiles["left"])
-		wall_layer.set_cell(position + directions["top"] + directions["left"], 5, wallTiles["left"])
+		wall_layer.set_cell(_position + directions["top"] * 4 + directions["left"], 5, wallTiles["topLeftCorner"])
+		wall_layer.set_cell(_position + directions["top"] * 3 + directions["left"], 5, wallTiles["left"])	
+		wall_layer.set_cell(_position + directions["top"] * 2 + directions["left"], 5, wallTiles["left"])
+		wall_layer.set_cell(_position + directions["top"] + directions["left"], 5, wallTiles["left"])
 		
-	_create_left_wall(position)
+	_create_left_wall(_position)
 	
-func _create_top_right_corner(position):
-	_create_top_wall(position)
+func _create_top_right_corner(_position):
+	_create_top_wall(_position)
 	
-	if _has_floor(position + directions["right"] + directions["bottom"]):
-		wall_layer.set_cell(position + directions["top"] * 4 + directions["right"], 5, wallTiles["topRightCorner"])
-		wall_layer.set_cell(position + directions["top"] * 3 + directions["right"], 5, wallTiles["topRightCornerReverse"])	
-	elif _has_floor(position + directions["right"] + directions["bottom"] * 2):
-		wall_layer.set_cell(position + directions["top"] * 4 + directions["right"], 5, wallTiles["topRightCorner"])
-		wall_layer.set_cell(position + directions["top"] * 3 + directions["right"], 5, wallTiles["right"])
-		wall_layer.set_cell(position + directions["top"] * 2 + directions["right"], 5, wallTiles["topRightCornerReverse"])
-	elif _has_floor(position + directions["right"] + directions["bottom"] * 3):
-		wall_layer.set_cell(position + directions["top"] * 4 + directions["right"], 5, wallTiles["topRightCorner"])
-		wall_layer.set_cell(position + directions["top"] * 3 + directions["right"], 5, wallTiles["right"])	
-		wall_layer.set_cell(position + directions["top"] * 2 + directions["right"], 5, wallTiles["right"])
+	if _has_floor(_position + directions["right"] + directions["bottom"]):
+		wall_layer.set_cell(_position + directions["top"] * 4 + directions["right"], 5, wallTiles["topRightCorner"])
+		wall_layer.set_cell(_position + directions["top"] * 3 + directions["right"], 5, wallTiles["topRightCornerReverse"])	
+	elif _has_floor(_position + directions["right"] + directions["bottom"] * 2):
+		wall_layer.set_cell(_position + directions["top"] * 4 + directions["right"], 5, wallTiles["topRightCorner"])
+		wall_layer.set_cell(_position + directions["top"] * 3 + directions["right"], 5, wallTiles["right"])
+		wall_layer.set_cell(_position + directions["top"] * 2 + directions["right"], 5, wallTiles["topRightCornerReverse"])
+	elif _has_floor(_position + directions["right"] + directions["bottom"] * 3):
+		wall_layer.set_cell(_position + directions["top"] * 4 + directions["right"], 5, wallTiles["topRightCorner"])
+		wall_layer.set_cell(_position + directions["top"] * 3 + directions["right"], 5, wallTiles["right"])	
+		wall_layer.set_cell(_position + directions["top"] * 2 + directions["right"], 5, wallTiles["right"])
 	else:
-		wall_layer.set_cell(position + directions["top"] * 4 + directions["right"], 5, wallTiles["topRightCorner"])
-		wall_layer.set_cell(position + directions["top"] + directions["right"], 5, wallTiles["right"])
-		wall_layer.set_cell(position + directions["top"] * 2 + directions["right"], 5, wallTiles["right"])
-		wall_layer.set_cell(position + directions["top"] * 3 + directions["right"], 5, wallTiles["right"])
+		wall_layer.set_cell(_position + directions["top"] * 4 + directions["right"], 5, wallTiles["topRightCorner"])
+		wall_layer.set_cell(_position + directions["top"] + directions["right"], 5, wallTiles["right"])
+		wall_layer.set_cell(_position + directions["top"] * 2 + directions["right"], 5, wallTiles["right"])
+		wall_layer.set_cell(_position + directions["top"] * 3 + directions["right"], 5, wallTiles["right"])
 	
-	_create_right_wall(position)
+	_create_right_wall(_position)
 	
-func _create_bottom_left_corner(position):
-	wall_layer.set_cell(position + directions["bottom"] + directions["left"], 5, wallTiles["bottomLeftCorner"])
+func _create_bottom_left_corner(_position):
+	wall_layer.set_cell(_position + directions["bottom"] + directions["left"], 5, wallTiles["bottomLeftCorner"])
 	
-	_create_left_wall(position)
-	_create_bottom_wall(position)
+	_create_left_wall(_position)
+	_create_bottom_wall(_position)
 
-func _create_bottom_right_corner(position):
-	wall_layer.set_cell(position + directions["bottom"] + directions["right"], 5, wallTiles["bottomRightCorner"])
+func _create_bottom_right_corner(_position):
+	wall_layer.set_cell(_position + directions["bottom"] + directions["right"], 5, wallTiles["bottomRightCorner"])
 	
-	_create_right_wall(position)
-	_create_bottom_wall(position)
+	_create_right_wall(_position)
+	_create_bottom_wall(_position)
 	
-func _create_left_wall(position):
-	if _has_floor(position + directions["left"] + directions["bottom"] * 4): return
+func _create_left_wall(_position):
+	if _has_floor(_position + directions["left"] + directions["bottom"] * 4): return
 	
-	elif _has_floor(position + directions["left"] + directions["top"]):
-		wall_layer.set_cell(position + directions["left"], 5, wallTiles["bottomLeftCornerReverse"])
+	elif _has_floor(_position + directions["left"] + directions["top"]):
+		wall_layer.set_cell(_position + directions["left"], 5, wallTiles["bottomLeftCornerReverse"])
 	else:
-		wall_layer.set_cell(position + directions["left"], 5, wallTiles["left"])
+		wall_layer.set_cell(_position + directions["left"], 5, wallTiles["left"])
 
-func _create_bottom_wall(position):
-	if _has_floor(position + directions["bottom"] + directions["left"]):
-		wall_layer.set_cell(position + directions["bottom"], 5, wallTiles["bottomRightCornerReverse"])
-	elif _has_floor(position + directions["bottom"] + directions["right"]):
-		wall_layer.set_cell(position + directions["bottom"], 5, wallTiles["bottomLeftCornerReverse"])
+func _create_bottom_wall(_position):
+	if _has_floor(_position + directions["bottom"] + directions["left"]):
+		wall_layer.set_cell(_position + directions["bottom"], 5, wallTiles["bottomRightCornerReverse"])
+	elif _has_floor(_position + directions["bottom"] + directions["right"]):
+		wall_layer.set_cell(_position + directions["bottom"], 5, wallTiles["bottomLeftCornerReverse"])
 	else:
-		wall_layer.set_cell(position + directions["bottom"], 5, wallTiles["bottom"])
+		wall_layer.set_cell(_position + directions["bottom"], 5, wallTiles["bottom"])
 
-func _create_right_wall(position):	
-	if _has_floor(position + directions["right"] + directions["bottom"] * 4): return
+func _create_right_wall(_position):	
+	if _has_floor(_position + directions["right"] + directions["bottom"] * 4): return
 	
-	elif _has_floor(position + directions["right"] + directions["top"]):
-		wall_layer.set_cell(position + directions["right"], 5, wallTiles["bottomRightCornerReverse"])
+	elif _has_floor(_position + directions["right"] + directions["top"]):
+		wall_layer.set_cell(_position + directions["right"], 5, wallTiles["bottomRightCornerReverse"])
 	else:
-		wall_layer.set_cell(position + directions["right"], 5, wallTiles["right"])
+		wall_layer.set_cell(_position + directions["right"], 5, wallTiles["right"])
 
-func _create_top_wall(position):
-	wall_layer.set_cell(position +  directions["top"], 1, wallTiles["top"])
-	wall_layer.set_cell(position + directions["top"] * 2, 1, wallTiles["top2"])
-	wall_layer.set_cell(position + directions["top"] * 3, 1, wallTiles["top3"])
+func _create_top_wall(_position):
+	wall_layer.set_cell(_position +  directions["top"], 1, wallTiles["top"])
+	wall_layer.set_cell(_position + directions["top"] * 2, 1, wallTiles["top2"])
+	wall_layer.set_cell(_position + directions["top"] * 3, 1, wallTiles["top3"])
 	
-	if _has_floor(position +  directions["top"] + directions["left"]):
-		wall_layer.set_cell(position +  directions["top"] * 4, 5, wallTiles["topRightCornerReverse"])
-	elif _has_floor(position +  directions["top"] + directions["right"]):
-		wall_layer.set_cell(position +  directions["top"] * 4, 5, wallTiles["topLeftCornerReverse"])
+	if _has_floor(_position +  directions["top"] + directions["left"]):
+		wall_layer.set_cell(_position +  directions["top"] * 4, 5, wallTiles["topRightCornerReverse"])
+	elif _has_floor(_position +  directions["top"] + directions["right"]):
+		wall_layer.set_cell(_position +  directions["top"] * 4, 5, wallTiles["topLeftCornerReverse"])
 	else:
-		wall_layer.set_cell(position +  directions["top"] * 4, 5, wallTiles["top4"])
+		wall_layer.set_cell(_position +  directions["top"] * 4, 5, wallTiles["top4"])
 
 func _create_collision_shape():
 	var collisionPoints = []
@@ -281,7 +281,7 @@ func update_visiable_area(polygon_points):
 
 func get_sorted_points(list):
 	var newList = []
-	var lastPoint
+	var lastPoint= []
 	var lastDirection = "y"
 	var duplicateList = list.duplicate()
 
@@ -302,7 +302,7 @@ func get_sorted_points(list):
 		if lastDirection == "y": lastDirection = "x"
 		else: lastDirection = "y"
 
-		var selectedPoint
+		var selectedPoint = Vector2()
 		var distance = 0
 		for option in options:
 			if not selectedPoint:
@@ -320,20 +320,20 @@ func get_sorted_points(list):
 
 func connect_with(room):
 	if not room:
-		return
+		return false
 	var openDirections = directions.values()
 	var selectedDirection = openDirections.pick_random()
 	
 	var ownConnectionPointDict = get_connection_point(-1 * selectedDirection)
 	var roomConnectionPointDict = room.get_connection_point(selectedDirection)
 	
-	var oldPosition = global_position
+	#var oldPosition = global_position
 	global_position -= Vector2(ownConnectionPointDict["globalPosition"] - roomConnectionPointDict["globalPosition"])
 
 	await get_tree().create_timer(0.05).timeout
 
 	if not room:
-		return
+		return false
 	if not get_overlapping_areas().is_empty():
 		return false
 	
@@ -344,8 +344,6 @@ func connect_with(room):
 	connected_rooms.append(room)
 	if room.has_method("add_connection"):
 		room.add_connection(self)
-	return true
-	
 	return true
 
 func add_connection(room: Node2D) -> void:
@@ -530,12 +528,12 @@ func get_global_rect() -> Rect2:
 	var local_rect: Rect2 = $VisibleOnScreenNotifier2D.rect
 	
 	# 将局部 rect 的位置转换为全局坐标
-	var global_position: Vector2 = $VisibleOnScreenNotifier2D.global_position
+	var _global_position: Vector2 = $VisibleOnScreenNotifier2D.global_position
 	
 	# 计算全局 rect
 	var global_rect: Rect2 = Rect2(
-		global_position + local_rect.position,  # 全局左上角位置
-		local_rect.size                         # 矩形大小保持不变
+		_global_position + local_rect.position,  # 全局左上角位置
+		local_rect.size # 矩形大小保持不变
 	)
 	
 	return global_rect
@@ -551,3 +549,116 @@ func get_connected_rooms() -> Array:
 
 func is_in_viewport():
 	return $VisibleOnScreenNotifier2D.is_on_screen()
+
+
+# 设置变量：最小距离
+@export var min_distance_from_border: float = 10.0
+
+# 引用 CollisionPolygon2D 节点
+@onready var collision_polygon: CollisionPolygon2D = $CollisionPolygon2D
+
+# 获取一个符合条件的随机点
+func get_random_point_inside_polygon() -> Vector2:
+	# 确保 CollisionPolygon2D 存在并且有有效的多边形数据
+	if not collision_polygon or collision_polygon.polygon.size() < 3:
+		print("Error: Invalid CollisionPolygon2D or polygon data.")
+		return Vector2.ZERO
+
+	# 获取多边形的顶点（局部坐标）
+	var polygon_points = collision_polygon.polygon
+
+	# 将多边形顶点转换为全局坐标
+	var global_polygon_points = []
+	for point in polygon_points:
+		global_polygon_points.append(collision_polygon.to_global(point))
+
+	# 生成一个随机点并检查条件
+	var random_point: Vector2
+	var is_valid_point = false
+	while not is_valid_point:
+		# 在多边形的边界框内生成一个随机点
+		var bounds = _get_polygon_bounds(global_polygon_points)
+		random_point = Vector2(
+			randf_range(bounds.position.x, bounds.end.x),
+			randf_range(bounds.position.y, bounds.end.y)
+		)
+
+		# 检查点是否在多边形内部
+		if _is_point_in_polygon(random_point, global_polygon_points):
+			# 检查点是否距离边界足够远
+			if _is_point_far_from_border(random_point, global_polygon_points):
+				is_valid_point = true
+
+	return random_point
+
+# 获取多边形的边界框
+func _get_polygon_bounds(points: Array) -> Rect2:
+	var min_x = INF
+	var min_y = INF
+	var max_x = -INF
+	var max_y = -INF
+
+	for point in points:
+		min_x = min(min_x, point.x)
+		min_y = min(min_y, point.y)
+		max_x = max(max_x, point.x)
+		max_y = max(max_y, point.y)
+
+	return Rect2(Vector2(min_x, min_y), Vector2(max_x - min_x, max_y - min_y))
+
+# 检查点是否在多边形内部（射线交叉法）
+func _is_point_in_polygon(point: Vector2, polygon_points: Array) -> bool:
+	var inside = false
+	var n = polygon_points.size()
+
+	for i in range(n):
+		var p1 = polygon_points[i]
+		var p2 = polygon_points[(i + 1) % n]
+
+		if (point.y > min(p1.y, p2.y)) and (point.y <= max(p1.y, p2.y)) and (point.x <= max(p1.x, p2.x)):
+			var xinters = (point.y - p1.y) * (p2.x - p1.x) / (p2.y - p1.y) + p1.x
+			if p1.x == p2.x or point.x <= xinters:
+				inside = not inside
+
+	return inside
+
+# 检查点是否距离多边形边界足够远
+func _is_point_far_from_border(point: Vector2, polygon_points: Array) -> bool:
+	var n = polygon_points.size()
+
+	for i in range(n):
+		var p1 = polygon_points[i]
+		var p2 = polygon_points[(i + 1) % n]
+
+		# 计算点到线段的距离
+		var distance_to_segment = _point_to_segment_distance(point, p1, p2)
+		if distance_to_segment < min_distance_from_border:
+			return false
+
+	return true
+
+# 计算点到线段的最短距离
+func _point_to_segment_distance(point: Vector2, segment_start: Vector2, segment_end: Vector2) -> float:
+	var line_dir = segment_end - segment_start
+	var length_squared = line_dir.length_squared()
+	if length_squared == 0:
+		return point.distance_to(segment_start)
+
+	var t = ((point - segment_start).dot(line_dir)) / length_squared
+	t = clamp(t, 0.0, 1.0)
+	var projection = segment_start + line_dir * t
+	return point.distance_to(projection)
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		# 调用生成多个实体的函数
+		generate_multiple_entities(4, 0.5)
+
+# 生成多个实体的函数
+func generate_multiple_entities(count: int, interval: float) -> void:
+	for i in range(count):
+		# 生成一个实体
+		EntityManager.generate_entity({"entity_id": 5, "position": get_random_point_inside_polygon()})
+		# 等待指定的时间间隔
+		await get_tree().create_timer(interval).timeout
