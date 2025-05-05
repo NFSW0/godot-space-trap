@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.3 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36" version="26.0.3">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="-1527" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="-1409" dy="653" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -32,7 +32,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="btPv7d35-T0VnBdfR0sY-9" value="是否放置信标" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=20;spacingRight=20;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+        <mxCell id="btPv7d35-T0VnBdfR0sY-9" value="是否放置信标" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=11;align=center;strokeWidth=1;spacing=6;spacingTop=0;gradientColor=none;rounded=0;verticalAlign=middle;horizontal=1;spacingLeft=20;spacingRight=20;fillColor=default;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="2880" y="440" width="160" height="80" as="geometry" />
         </mxCell>
         <mxCell id="btPv7d35-T0VnBdfR0sY-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="btPv7d35-T0VnBdfR0sY-10" target="btPv7d35-T0VnBdfR0sY-31" edge="1">
@@ -399,7 +399,7 @@
           <mxGeometry x="3680" y="1640" width="160" height="40" as="geometry" />
         </mxCell>
         <mxCell id="4GSbH3g2OeHKa5lSQJEh-0" value="《空间陷阱》：暗示玩家掉入了「苹果」的陷阱" style="shape=note;size=0;whiteSpace=wrap;html=1;verticalAlign=bottom;fillColor=#bac8d3;strokeColor=#23445d;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="2680" y="80" width="160" height="40" as="geometry" />
+          <mxGeometry x="2490" y="10" width="160" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

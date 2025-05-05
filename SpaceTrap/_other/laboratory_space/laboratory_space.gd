@@ -104,3 +104,14 @@ func _is_duplicate_click(tag:String) -> bool:
 		for child in card_container.get_children():
 			child.call_deferred("queue_free")
 		return false
+
+
+func _on_timer_timeout() -> void:
+	var nodes = get_tree().get_nodes_in_group("Player")
+	for node in nodes:
+		if node.get("controller") is ControllerAI: 
+			node.set("controller", ControllerPlayer.new())
+			print("转AI  =_=")
+		else:
+			node.set("controller", ControllerAI.new())
+			print("转人工  →_→")

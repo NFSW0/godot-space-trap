@@ -87,7 +87,12 @@ targe_portal = NodePath("../Portal2")
 position = Vector2(433, 402)
 targe_portal = NodePath("../Portal")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
 [connection signal="pressed" from="Normal/CanvasLayer/VBoxContainer/HBoxContainer/Block" to="." method="_on_block_pressed"]
 [connection signal="pressed" from="Normal/CanvasLayer/VBoxContainer/HBoxContainer/Entity" to="." method="_on_entity_pressed"]
 [connection signal="pressed" from="Normal/CanvasLayer/VBoxContainer/HBoxContainer/Buff" to="." method="_on_buff_pressed"]
 [connection signal="pressed" from="Normal/CanvasLayer/VBoxContainer/HBoxContainer/Item" to="." method="_on_item_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
