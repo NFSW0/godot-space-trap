@@ -48,7 +48,8 @@ directories/dtl_directory={
 "RandomDialog": "res://dialogic/timelines/RandomDialog.dtl",
 "RandomDialog2": "res://dialogic/timelines/RandomDialog2.dtl",
 "RandomDialog3": "res://dialogic/timelines/RandomDialog3.dtl",
-"ZeroChat": "res://dialogic/timelines/ZeroChat.dtl"
+"ZeroChat": "res://dialogic/timelines/ZeroChat.dtl",
+"testtimeline": "res://dialogic/timelines/testtimeline.dtl"
 }
 layout/style_list=["res://dialogic/Style/BubbleStyle.tres"]
 layout/default_style="res://dialogic/Style/BubbleStyle.tres"
