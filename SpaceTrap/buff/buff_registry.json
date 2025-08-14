@@ -1,0 +1,8 @@
+{
+	"1": "res://buff/buff_library/1_buff_debug/buff_debug.tres",
+	"2": "res://buff/buff_library/2_buff_luck_increase/buff_luck_increase.tres",
+	"3": "res://buff/buff_library/3_buff_knockback/buff_knockback.tres",
+	"4": "res://buff/buff_library/4_buff_unknockback/buff_unknockback.tres",
+	"5": "res://buff/buff_library/5_buf_bleeding/buff_bleeding.tres",
+	"6": "res://buff/buff_library/6_buff_fired/buff_fired.tres"
+}

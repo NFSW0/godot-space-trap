@@ -675,5 +675,5 @@ parameters/Move/blend_position = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
 libraries = {
-"": SubResource("AnimationLibrary_l1aew")
+&"": SubResource("AnimationLibrary_l1aew")
 }

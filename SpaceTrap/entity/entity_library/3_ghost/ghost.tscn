@@ -378,7 +378,6 @@ script = ExtResource("1_ef6u2")
 animation_tree = NodePath("AnimationTree")
 controller = SubResource("Resource_dhmus")
 entity_id = 3
-speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g22e2")
@@ -386,7 +385,7 @@ shape = SubResource("CircleShape2D_g22e2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_u66a6")
-animation = &"move_left"
+animation = &"move_down"
 autoplay = "move_down"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -397,5 +396,5 @@ parameters/Move/blend_position = Vector2(-0.00860047, -0.00793648)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
 libraries = {
-"": SubResource("AnimationLibrary_y6ucc")
+&"": SubResource("AnimationLibrary_y6ucc")
 }

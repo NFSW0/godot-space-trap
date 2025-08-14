@@ -18,7 +18,8 @@ func _ready() -> void:
 	if entity_manager:
 		# 设置多人实体承载节点
 		entity_manager.update_spawn_path($Normal/Node2D.get_path())
-
+	#for i in range(50):
+		#entity_manager.generate_entity({"entity_id": 5, "position": Vector2(389,125), "test": true})
 
 func _unhandled_input(event: InputEvent) -> void:
 	# 检查鼠标左键是否按下
@@ -107,11 +108,12 @@ func _is_duplicate_click(tag:String) -> bool:
 
 
 func _on_timer_timeout() -> void:
-	var nodes = get_tree().get_nodes_in_group("Player")
-	for node in nodes:
-		if node.get("controller") is ControllerAI: 
-			node.set("controller", ControllerPlayer.new())
-			print("转AI  =_=")
-		else:
-			node.set("controller", ControllerAI.new())
-			print("转人工  →_→")
+	pass
+	#var nodes = get_tree().get_nodes_in_group("Player")
+	#for node in nodes:
+		#if node.get("controller") is ControllerAI: 
+			#node.set("controller", ControllerPlayer.new())
+			#print("转AI  =_=")
+		#else:
+			#node.set("controller", ControllerAI.new())
+			#print("转人工  →_→")

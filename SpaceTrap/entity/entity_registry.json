@@ -1,0 +1,12 @@
+{
+	"1": "res://entity/entity_library/1_bullet/bullet.tscn",
+	"10": "res://entity/entity_library/10_developer/developer.tscn",
+	"2": "res://entity/entity_library/2_dummy/dummy.tscn",
+	"3": "res://entity/entity_library/3_ghost/ghost.tscn",
+	"4": "res://entity/entity_library/4_mouse/mouse.tscn",
+	"5": "res://entity/entity_library/5_skeleton/skeleton.tscn",
+	"6": "res://entity/entity_library/6_effect_hit/effect_hit.tscn",
+	"7": "res://entity/entity_library/7_effect_hurt/effect_hurt.tscn",
+	"8": "res://entity/entity_library/8_boss_king/boss_king.tscn",
+	"9": "res://entity/entity_library/9_boss_king_bullet/boss_king_bullet.tscn"
+}

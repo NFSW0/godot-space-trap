@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://c1ujbgww2tj8k"]
+[gd_scene load_steps=6 format=4 uid="uid://c1ujbgww2tj8k"]
 
 [ext_resource type="Script" uid="uid://mbuq43ngkccs" path="res://_other/laboratory_space/laboratory_space.gd" id="1_xpwcg"]
 [ext_resource type="PackedScene" uid="uid://bdfsrdf8inke7" path="res://ui/ui_components/item_card.tscn" id="2_72doj"]
 [ext_resource type="PackedScene" uid="uid://1igqyd3r3k4w" path="res://world/portal/portal.tscn" id="3_ct5da"]
 [ext_resource type="TileSet" uid="uid://ccp6l7mx0wsqb" path="res://world/tiles/tile_set_2.tres" id="6_2lkn7"]
+[ext_resource type="PackedScene" uid="uid://bj3ttf6hmskpr" path="res://entity/entity_library/2_dummy/dummy.tscn" id="7_sp00e"]
 
 [node name="LaboratorySpace" type="Node"]
 script = ExtResource("1_xpwcg")
@@ -86,6 +87,10 @@ targe_portal = NodePath("../Portal2")
 [node name="Portal2" parent="Normal/Node2D" node_paths=PackedStringArray("targe_portal") instance=ExtResource("3_ct5da")]
 position = Vector2(433, 402)
 targe_portal = NodePath("../Portal")
+
+[node name="Dummy" parent="Normal/Node2D" instance=ExtResource("7_sp00e")]
+position = Vector2(551, 294)
+entity_id = 0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
